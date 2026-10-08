@@ -1,0 +1,96 @@
+{
+  "author": "QRT Solutions",
+  "contract_type": "StrategySpecification",
+  "schema_version": "breakout3-m5-design-1.0",
+  "strategy_id": "STRAT-20261008-BREAKOUT3_LONG-M5-v1.0",
+  "timestamp": "2026-10-08T19:05:41Z",
+  "status": "design_review",
+  "human_decisions": {
+    "variant": "B",
+    "symbol_scope": "any_chart_symbol",
+    "fixed_volume_lots": 0.1,
+    "timeframe": "M5"
+  },
+  "hypothesis": {
+    "condition_x": "Ask reaches the maximum high of the three preceding closed M5 bars.",
+    "expected_outcome_y": "Positive directional price return over the following ten minutes, subject to earlier SL/TP exit.",
+    "structural_reason_z": "Test whether a short-term upside breakout is followed by continuation.",
+    "invalidation_criterion": "Non-positive average price return after execution costs in a separately authorized study."
+  },
+  "market_regime": {
+    "model": "none",
+    "execution_timeframe": "M5",
+    "trend_filter_enabled": false
+  },
+  "execution_rules": {
+    "symbol_binding": "chart_symbol",
+    "side": "long_only",
+    "entry_order_type": "buy_stop",
+    "signal_evaluation": "new_M5_bar_after_initialization",
+    "lookback_bars": 3,
+    "lookback_shifts": [1, 2, 3],
+    "entry_formula": "E = ceil_to_tick_size(max(High[1], High[2], High[3]))",
+    "trigger_price_side": "Ask",
+    "entry_buffer_atr_multiplier": 0,
+    "volume_lots": 0.1,
+    "invalid_volume_policy": "reject_signal_without_rounding_volume",
+    "invalid_price_or_distance_policy": "skip_signal_without_market_entry_or_level_shift",
+    "pending_refresh": "cancel_verify_and_replace_on_each_new_M5_bar",
+    "pending_expiration": "next_M5_open_if_specified_expiration_supported_else_GTC_with_EA_cancellation",
+    "maximum_owned_positions_per_symbol": 1,
+    "maximum_owned_pending_orders_per_symbol": 1,
+    "entry_while_owned_position_exists": false,
+    "reentry": "wait_for_M5_close_after_position_exit",
+    "isolation": "symbol_and_unique_magic_number",
+    "netting_foreign_position_or_pending_policy": "skip_new_entries"
+  },
+  "triple_barrier_exits": {
+    "atr_timeframe": "D1",
+    "atr_period": 14,
+    "atr_shift": 1,
+    "atr_snapshot": "pending_order_preparation",
+    "price_anchor": "requested_pending_entry_price",
+    "barrier_1_profit_atr_d1_multiplier": 0.5,
+    "barrier_2_stop_atr_multiplier": 0.25,
+    "stop_formula": "SL = E - 0.25 * ATR_D1_14_shift_1",
+    "profit_formula": "TP = E + 0.50 * ATR_D1_14_shift_1",
+    "price_rounding": "native_tick_size_without_silent_distance_widening",
+    "barrier_3_time_stop_seconds": 600,
+    "nominal_M5_periods": 2,
+    "timer_origin": "actual_position_execution_time",
+    "timer_checks": ["every_tick", "one_second_timer"],
+    "exit_policy": "first_reached_price_barrier_or_first_execution_opportunity_at_or_after_deadline",
+    "restart_policy": "recover_position_open_time_do_not_reset_deadline",
+    "close_failure_policy": "log_retcode_reconcile_and_retry_while_position_exists"
+  },
+  "risk_and_permissions": {
+    "live_execution_enabled_by_default": false,
+    "enable_trading_input": "InPenableTrading",
+    "tester_execution_enabled_automatically": true,
+    "prepare_or_compile_authorizes_live_orders": false
+  },
+  "tester_criterion": {
+    "default": "CRITERION_CUMULATIVE_PCT_RETURN",
+    "options": [
+      "CRITERION_CUMULATIVE_PCT_RETURN",
+      "CRITERION_SHARPE_PCT",
+      "CRITERION_PROFIT_FACTOR_PCT"
+    ],
+    "price_return_formula_pct": "100 * (exit_price - entry_price) / entry_price",
+    "sharpe_annualization": "mean_daily_return / sample_daily_return_stddev * sqrt(365), zero_risk_free_rate, server_calendar_days_including_zero_return_days",
+    "sharpe_degenerate_sample_policy": "return_zero_and_log_insufficient_sample",
+    "profit_factor_without_losses_policy": "undefined_ratio_return_zero_for_OnTester_and_log_undefined_condition"
+  },
+  "deliverables": ["MQL5_EA", "Pine_Script_v6", "STRATEGY_FACTSHEET.md"],
+  "platform_parity": {
+    "execution_reference": "MQL5",
+    "Pine_historical_M5_timer": "first_bar_close_at_or_after_600_second_deadline_unless_intrabar_parity_is_verified",
+    "exact_temporal_parity_claimed": false
+  },
+  "evidence": {
+    "implementation_complete": false,
+    "native_compile_verified": false,
+    "backtest_run": false,
+    "performance_claimed": false
+  }
+}
