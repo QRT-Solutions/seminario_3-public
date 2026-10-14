@@ -1,0 +1,723 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TaskExecutionContract",
+  "description": "Contrato formal discriminado por tipo de operación técnica para mt5-platform-operator.",
+  "type": "object",
+  "required": [
+    "task_id",
+    "operation"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "capabilities",
+        "query_status",
+        "inspect_symbol",
+        "history",
+        "chart",
+        "compile",
+        "backtest",
+        "optimization",
+        "cancel_run",
+        "extract_report"
+      ]
+    },
+    "knowledge_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "symbol": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period": {
+      "type": "string",
+      "enum": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M10",
+        "M12",
+        "M15",
+        "M20",
+        "M30",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H6",
+        "H8",
+        "H12",
+        "D1",
+        "W1",
+        "MN1"
+      ]
+    },
+    "datetime_from": {
+      "type": "string",
+      "minLength": 1
+    },
+    "datetime_to": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "symbol",
+        "period",
+        "datetime_from",
+        "datetime_to"
+      ],
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6",
+            "M10",
+            "M12",
+            "M15",
+            "M20",
+            "M30",
+            "H1",
+            "H2",
+            "H3",
+            "H4",
+            "H6",
+            "H8",
+            "H12",
+            "D1",
+            "W1",
+            "MN1"
+          ]
+        },
+        "datetime_from": {
+          "type": "string",
+          "minLength": 1
+        },
+        "datetime_to": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "artifact": {
+      "type": "object",
+      "required": [
+        "expert_path"
+      ],
+      "properties": {
+        "expert_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputs_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_fingerprint": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "tester_parameters": {
+      "type": "object",
+      "required": [
+        "model",
+        "deposit",
+        "currency",
+        "leverage",
+        "execution_delay"
+      ],
+      "properties": {
+        "model": {
+          "type": "string",
+          "enum": [
+            "every tick",
+            "m1 ohlc",
+            "open prices",
+            "math calculations",
+            "real ticks"
+          ]
+        },
+        "deposit": {
+          "type": "number",
+          "minimum": 1.0
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3
+        },
+        "leverage": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "execution_delay": {
+          "type": "integer",
+          "minimum": -1,
+          "maximum": 600000
+        },
+        "optimization": {
+          "type": "boolean"
+        },
+        "genetic": {
+          "type": "boolean"
+        },
+        "optimization_criterion": {
+          "type": "string",
+          "enum": [
+            "balance_max",
+            "profit_factor_max",
+            "expected_payoff_max",
+            "drawdown_min",
+            "recovery_factor_max",
+            "sharpe_ratio_max",
+            "custom_max",
+            "metric_max"
+          ]
+        },
+        "optimization_ranges": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "start",
+              "step",
+              "stop"
+            ],
+            "properties": {
+              "start": {
+                "type": "number"
+              },
+              "step": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "stop": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "minProperties": 1
+        },
+        "forward_mode": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "forward_date": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "chart_action": {
+      "type": "object",
+      "required": [
+        "action"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "open",
+            "close",
+            "apply_template",
+            "add_indicator",
+            "list"
+          ]
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "type": "string",
+          "enum": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6",
+            "M10",
+            "M12",
+            "M15",
+            "M20",
+            "M30",
+            "H1",
+            "H2",
+            "H3",
+            "H4",
+            "H6",
+            "H8",
+            "H12",
+            "D1",
+            "W1",
+            "MN1"
+          ]
+        },
+        "chart_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "template_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "indicator_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "custom_indicator_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "indicator_parameters": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "open"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "symbol",
+              "period"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "close"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "chart_id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "apply_template"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "chart_id",
+              "template_filename"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "add_indicator"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "chart_id",
+              "indicator_name"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "gates": {
+      "type": "object",
+      "properties": {
+        "study_approval": {
+          "type": "boolean"
+        },
+        "allow_oos": {
+          "type": "boolean"
+        },
+        "mutation_approval": {
+          "type": "boolean"
+        },
+        "force_reexecution": {
+          "type": "boolean",
+          "default": false
+        },
+        "quality_gate": {
+          "type": "object",
+          "required": [
+            "min_quality_pct",
+            "reject_uninterpretable"
+          ],
+          "properties": {
+            "min_quality_pct": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 100.0
+            },
+            "reject_uninterpretable": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "expected_output": {
+      "type": "string",
+      "enum": [
+        "summary_json",
+        "full_report_xml",
+        "journal_only",
+        "status_only",
+        "capabilities_only"
+      ]
+    },
+    "checkpoint_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ruta de estado del supervisor, externa al terminal; se acuerda antes de mutar."
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "operation": {
+          "const": "capabilities"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "query_status"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "run_id"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "inspect_symbol"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "symbol"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "history"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "task_id",
+            "operation",
+            "target"
+          ]
+        },
+        {
+          "required": [
+            "task_id",
+            "operation",
+            "symbol",
+            "period",
+            "datetime_from",
+            "datetime_to"
+          ]
+        }
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "chart"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "chart_action"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "compile"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "source_path",
+        "output_path",
+        "gates"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "cancel_run"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "run_id",
+        "gates"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "extract_report"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "run_id",
+        "expected_output"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "backtest"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "target",
+        "artifact",
+        "tester_parameters",
+        "gates",
+        "expected_output"
+      ]
+    },
+    {
+      "properties": {
+        "operation": {
+          "const": "optimization"
+        }
+      },
+      "required": [
+        "task_id",
+        "operation",
+        "target",
+        "artifact",
+        "tester_parameters",
+        "gates",
+        "expected_output"
+      ]
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "backtest",
+              "optimization"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gates": {
+            "required": [
+              "study_approval",
+              "allow_oos",
+              "quality_gate"
+            ],
+            "properties": {
+              "study_approval": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "enum": [
+              "compile",
+              "cancel_run"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gates": {
+            "required": [
+              "mutation_approval"
+            ],
+            "properties": {
+              "mutation_approval": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "chart"
+          },
+          "chart_action": {
+            "properties": {
+              "action": {
+                "enum": [
+                  "open",
+                  "close",
+                  "apply_template",
+                  "add_indicator"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "chart_action"
+        ]
+      },
+      "then": {
+        "required": [
+          "gates"
+        ],
+        "properties": {
+          "gates": {
+            "required": [
+              "mutation_approval"
+            ],
+            "properties": {
+              "mutation_approval": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "optimization"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "tester_parameters": {
+            "required": [
+              "optimization",
+              "optimization_criterion",
+              "optimization_ranges"
+            ],
+            "properties": {
+              "optimization": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "operation": {
+            "const": "backtest"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "tester_parameters": {
+            "properties": {
+              "optimization": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

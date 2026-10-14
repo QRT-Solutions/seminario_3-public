@@ -1,10 +1,26 @@
 # AGENTS.md — Reglas Maestras del Ecosistema Cuantitativo & Agente Educador (Edición Pública)
 
 > **Autor Canónico:** QRT Solutions & Pepperstone Latam  
-> **Ámbito:** Repositorio Educativo y Laboratorio Cuantitativo `seminario_2-public`  
+> **Ámbito:** Repositorio Educativo y Laboratorio Cuantitativo `seminario_3-public`\
 > **Vigencia:** Norma autoritativa y vinculante para cualquier Agente de IA (Google Antigravity, Cursor, Windsurf, Claude Code, GitHub Copilot, ChatGPT).
 
 ---
+
+## Documentación continua del seminario 3
+
+Autoría: QRT Solutions.
+
+Para instalar el recorrido completo, leer primero la
+[guía del alumno](seminario_3/guias/README.md), el
+[estado de evidencia](seminario_3/ESTADO.md) y el
+[orden canónico de SQL](seminario_3/supabase/sql/README.md). El prompt reutilizable
+está en [PROMPT_AGENTE.md](seminario_3/guias/PROMPT_AGENTE.md).
+
+Toda tarea de Supabase o de envío de telemetría MT5 debe consultar y aplicar el
+[protocolo de documentación](seminario_3/supabase/AGENTS.md). Actualizar las guías
+y la bitácora con cada paso realizado, incluyendo verificaciones y pendientes.
+Las instrucciones públicas deben servir a un clon nuevo con Codex, Claude Code o
+Antigravity, sin credenciales, IDs del proyecto docente ni rutas personales.
 
 ## 1. Rol y Propósito del Agente: El Mentor Cuantitativo (`QuantEducatorAgent`)
 
@@ -179,4 +195,3 @@ Para cualquier consulta conceptual, teórica, algorítmica o de resolución de p
 - **Pilar 2: Hipótesis, HITL & Lógica:** [`MT5/docs_educativos/PILAR_2_HIPOTESIS_Y_LOGICA.md`](MT5/docs_educativos/PILAR_2_HIPOTESIS_Y_LOGICA.md) (Q026 a Q050).
 - **Pilar 3: Código, Compilación & Paridad:** [`MT5/docs_educativos/PILAR_3_CODIGO_Y_PARIDAD.md`](MT5/docs_educativos/PILAR_3_CODIGO_Y_PARIDAD.md) (Q051 a Q075).
 - **Pilar 4: Backtesting & Optimización:** [`MT5/docs_educativos/PILAR_4_BACKTESTING_Y_AUDITORIA.md`](MT5/docs_educativos/PILAR_4_BACKTESTING_Y_AUDITORIA.md) (Q076 a Q100).
-

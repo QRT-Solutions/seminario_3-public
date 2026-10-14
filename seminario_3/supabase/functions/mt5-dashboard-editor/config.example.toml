@@ -1,0 +1,3 @@
+# Author: QRT Solutions. The handler checks single-use codes / custom session tokens.
+[functions.mt5-dashboard-editor]
+verify_jwt = false

@@ -1,0 +1,353 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionEvidence",
+  "description": "Esquema formal de salida con evidencia técnica verificable generada por mt5-platform-operator.",
+  "type": "object",
+  "required": [
+    "task_id",
+    "operation",
+    "status",
+    "reused_cached_result",
+    "execution_metadata",
+    "limitations_encountered"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "capabilities",
+        "query_status",
+        "inspect_symbol",
+        "history",
+        "chart",
+        "compile",
+        "backtest",
+        "optimization",
+        "cancel_run",
+        "extract_report"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "reused",
+        "blocked",
+        "unsupported",
+        "uncertain"
+      ]
+    },
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "effective_fingerprint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1,
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "reused_cached_result": {
+      "type": "boolean"
+    },
+    "execution_metadata": {
+      "type": "object",
+      "required": [
+        "timestamp_utc"
+      ],
+      "properties": {
+        "timestamp_utc": {
+          "type": "string",
+          "minLength": 1
+        },
+        "terminal_time_local": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "elapsed_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "effective_configuration": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "model": {
+          "type": "string"
+        },
+        "deposit": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "leverage": {
+          "type": "integer"
+        },
+        "execution_delay": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": true
+    },
+    "raw_metrics": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "net_profit": {
+          "type": "number"
+        },
+        "profit_factor": {
+          "type": "number"
+        },
+        "sharpe_ratio": {
+          "type": "number"
+        },
+        "total_trades": {
+          "type": "integer"
+        },
+        "max_drawdown_pct": {
+          "type": "number"
+        },
+        "history_quality_raw": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "artifacts": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "report_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "journal_path": {
+          "type": "string"
+        },
+        "config_ini_path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "query_payload": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Payload genérico para respuestas de operaciones de consulta (capabilities, status, inspect_symbol, history, chart)."
+    },
+    "limitations_encountered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocking_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "reused"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reused_cached_result": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reused_cached_result": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "completed",
+              "reused"
+            ]
+          },
+          "operation": {
+            "enum": [
+              "backtest",
+              "optimization"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "operation"
+        ]
+      },
+      "then": {
+        "required": [
+          "run_id",
+          "effective_fingerprint",
+          "effective_configuration",
+          "artifacts"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "effective_fingerprint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "effective_configuration": {
+            "type": "object",
+            "minProperties": 1,
+            "required": [
+              "model",
+              "deposit",
+              "currency",
+              "leverage",
+              "execution_delay"
+            ]
+          },
+          "artifacts": {
+            "type": "object",
+            "required": [
+              "report_path"
+            ],
+            "properties": {
+              "report_path": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "blocked",
+              "unsupported",
+              "uncertain"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "blocking_reason"
+        ],
+        "properties": {
+          "blocking_reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "blocked",
+              "unsupported",
+              "uncertain"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reused_cached_result": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed"
+          },
+          "operation": {
+            "enum": [
+              "capabilities",
+              "query_status",
+              "inspect_symbol",
+              "history",
+              "chart"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "query_payload"
+        ],
+        "properties": {
+          "query_payload": {
+            "type": "object",
+            "minProperties": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2776 @@
+<!doctype html>
+<!-- Author: QRT Solutions. Generated from seminario_3/guias/RESUMEN_CONFIGURACION.md; SHA256 69c14abe177851e9f8a081f918d8720ee5201cec36554000000ecf132d506081. -->
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="QRT Solutions"><meta name="description" content="Una ruta para conectar tu cuenta demo, guardar su historia y explicar cada decisión.">
+<title>Configuración · Supabase, Telegram y Vercel · QRT Solutions</title><style>
+:root{--ink:#152c39;--muted:#526872;--teal:#007c71;--line:#dce6e5;--paper:#fff;--wash:#f2f6f5;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--wash);color:var(--ink);font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--teal);text-underline-offset:4px}a:hover{color:#004d46}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #ce862b;outline-offset:4px}
+.skip{position:absolute;left:12px;top:-80px;background:white;padding:12px;z-index:5}.skip:focus{top:12px}.progress{position:fixed;top:0;left:0;height:4px;background:#15b39b;z-index:8;width:0}
+.masthead{max-width:1440px;margin:auto;padding:25px 4vw;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}.monogram{background:var(--ink);color:white;border-radius:12px;padding:7px 11px;font-size:16px;font-weight:800;letter-spacing:-1px}.brand b{display:block;font-size:14px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}
+.switcher{display:flex;border:1px solid var(--line);border-radius:24px;padding:4px;background:white;gap:4px}.switcher a{padding:7px 15px;text-decoration:none;font-size:13px;color:var(--muted);border-radius:22px}.switcher a[aria-current=page]{background:var(--ink);color:white}
+.layout{max-width:1440px;margin:auto;padding:0 4vw 64px;display:grid;grid-template-columns:246px minmax(0,1fr);gap:44px}.rail{position:sticky;top:30px;align-self:start;max-height:calc(100vh - 60px);overflow:auto;padding:12px 6px 20px 0}.rail-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:750;color:var(--muted);margin:0 0 18px}.toc{display:flex;flex-direction:column;gap:5px}.toc a{border-left:2px solid transparent;padding:6px 11px;font-size:13px;text-decoration:none;color:var(--muted);line-height:1.45}.toc a:hover,.toc a.active{border-left-color:var(--teal);color:var(--teal);background:#e5efec;border-radius:0 6px 6px 0}.rail-note{font-size:12px;margin-top:25px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+main{min-width:0}.hero{background:var(--ink);border-radius:22px;padding:44px 44px 36px;color:#fff;position:relative;overflow:hidden}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;font-weight:700;color:#80d6c8}.hero h1{font-size:clamp(32px,3.3vw,48px);line-height:1.13;letter-spacing:-1.5px;margin:17px 0 19px;max-width:800px}.hero p{font-size:17px;color:#c6d9dc;max-width:680px;margin:0}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:27px}.chips span{border:1px solid #4b6570;border-radius:18px;padding:4px 11px;font-size:11px;letter-spacing:.4px;color:#e4efee}.hero-footer{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:26px;padding-top:22px;border-top:1px solid #3a5460;font-size:12px;color:#bfd1d2}.actions{display:flex;gap:8px;flex-wrap:wrap}.action{border:1px solid #b8cfcb;background:white;color:var(--ink);border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600}.action:hover{background:#e8f4f0}.action.secondary{background:transparent;color:white;border-color:#65828b}.intro{padding:22px 5px 3px;color:var(--muted)}.intro p{margin:0 0 16px}
+.section{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 34px;margin:22px 0;scroll-margin-top:24px}.section h2{font-size:25px;letter-spacing:-.6px;line-height:1.3;margin:0 0 23px;padding-bottom:17px;border-bottom:1px solid var(--line)}.section h3{font-size:19px;margin-top:27px}.section p{margin:15px 0}.section p:last-child{margin-bottom:0}.section ol,.section ul{padding-left:25px}.section li{margin-bottom:11px;padding-left:5px}.section li::marker{color:var(--teal);font-weight:700}strong{font-weight:700}code{font:0.86em/1.5 var(--mono);background:#edf3f1;border:1px solid #dce8e4;border-radius:4px;padding:2px 5px;color:#225447;overflow-wrap:anywhere}
+pre{position:relative;background:#132b36;color:#e3f0ee;border-radius:10px;padding:48px 20px 20px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}pre code{background:none;border:0;color:inherit;padding:0;font-size:12px}pre .copy{position:absolute;top:9px;right:10px;border:1px solid #58747b;background:#24414e;color:white;border-radius:6px;padding:4px 10px;font-size:11px}.table-wrap{max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:10px;margin:22px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.55;text-align:left}thead{background:#edf4f1}th{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#36534e;padding:13px 15px;vertical-align:top}td{padding:13px 15px;border-top:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}td:first-child{font-weight:600}tr:nth-child(even){background:#fafcfb}td code{font-size:11px}blockquote{margin:20px 0;border-left:4px solid var(--teal);padding:12px 23px;background:#eff7f3;font-size:21px;line-height:1.6;letter-spacing:-.3px}
+.references{margin-top:36px}.references h2{font-size:21px}.references>p{font-size:13px;color:var(--muted)}.reference{background:white;border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:15px 20px;scroll-margin-top:25px}.reference summary{font-size:14px;cursor:pointer;font-weight:650;color:var(--teal)}.reference .reference-body{margin-top:20px;font-size:14px}.reference-body h1{font-size:24px}.reference-body h2{font-size:21px}.reference-body h3{font-size:18px}.source-label{font:11px/1.5 var(--mono);overflow-wrap:anywhere;color:var(--muted)}.repo-reference{border-bottom:1px dotted #91a7a3}.doc-footer{border-top:1px solid var(--line);padding:25px 5px;display:flex;gap:15px;justify-content:space-between;font-size:12px;color:var(--muted)}.status{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);border-radius:10px;padding:10px 18px;background:var(--ink);color:white;box-shadow:0 5px 20px #142f3929;z-index:7;font-size:13px}.status:empty{display:none}.mobile-nav{display:none}.presenting .layout{grid-template-columns:1fr;max-width:1200px}.presenting .rail{display:none}.presenting .section{font-size:21px}.presenting .section h2{font-size:33px}.presenting table{font-size:18px}.presenting .hero h1{font-size:52px}.presenting td code{font-size:15px}
+@media(max-width:1000px){.layout{grid-template-columns:195px minmax(0,1fr);gap:24px}.hero{padding:32px}.section{padding:26px}.hero-footer{align-items:flex-start;flex-direction:column}}
+@media(max-width:720px){body{font-size:15px}.masthead{padding:18px 5vw;flex-wrap:wrap;gap:15px}.switcher{width:100%;justify-content:center}.layout{display:block;padding:0 5vw 25px}.rail{display:none}.hero{padding:29px 24px;border-radius:16px}.hero h1,.presenting .hero h1{font-size:34px}.hero p{font-size:15px}.mobile-nav{display:block;background:white;border:1px solid var(--line);border-radius:10px;padding:13px 17px;margin:18px 0}.mobile-nav summary{font-size:13px;font-weight:650;color:var(--teal);cursor:pointer}.mobile-nav .toc{padding-top:12px}.section{padding:24px 19px}.section h2,.presenting .section h2{font-size:23px}table,thead,tbody,tr,td{display:block}thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}tr{padding:10px 14px;border-top:1px solid var(--line)}tr:first-child{border-top:0}td{border:0;padding:7px 0;font-size:14px}td:before{content:attr(data-label);display:block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}.table-wrap{overflow:visible}.doc-footer{flex-direction:column}.presenting .section{font-size:17px}blockquote{font-size:19px;padding:10px 17px}.reference{padding:14px}.actions{gap:7px}.hero-footer{gap:15px}pre{padding-left:14px;padding-right:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{@page{size:A4;margin:16mm}body{background:white;color:#111;font-size:10pt;line-height:1.5}.masthead,.rail,.mobile-nav,.actions,.progress,.copy,.references,.status,.skip{display:none!important}.layout,.presenting .layout{display:block;max-width:none;padding:0}.hero{background:white!important;color:#111;border-radius:0;padding:0 0 15px;border-bottom:2px solid #007c71}.hero h1,.presenting .hero h1{font-size:27pt;letter-spacing:-.6px}.hero p,.eyebrow,.hero-footer{color:#333}.hero-footer{margin:10px 0 0;padding:0;border:0}.chips{display:none}.section,.presenting .section{border:0;padding:16px 0 0;margin:12px 0;font-size:10pt}.section h2,.presenting .section h2{font-size:16pt;break-after:avoid}.section h3{break-after:avoid}.intro{padding:15px 0 0}table,.presenting table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}pre,blockquote{break-inside:avoid;background:#f2f5f4;color:#111}pre{padding:10px;white-space:pre-wrap}pre code{color:#111}a{color:inherit;text-decoration:none}.doc-footer{margin-top:20px;font-size:9pt}p,li{orphans:3;widows:3}}
+</style></head>
+<body id="top"><a class="skip" href="#contenido">Saltar al contenido</a><div class="progress" aria-hidden="true"></div>
+<header class="masthead"><a class="brand" href="https://www.qrtsolutions.com" target="_blank" rel="noopener noreferrer"><span class="monogram">QRT</span><span><b>QRT SOLUTIONS</b><small>Seminario 03 / Bitácora conectada</small></span></a>
+<nav class="switcher" aria-label="Documentos"><a href="configuracion.html" aria-current="page">Configuración</a><a href="ayuda-memoria.html" >Presentación</a></nav></header>
+<div class="layout"><aside class="rail"><p class="rail-title">En este documento</p><nav class="toc" aria-label="Índice"><a href="#el-mapa-que-conviene-explicar-primero">El mapa que conviene explicar primero</a><a href="#1-preparar-el-repositorio-y-los-accesos">1. Preparar el repositorio y los accesos</a><a href="#2-crear-supabase-y-preparar-la-base">2. Crear Supabase y preparar la base</a><a href="#3-desplegar-el-receptor-y-generar-la-credencial-del-ea">3. Desplegar el receptor y generar la credencial del EA</a><a href="#4-configurar-mt5-y-comprobar-recepcion">4. Configurar MT5 y comprobar recepción</a><a href="#5-crear-y-conectar-telegram">5. Crear y conectar Telegram</a><a href="#6-publicar-el-dashboard-en-vercel">6. Publicar el dashboard en Vercel</a><a href="#7-habilitar-la-edicion-web-mediante-telegram">7. Habilitar la edición web mediante Telegram</a><a href="#8-prueba-final-y-funcionamiento-cotidiano">8. Prueba final y funcionamiento cotidiano</a><a href="#que-clave-va-en-cada-lugar">Qué clave va en cada lugar</a><a href="#errores-que-conviene-recordar">Errores que conviene recordar</a></nav><p class="rail-note">Material de QRT Solutions.<br>Lectura sin conexión y referencias incluidas.<br><a href="#referencias">Ver referencias</a></p></aside>
+<main id="contenido"><div class="hero"><div class="eyebrow">Guía de instalación</div><h1>De MT5 a la nube.<br>Configuración paso a paso.</h1><p>Una ruta para conectar tu cuenta demo, guardar su historia y explicar cada decisión.</p><div class="chips"><span>8 pasos</span><span>Supabase · Telegram · Vercel</span><span>Cuenta demo</span></div>
+<div class="hero-footer"><span>8 de octubre de 2026 · QRT Solutions</span><div class="actions"><button class="action secondary" id="present" type="button" aria-pressed="false">Modo presentación</button><button class="action" id="print" type="button">Imprimir / PDF</button></div></div></div>
+<details class="mobile-nav"><summary>Ir a una sección</summary><nav class="toc" aria-label="Índice móvil"><a href="#el-mapa-que-conviene-explicar-primero">El mapa que conviene explicar primero</a><a href="#1-preparar-el-repositorio-y-los-accesos">1. Preparar el repositorio y los accesos</a><a href="#2-crear-supabase-y-preparar-la-base">2. Crear Supabase y preparar la base</a><a href="#3-desplegar-el-receptor-y-generar-la-credencial-del-ea">3. Desplegar el receptor y generar la credencial del EA</a><a href="#4-configurar-mt5-y-comprobar-recepcion">4. Configurar MT5 y comprobar recepción</a><a href="#5-crear-y-conectar-telegram">5. Crear y conectar Telegram</a><a href="#6-publicar-el-dashboard-en-vercel">6. Publicar el dashboard en Vercel</a><a href="#7-habilitar-la-edicion-web-mediante-telegram">7. Habilitar la edición web mediante Telegram</a><a href="#8-prueba-final-y-funcionamiento-cotidiano">8. Prueba final y funcionamiento cotidiano</a><a href="#que-clave-va-en-cada-lugar">Qué clave va en cada lugar</a><a href="#errores-que-conviene-recordar">Errores que conviene recordar</a></nav></details>
+<div class="intro"><p>Este es el paso a paso abreviado para reproducir la instalación con tu agente.
+Cada alumno usa su propia cuenta demo, proyecto Supabase, bot y proyecto Vercel.
+Para presentar el recorrido sin reinstalarlo, usa la
+<a href="ayuda-memoria.html">ayuda memoria de la presentación</a>.</p>
+</div><section id="el-mapa-que-conviene-explicar-primero" class="section" aria-labelledby="title-el-mapa-que-conviene-explicar-primero"><h2 id="title-el-mapa-que-conviene-explicar-primero">El mapa que conviene explicar primero</h2>
+<table>
+<thead>
+<tr>
+<th>Pieza</th>
+<th>Qué hace</th>
+<th>Dónde vive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EA de MT5</td>
+<td>Lee cuenta, posiciones y ejecuciones; envía telemetría</td>
+<td>Computador con MT5 abierto</td>
+</tr>
+<tr>
+<td>Supabase</td>
+<td>Guarda los datos y ejecuta los receptores</td>
+<td>Nube: base de datos y Edge Functions</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>Pide y recibe motivos; entrega acceso temporal al editor</td>
+<td>Bot conectado al receptor de Supabase</td>
+</tr>
+<tr>
+<td>Vercel</td>
+<td>Publica la interfaz para computador y celular</td>
+<td>Nube: dashboard estático</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El dashboard vive en Vercel y consulta los datos de Supabase.</strong> Los motivos
+escritos desde Telegram o el dashboard terminan en la misma bitácora.
+El cierre remoto permanece desactivado; ningún comando del bot modifica trades.</p>
+</section><section id="1-preparar-el-repositorio-y-los-accesos" class="section" aria-labelledby="title-1-preparar-el-repositorio-y-los-accesos"><h2 id="title-1-preparar-el-repositorio-y-los-accesos">1. Preparar el repositorio y los accesos</h2>
+<ol>
+<li>Clona la URL entregada por el docente y abre la raíz del repositorio.</li>
+<li>Entrega al agente el <a href="#ref-1">prompt de instalación</a>. Debe revisar
+   qué existe y aplicar solo lo que falta, conservando tus configuraciones.</li>
+<li>Comprueba acceso a Supabase y Vercel, Telegram disponible y MT5 con cuenta demo.</li>
+<li>Descubre ambos MCP nativos: terminal en <code>127.0.0.1:22346</code> y MetaEditor en
+   <code>127.0.0.1:22345</code>. El agente lee cuenta, broker y servidor; no los adivina.</li>
+</ol>
+<p><strong>Comprobación:</strong> cuenta demo identificada y ambos conectores responden.
+Detalle: <a href="#ref-2">preparación del alumno</a> y <a href="#ref-3">MT5</a>.</p>
+</section><section id="2-crear-supabase-y-preparar-la-base" class="section" aria-labelledby="title-2-crear-supabase-y-preparar-la-base"><h2 id="title-2-crear-supabase-y-preparar-la-base">2. Crear Supabase y preparar la base</h2>
+<ol>
+<li>En Supabase, crea o selecciona un proyecto de tu organización. Revisa región,
+   plan y condiciones antes de crearlo. Guarda la contraseña de base en tu gestor.</li>
+<li>Espera a que el proyecto esté disponible y registra su <strong>Project URL</strong> y
+   <strong>Project Ref</strong>. Verifica que todas las pantallas y herramientas apunten allí.</li>
+<li>Conecta el agente mediante el conector Supabase disponible en tu cliente.
+   Comprueba el proyecto con una consulta de lectura antes de hacer cambios.</li>
+<li>En una instalación nueva, aplica las <strong>diez referencias SQL en el
+   <a href="#ref-4">orden documentado</a></strong>. Si ya existen tablas, compara
+   las migraciones y aplica diferencias; no repitas los archivos completos.</li>
+<li>Comprueba las 17 tablas <code>mt5_</code> esperadas para el recorrido completo, RLS y
+   permisos. Crear la estructura de publicación todavía no hace pública la cuenta.</li>
+</ol>
+<p><strong>Comprobación:</strong> tablas preparadas, acceso directo público a tablas bloqueado y
+proyecto correcto. Detalle: <a href="#ref-5">configuración Supabase</a>.</p>
+</section><section id="3-desplegar-el-receptor-y-generar-la-credencial-del-ea" class="section" aria-labelledby="title-3-desplegar-el-receptor-y-generar-la-credencial-del-ea"><h2 id="title-3-desplegar-el-receptor-y-generar-la-credencial-del-ea">3. Desplegar el receptor y generar la credencial del EA</h2>
+<p>Las funciones son los pequeños programas que reciben y validan cada petición:</p>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Trabajo</th>
+<th>Archivos del paquete definitivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mt5-telemetry</code></td>
+<td>Recibe datos de MT5 y entrega avisos pendientes</td>
+<td><code>index.ts</code>, <code>core.mjs</code>, <code>notifications.mjs</code>, <code>deno.jsonc</code></td>
+</tr>
+<tr>
+<td><code>mt5-telegram</code></td>
+<td>Recibe mensajes del bot</td>
+<td><code>index.ts</code>, <code>runtime.ts</code>, <code>core.mjs</code>, <code>deno.jsonc</code></td>
+</tr>
+<tr>
+<td><code>mt5-dashboard-editor</code></td>
+<td>Valida códigos y guarda motivos desde la web</td>
+<td><code>index.ts</code>, <code>core.mjs</code>, <code>deno.jsonc</code></td>
+</tr>
+</tbody>
+</table>
+<p>Están en <code>seminario_3/supabase/functions/</code>. El agente prueba y despliega primero
+<code>mt5-telemetry</code>; Telegram y el editor se completan en los pasos siguientes.
+Los tres ejemplos usan <code>verify_jwt=false</code> porque <strong>su código valida su propia
+credencial</strong>. Es una configuración de estos receptores, no una regla para otras funciones.</p>
+<p>La credencial <code>mt5_…</code> se genera con el script del repositorio, no desde API Keys
+de Supabase ni desde el broker. Desde la raíz, sustituyendo los marcadores:</p>
+<pre><code class="language-sh"># Autor: QRT Solutions. Sustituir por los datos verificados del alumno.
+uv run --locked python seminario_3/supabase/scripts/crear_credencial.py \
+  --project-ref TU_PROJECT_REF \
+  --login TU_LOGIN \
+  --broker &quot;TU_BROKER&quot; \
+  --server &quot;TU_SERVIDOR&quot; \
+  --project-name &quot;Seminario-3&quot;
+</code></pre>
+<ol>
+<li>El script crea una clave aleatoria y archivos privados en
+   <code>.local/supabase-setup/device/</code>; no imprime el secreto.</li>
+<li>El agente revisa y ejecuta <strong><code>register.sql</code></strong> de esa carpeta en tu proyecto.
+   Registra la huella SHA-256 y la identidad autorizada, no el token en texto claro.</li>
+<li>Abre <strong><code>connection.json</code></strong> localmente y copia únicamente el valor de <code>token</code>.
+   También está como <code>InpSupabaseKey</code> en <code>parameters.json</code> y en el archivo <code>.set</code>.</li>
+<li>La vigencia predeterminada es <strong>90 días</strong>. Para renovar, genera en un directorio
+   nuevo con <code>--output</code>, registra, verifica el envío y después revoca la anterior.</li>
+</ol>
+<p><strong>Comprobación:</strong> generar la clave y registrar su hash son dos pasos distintos;
+sin registro no funciona. Detalle: <a href="#ref-6">receptor y credencial</a>.</p>
+</section><section id="4-configurar-mt5-y-comprobar-recepcion" class="section" aria-labelledby="title-4-configurar-mt5-y-comprobar-recepcion"><h2 id="title-4-configurar-mt5-y-comprobar-recepcion">4. Configurar MT5 y comprobar recepción</h2>
+<ol>
+<li>El agente compila la fuente del clon mediante MetaEditor MCP y verifica el
+   <code>.ex5</code>, los errores y las advertencias. Versión del recorrido: <strong>3.40</strong>.</li>
+<li>En MT5 abre <strong>Herramientas → Opciones → Asesores Expertos</strong>. Activa WebRequest
+   y añade la URL base <code>https://TU_PROJECT_REF.supabase.co</code>, conservando las demás.</li>
+<li>En el Navegador, clic derecho en <strong>Asesores Expertos → Actualizar</strong>.
+   Adjunta una sola instancia del exportador al gráfico elegido para la cuenta.</li>
+<li>Completa estos inputs o carga el <code>.set</code> privado generado:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Input visible</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL del Proyecto Supabase</td>
+<td>URL base de tu proyecto, sin <code>/functions/v1/…</code></td>
+</tr>
+<tr>
+<td>Credencial exclusiva del receptor</td>
+<td>Valor <code>token</code> de <code>connection.json</code>, con prefijo <code>mt5_</code></td>
+</tr>
+<tr>
+<td>Nombre del Proyecto</td>
+<td>Exactamente el <code>project_name</code> registrado, incluidos guiones y mayúsculas</td>
+</tr>
+<tr>
+<td>Alias de Broker</td>
+<td>Vacío: detección automática</td>
+</tr>
+<tr>
+<td>Reactividad por evento</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td>Intervalo de latido</td>
+<td><code>30</code> segundos</td>
+</tr>
+<tr>
+<td>Exportar historial / tasas swap</td>
+<td><code>true</code> / <code>true</code></td>
+</tr>
+<tr>
+<td>Símbolos adicionales</td>
+<td>Vacío, salvo necesidad propia</td>
+</tr>
+<tr>
+<td>Cierre remoto</td>
+<td><strong><code>false</code></strong></td>
+</tr>
+<tr>
+<td>Respaldo local / panel</td>
+<td><code>true</code> / <code>true</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>Pulsa <strong>OK</strong>. Revisa HTTP 200 en el diario y <code>received_at</code> creciente en Supabase.
+   Compilar no demuestra conexión; la recepción reciente sí la demuestra.</li>
+</ol>
+<p><strong>Error que resolvimos:</strong> <code>Seminario3</code> y <code>Seminario-3</code> son nombres distintos.
+Con una clave válida, esa diferencia produjo HTTP 403 en snapshots e historial.
+No hay que generar otra clave para corregir un input mal escrito.</p>
+</section><section id="5-crear-y-conectar-telegram" class="section" aria-labelledby="title-5-crear-y-conectar-telegram"><h2 id="title-5-crear-y-conectar-telegram">5. Crear y conectar Telegram</h2>
+<ol>
+<li>Abre <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">BotFather oficial</a>, envía <code>/newbot</code>, elige un
+   nombre visible y un usuario disponible terminado en <code>bot</code>.</li>
+<li>Guarda el token en <strong>el mismo proyecto Supabase → Edge Functions → Secrets</strong>,
+   con el nombre exacto <strong><code>TELEGRAM_BOT_TOKEN</code></strong>. Pulsa <strong>Save</strong> y comprueba la fila.
+   <code>TLG_BOT_TOKEN</code> no es el nombre leído por este código.</li>
+<li>El agente prepara el instalador privado:</li>
+</ol>
+<pre><code class="language-sh"># Autor: QRT Solutions. Desde la raíz; elegir un directorio nuevo.
+uv run --locked python seminario_3/integraciones/telegram/preparar_instalacion.py \
+  --bot-username TU_USUARIO_BOT \
+  --output .local/telegram-setup/instalacion-1
+</code></pre>
+<ol start="4">
+<li>El agente despliega temporalmente <code>mt5-telegram</code> con entrada <code>setup.ts</code> y el
+   paquete indicado en la <a href="#ref-7">guía de instalación</a>.
+   Luego ejecuta:</li>
+</ol>
+<pre><code class="language-sh"># Autor: QRT Solutions. Después del despliegue temporal, antes de su vencimiento.
+uv run --locked python seminario_3/integraciones/telegram/configurar_webhook.py \
+  --project-ref TU_PROJECT_REF \
+  --installation .local/telegram-setup/instalacion-1
+</code></pre>
+<ol start="5">
+<li>El instalador verifica el bot y configura el webhook —la dirección a la que
+   Telegram entrega los mensajes— con <code>message</code> y <code>callback_query</code>.
+   <strong>Desplegar inmediatamente el paquete definitivo con <code>index.ts</code></strong>, retirando
+   <code>setup.ts</code> y <code>setup.private.json</code>, también si falló la instalación temporal.</li>
+<li>Abre el chat privado de tu bot y pulsa <strong>Iniciar</strong>. El agente obtiene el
+   <code>account_id</code> de tu snapshot y genera la vinculación:</li>
+</ol>
+<pre><code class="language-sh"># Autor: QRT Solutions. Usar el identificador propio leído de la base.
+uv run --locked python seminario_3/integraciones/telegram/crear_vinculo.py \
+  --account-id TU_ACCOUNT_ID \
+  --output .local/telegram-setup/vinculo-1
+</code></pre>
+<ol start="7">
+<li>El agente ejecuta el <code>register.sql</code> generado y te entrega el código privado.
+   Envía <strong><code>/vincular CODIGO_PRIVADO</code></strong> a tu bot; después, <strong><code>/pendientes</code></strong>.
+   El código vence una hora después del registro y se usa una sola vez.</li>
+</ol>
+<p><strong>Comprobación:</strong> «Chat vinculado», <code>/pendientes</code> responde y solo el propietario
+autorizado puede editar. <code>/start</code> abre la conversación; no autoriza la cuenta.
+La creación del bot y el manejo de Secrets siguen las guías de
+<a href="https://core.telegram.org/bots/features#botfather" target="_blank" rel="noopener noreferrer">Telegram</a> y
+<a href="https://supabase.com/docs/guides/functions/secrets" target="_blank" rel="noopener noreferrer">Supabase</a>.</p>
+</section><section id="6-publicar-el-dashboard-en-vercel" class="section" aria-labelledby="title-6-publicar-el-dashboard-en-vercel"><h2 id="title-6-publicar-el-dashboard-en-vercel">6. Publicar el dashboard en Vercel</h2>
+<ol>
+<li>Autoriza expresamente la lectura pública de tu demo y sus motivos.
+   El agente habilita <strong>solo esa demo</strong> en <code>mt5_dashboard_publication</code> mediante
+   el <a href="#ref-8">SQL de publicación</a>. Los permisos de escritura
+   siguen restringidos.</li>
+<li>Obtén Project URL y la clave <strong>publishable</strong> de tu proyecto Supabase.
+   Es la clave pensada para el navegador; no uses la clave administrativa.
+   <a href="https://supabase.com/docs/guides/getting-started/api-keys" target="_blank" rel="noopener noreferrer">Referencia oficial de claves</a>.</li>
+<li>Desde <code>seminario_3/aplicaciones/web</code>, prepara y verifica la aplicación:</li>
+</ol>
+<pre><code class="language-sh"># Autor: QRT Solutions. Configurar los valores propios antes del build.
+npm ci
+cp .env.example .env.local
+# Editar .env.local con las dos variables de la tabla siguiente.
+npm test
+npm run build
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Valor propio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PUBLIC_SUPABASE_URL</code></td>
+<td><code>https://TU_PROJECT_REF.supabase.co</code></td>
+</tr>
+<tr>
+<td><code>PUBLIC_SUPABASE_PUBLISHABLE_KEY</code></td>
+<td>Clave <code>sb_publishable_…</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>En Vercel crea o selecciona tu proyecto. Si importas un repositorio que ya
+   contiene estos archivos, usa esta configuración:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Ajuste</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Root Directory</td>
+<td><code>seminario_3/aplicaciones/web</code></td>
+</tr>
+<tr>
+<td>Framework Preset</td>
+<td><code>Other</code></td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>22.x compatible, mínimo 22.19 para el recorrido documentado</td>
+</tr>
+<tr>
+<td>Install Command</td>
+<td><code>npm ci</code></td>
+</tr>
+<tr>
+<td>Build Command</td>
+<td><code>npm run build</code></td>
+</tr>
+<tr>
+<td>Output Directory</td>
+<td><code>dist</code></td>
+</tr>
+<tr>
+<td>Variables de producción</td>
+<td>Las dos de la tabla anterior</td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>Despliega y abre la <strong>URL estable de producción</strong>. Si no tienes integración
+   Git, el agente puede desplegar la aplicación con las herramientas disponibles;
+   editar un archivo local no actualiza por sí solo Vercel. Cambiar las variables
+   de esta web requiere reconstruir/desplegar, porque se incorporan durante el build.</li>
+</ol>
+<p><strong>Comprobación:</strong> lectura pública de tu demo, datos recientes y columnas de
+apertura/cierre. Detalle: <a href="#ref-8">guía web</a> y
+<a href="https://vercel.com/docs/builds/configure-a-build" target="_blank" rel="noopener noreferrer">configuración de builds de Vercel</a>.</p>
+</section><section id="7-habilitar-la-edicion-web-mediante-telegram" class="section" aria-labelledby="title-7-habilitar-la-edicion-web-mediante-telegram"><h2 id="title-7-habilitar-la-edicion-web-mediante-telegram">7. Habilitar la edición web mediante Telegram</h2>
+<ol>
+<li>El agente registra la URL HTTPS de producción, <strong>sin barra final</strong>, y el usuario
+   del bot, <strong>sin <code>@</code></strong>, en <code>mt5_dashboard_web_config</code>.</li>
+<li>Despliega <code>mt5-dashboard-editor</code> y comprueba que <code>mt5-telegram</code> incluya <code>/dashboard</code>.</li>
+<li>En la web pulsa <strong>Entrar con Telegram</strong>. Envía <strong><code>/dashboard</code></strong> a tu bot privado.</li>
+<li>Copia el código en la web y pulsa <strong>Entrar</strong>. Vence en cinco minutos y sirve una vez.</li>
+<li>Abre una operación → <strong>Editar motivo / Completar motivo → Guardar motivo</strong>.
+   Consulta <strong>Historial</strong> y termina con <strong>Salir de edición</strong>.</li>
+</ol>
+<p>La sesión dura una hora; recargar la página la descarta. Los motivos son públicos,
+pero editarlos exige autorización. Los comentarios originales del broker y los
+datos financieros permanecen separados. Detalle: <a href="#ref-9">editor web</a>.</p>
+</section><section id="8-prueba-final-y-funcionamiento-cotidiano" class="section" aria-labelledby="title-8-prueba-final-y-funcionamiento-cotidiano"><h2 id="title-8-prueba-final-y-funcionamiento-cotidiano">8. Prueba final y funcionamiento cotidiano</h2>
+<table>
+<thead>
+<tr>
+<th>Tramo</th>
+<th>Resultado que hay que observar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MT5 → Supabase</td>
+<td>HTTP 200 y varias recepciones con <code>received_at</code> creciente</td>
+</tr>
+<tr>
+<td>Supabase → Vercel</td>
+<td>Datos propios en producción; <strong>Actualizar</strong> consulta inmediatamente</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>Chat vinculado, consulta y motivo guardado en la operación correcta</td>
+</tr>
+<tr>
+<td>Edición web</td>
+<td>Código válido, cambio guardado, historial y salida de sesión</td>
+</tr>
+<tr>
+<td>Protección</td>
+<td>Cierre remoto <code>false</code>; acceso de escritura anónimo rechazado</td>
+</tr>
+</tbody>
+</table>
+<p>Para una demostración, basta usar una operación histórica existente. Si el
+propietario decide operar en demo, el aviso de apertura/cierre permite <strong>Responder</strong>
+con la razón; el agente no abre una operación para probar. Los deals históricos
+no generan una tormenta de avisos: se consultan con <code>/pendientes</code>.</p>
+<p>La web consulta el estado cada 30 segundos y el historial cada dos minutos.
+Los cambios observados de SL/TP se agrupan por posición durante un minuto y su
+aviso espera la finalización del grupo y una recepción posterior de telemetría.
+El bot registra su explicación; no cambia los niveles en MT5. No se garantiza
+entrega instantánea cuando fallan la red o MT5.</p>
+</section><section id="que-clave-va-en-cada-lugar" class="section" aria-labelledby="title-que-clave-va-en-cada-lugar"><h2 id="title-que-clave-va-en-cada-lugar">Qué clave va en cada lugar</h2>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Quién lo genera</th>
+<th>Dónde se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contraseña de base</td>
+<td>Creación del proyecto Supabase</td>
+<td>Administración de base; nunca en el EA</td>
+</tr>
+<tr>
+<td><code>mt5_…</code></td>
+<td><code>crear_credencial.py</code> del repositorio</td>
+<td>Input del EA; en Supabase se registra su hash</td>
+</tr>
+<tr>
+<td>Token del bot</td>
+<td>BotFather</td>
+<td>Secret <code>TELEGRAM_BOT_TOKEN</code> en Supabase</td>
+</tr>
+<tr>
+<td><code>sb_publishable_…</code></td>
+<td>Supabase</td>
+<td>Variables públicas del dashboard</td>
+</tr>
+<tr>
+<td>Código <code>/vincular</code></td>
+<td>Generador del repositorio y registro de su hash</td>
+<td>Autorizar el chat privado una vez</td>
+</tr>
+<tr>
+<td>Código <code>/dashboard</code></td>
+<td>Bot para el propietario vinculado</td>
+<td>Entrar al editor web temporalmente</td>
+</tr>
+</tbody>
+</table>
+</section><section id="errores-que-conviene-recordar" class="section" aria-labelledby="title-errores-que-conviene-recordar"><h2 id="title-errores-que-conviene-recordar">Errores que conviene recordar</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Qué revisar primero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No compila</td>
+<td>MetaEditor abierto y su MCP disponible; el MCP del terminal no compila</td>
+</tr>
+<tr>
+<td>HTTP 401</td>
+<td>Credencial <code>mt5_</code> registrada, vigente y copiada completa</td>
+</tr>
+<tr>
+<td>HTTP 403 en cuenta/historial</td>
+<td>Login, broker, servidor y nombre exacto del proyecto</td>
+</tr>
+<tr>
+<td>WebRequest 4014</td>
+<td>URL permitida y contexto de ejecución; no resolver habilitando DLL</td>
+</tr>
+<tr>
+<td>Bot creado pero sin respuesta</td>
+<td>Secret correcto, mismo proyecto, webhook y función definitiva</td>
+</tr>
+<tr>
+<td>No aparecen botones de edición</td>
+<td>Entrar con código <code>/dashboard</code>; lectura pública no da permiso de editar</td>
+</tr>
+<tr>
+<td>Código vencido o página recargada</td>
+<td>Pedir otro <code>/dashboard</code> y entrar de nuevo</td>
+</tr>
+<tr>
+<td>Cambio guardado aún no visible</td>
+<td>Pulsar <strong>Actualizar</strong>; revisar el proyecto y la publicación</td>
+</tr>
+<tr>
+<td>Error de origen en editor</td>
+<td>Usar el dominio de producción registrado; Preview es otro origen</td>
+</tr>
+</tbody>
+</table>
+<p>Guarda resultados sin secretos en una copia privada del
+<a href="#ref-10">registro de instalación</a>. Consulta
+<a href="#ref-11">estado y límites</a> antes de prometer capacidades y
+<a href="#ref-12">entrega</a> antes de compartir el repositorio.</p></section>
+<section class="references" id="referencias"><h2>Referencias incluidas</h2><p>Documentos complementarios del repositorio, incluidos para consultar sin conexión. No se imprimen con el resumen. Las referencias más profundas se identifican por su ruta en el repositorio; los enlaces oficiales requieren internet.</p><details class="reference" id="ref-1"><summary>prompt de instalación</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/guias/PROMPT_AGENTE.md</p><h1>Mensaje inicial para Codex, Claude Code o Antigravity</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>Abre tu clon en el cliente y pega este mensaje. Los datos faltantes se resuelven
+durante el recorrido, no copiando valores de la instalación del docente.</p>
+<pre><code class="language-text">Quiero instalar el recorrido completo del seminario 3 para mi cuenta demo:
+MT5 → Supabase → dashboard Vercel, con Telegram para completar motivos y
+acceso restringido para editarlos en la web.
+
+Lee AGENTS.md, seminario_3/README.md, seminario_3/guias/README.md,
+seminario_3/ESTADO.md y seminario_3/supabase/AGENTS.md. Sigue las guías enlazadas
+y el orden de seminario_3/supabase/sql/README.md. Para operar MT5, lee y aplica
+.agents/skills/mt5-platform-operator/SKILL.md.
+
+Inspecciona el clon, los cambios locales, mi sistema operativo y los conectores
+reales disponibles. Detecta instalaciones existentes y aplica solo diferencias.
+No copies carpetas, claves, IDs o rutas del docente. Conserva configuraciones,
+archivos, gráficos y datos que ya existan; no reinicies ni borres para resolver
+una incompatibilidad. No inventes capacidades MCP ni nombres de herramientas.
+
+Explícame cada paso y comprueba su resultado. Pregunta únicamente los datos que
+no puedas obtener con seguridad y que sean necesarios para avanzar. Comprueba
+organización y proyecto destino antes de mutar recursos. Los accesos OAuth y
+credenciales se introducen en las pantallas o archivos privados correspondientes,
+no en el chat ni en el repositorio público.
+
+Configura mi proyecto Supabase y sus permisos, emite una credencial restringida
+a mi cuenta demo, instala el receptor y compila la fuente v3.40 de este clon.
+Antes de adjuntarla, identifica conmigo el gráfico y explica que empezará a
+exportar datos e histórico; evita reemplazar otro EA sin mi autorización.
+Mantén InpEnableKillSwitch=false. No ejecutes órdenes, no cierres posiciones,
+no cambies de cuenta ni actives trading o DLL para probar la conexión.
+
+Prepara el dashboard y pregunta si autorizo lectura pública de mi demo y de los
+motivos antes de habilitarla. No publiques cuentas reales ni concedas escritura
+anónima. Usa solo la clave publishable en la web; los secretos se quedan en Supabase.
+Despliega en mi Vercel cuando el destino y el alcance estén definidos y autorizados.
+
+Ayúdame a crear o reutilizar mi bot. Yo guardaré TELEGRAM_BOT_TOKEN en Secrets.
+Verifica bot y webhook sin sustituir otra integración. Retira el instalador
+temporal del despliegue final, emite la vinculación de mi cuenta y espera a que yo
+la envíe al bot. Habilita alertas de apertura/cierre y edición web mediante /dashboard.
+
+Ejecuta las pruebas locales; comprueba después recepción y permisos en mi proyecto.
+No abras trades ni inventes motivos para la demostración: yo decido cualquier
+operación demo y escribo la razón real. Distingue pruebas offline, despliegue,
+compilación, recepción y validación del propietario.
+
+Documenta lo realizado y los pendientes en .local/ usando la plantilla
+seminario_3/guias/REGISTRO_INSTALACION.md. Actualiza instrucciones públicas cuando
+encuentres una mejora reutilizable, sin incluir datos privados. Al terminar,
+entrégame las URL propias, pasos de uso, evidencia y límites reales. No hagas
+commit, push ni cambios de visibilidad de repositorios en esta instalación.
+</code></pre>
+<p>Si el cliente no tiene una herramienta necesaria, el agente debe dejar preparado
+el archivo o cambio revisable e indicar el paso manual concreto. Un asistente web
+sin acceso al equipo no puede declarar que compiló un archivo local.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/README.md">Volver al recorrido</span>.</p></div></details><details class="reference" id="ref-2"><summary>preparación del alumno</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/guias/README.md</p><h1>Guía completa del alumno — MT5, Supabase, Telegram y Vercel</h1>
+<p>Autoría: QRT Solutions. Actualizada: 8 de octubre de 2026.</p>
+<p>Al terminar tendrás una bitácora conectada a <strong>tu cuenta demo</strong>: MT5 envía datos,
+Supabase los guarda, Telegram solicita las razones y Vercel muestra el dashboard.
+Podrás corregir los motivos desde Telegram o desde la web con acceso restringido.
+Cada alumno usa su propia cuenta, proyecto y bot.</p>
+<p>Esta guía coordina el recorrido completo. Las guías de cada componente contienen
+los comandos y detalles; no es necesario reconstruir el proceso desde el chat del docente.</p>
+<p>Para una lectura más breve, usa el <a href="#top">resumen de configuración</a>.
+Para la clase, abre la <a href="ayuda-memoria.html">ayuda memoria de la presentación</a>.</p>
+<h2>1. Entender qué vive en cada lugar</h2>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Función</th>
+<th>Dónde se ejecuta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expert Advisor de telemetría</td>
+<td>Lee la cuenta y envía estados y ejecuciones</td>
+<td>Tu instalación de MT5, abierta y conectada</td>
+</tr>
+<tr>
+<td>Supabase</td>
+<td>Guarda datos, valida credenciales y procesa mensajes</td>
+<td>Proyecto en la nube del alumno</td>
+</tr>
+<tr>
+<td>Bot de Telegram</td>
+<td>Solicita motivos y recibe tus respuestas</td>
+<td>Telegram, conectado a una función de Supabase</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Muestra datos y permite editar motivos al propietario</td>
+<td>Vercel; los datos permanecen en Supabase</td>
+</tr>
+<tr>
+<td>Agente y conectores MCP</td>
+<td>Ayudan a instalar, compilar, desplegar y comprobar</td>
+<td>Tu cliente Codex, Claude Code o Antigravity</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-text">MT5 → receptor mt5-telemetry → Supabase → consulta limitada → dashboard Vercel
+                                  ↓                              ↓
+                         aviso al bot Telegram          editor web autorizado
+                                  ↓                              ↓
+                         tu motivo de apertura/cierre → bitácora en Supabase
+</code></pre>
+<p>El bot no es una estrategia de trading. El exportador no abre ni cierra posiciones.
+Los conectores administrativos del agente tampoco son las credenciales del EA.</p>
+<h2>2. Preparar el clon y el agente</h2>
+<p>Obtén la URL de distribución que entregue el docente y clona ese repositorio.
+Abre su <strong>carpeta raíz</strong>, donde están <code>AGENTS.md</code>, <code>MT5/</code> y <code>seminario_3/</code>.
+Si ya tienes un clon, el agente debe revisar qué existe antes de copiar archivos.
+No necesitas el directorio privado del seminario 2 del docente.</p>
+<table>
+<thead>
+<tr>
+<th>Requisito</th>
+<th>Para qué se utiliza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git, uv y Python 3.12</td>
+<td>Laboratorio, esquemas, generación de credenciales y documentación</td>
+</tr>
+<tr>
+<td>Node.js 22.19+ compatible y npm</td>
+<td>Pruebas de las funciones y construcción del dashboard</td>
+</tr>
+<tr>
+<td>MT5 y MetaEditor con sus MCP nativos</td>
+<td>Detectar cuenta, instalar y compilar el exportador</td>
+</tr>
+<tr>
+<td>Cuenta Supabase y acceso al proyecto propio</td>
+<td>Tablas y funciones de la nube</td>
+</tr>
+<tr>
+<td>Telegram y bot propio</td>
+<td>Bitácora y acceso de edición</td>
+</tr>
+<tr>
+<td>Cuenta Vercel</td>
+<td>Publicar la aplicación web</td>
+</tr>
+</tbody>
+</table>
+<p>Desde la raíz:</p>
+<pre><code class="language-sh">uv sync --locked
+uv run --locked seminario doctor
+uv run --locked seminario verify
+uv run --locked python .agents/skills/mt5-platform-operator/tests/run_offline.py
+</code></pre>
+<p>Estas comprobaciones son locales. No prueban que MT5 ni las nubes estén conectados.
+Para la instalación asistida, copia el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/PROMPT_AGENTE.md">mensaje completo para tu agente</span>.
+El agente adapta la configuración a tu sistema y descubre las herramientas reales;
+no se presupone que todos los clientes acepten los mismos archivos.</p>
+<h2>3. Conectar MT5 y MetaEditor</h2>
+<p>Sigue la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/metatrader/README.md">guía MT5</span>, incluida su sección de
+configuración local. El servidor del terminal usa normalmente <code>22346</code> y el de
+MetaEditor <code>22345</code>, ambos en <code>127.0.0.1</code>. Comprueba cada uno por separado.</p>
+<p>El resultado de esta fase es una lectura verificada de login, broker y servidor,
+más la disponibilidad del compilador. Guarda esos datos solo en tu registro local.
+No cambies la cuenta para hacer coincidir un ejemplo ni actives trading como prueba.</p>
+<p>La migración fue selectiva: se conserva la skill completa y cuatro referencias
+MT5, además de las herramientas heredadas útiles. No hacen falta los 21 manuales
+ni los bridges y servidores alternativos del repositorio privado anterior.</p>
+<h2>4. Crear Supabase e instalar el esquema</h2>
+<ol>
+<li>Sigue <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONFIGURACION.md">CONFIGURACION.md</span>: proyecto propio,
+   organización correcta, URL y conexión del agente.</li>
+<li>Guarda la contraseña de la base en tu gestor; no va en el EA ni en el chat.</li>
+<li>Lee el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONTRATO_DATOS.md">contrato de datos</span>.</li>
+<li>Aplica el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/README.md">orden canónico de SQL</span>. En un proyecto
+   nuevo se preparan las diez referencias en orden antes de activar la integración
+   completa. En uno existente se comparan tablas e historial y se aplican diferencias.</li>
+</ol>
+<p>Preparar la tabla de publicación no publica una cuenta: empieza sin una demo
+habilitada. La autorización y activación de lectura pública se hacen más adelante.
+Los archivos <code>verificar_*.sql</code> son comprobaciones; no son migraciones de instalación.</p>
+<p><strong>Punto de control:</strong> tablas y funciones esperadas, RLS habilitado, escrituras
+públicas bloqueadas y proyecto destino confirmado.</p>
+<h2>5. Instalar el receptor y el exportador</h2>
+<p>Sigue <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/RECEPTOR.md">RECEPTOR.md</span> en este orden:</p>
+<ol>
+<li>Prueba y despliega <code>mt5-telemetry</code> con todos sus archivos.</li>
+<li>Genera una credencial propia vinculada a la identidad leída de MT5. El script
+   crea archivos privados bajo <code>.local/</code>; ejecuta únicamente su SQL de registro
+   del hash en tu Supabase. No envíes el archivo que contiene el token al conector.</li>
+<li>Compila la fuente del repositorio mediante MetaEditor MCP. La fuente actual
+   es <strong>v3.40</strong>, compilada y con recepción verificada en el entorno docente. Debes
+   repetir la comprobación de compilación y recepción en tu instalación.</li>
+<li>Añade <code>https://TU_PROJECT_REF.supabase.co</code> a las URL permitidas para WebRequest.</li>
+<li>En MT5: <code>Ctrl+N → Asesores Expertos → clic derecho → Actualizar</code>. Carga el EA
+   en el gráfico elegido y sus inputs desde el <code>.set</code> privado generado.</li>
+<li>Conserva <code>InpEnableKillSwitch=false</code>, <code>InpEventDrivenSync=true</code> y latido de
+   30 segundos. Mantén una sola instancia de telemetría por cuenta.</li>
+</ol>
+<p>La v3.40 envía entradas/salidas y comentarios nativos. Necesita la extensión SQL
+<code>bitacora_trades.sql</code> <strong>antes</strong> de enviar esos campos. No basta con las tres tablas
+iniciales. Activar el EA también puede enviar histórico.</p>
+<p><strong>Punto de control:</strong> HTTP 200 y <code>received_at</code> avanzando en Supabase. Un mensaje de
+compilación correcta no demuestra envío. La ausencia de operaciones puede ser
+válida; el agente no abre trades para obtener filas.</p>
+<h2>6. Publicar el dashboard</h2>
+<p>La aplicación vive en <strong>Vercel</strong>; no se aloja dentro de las tablas de Supabase.
+Sigue la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/README.md">guía web</span>:</p>
+<ol>
+<li>Decide expresamente si quieres publicar tu demo. Los visitantes verán cifras,
+   operaciones y motivos. La cuenta real no es destino de esta publicación.</li>
+<li>Habilita solo tu demo en <code>mt5_dashboard_publication</code>, siguiendo el SQL de la guía.</li>
+<li>Configura las dos variables públicas de tu proyecto en <code>.env.local</code> y Vercel.</li>
+<li>Ejecuta <code>npm ci</code>, <code>npm test</code> y <code>npm run build</code> dentro de
+   <code>seminario_3/aplicaciones/web</code>.</li>
+<li>Publica con esa carpeta como raíz y <code>dist</code> como salida. Verifica la URL estable
+   de producción, que puede diferir del enlace protegido de un despliegue concreto.</li>
+</ol>
+<p><strong>Punto de control:</strong> datos reales y comentarios de apertura/cierre en columnas
+separadas. Los filtros del historial no filtran la tabla de motivos. El dashboard
+consulta el estado cada 30 segundos y el historial cada 2 minutos; no promete mostrar cada cambio instantáneamente.</p>
+<h2>7. Crear y vincular Telegram</h2>
+<p>La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/telegram/README.md">guía Telegram</span> incluye el paso a paso:</p>
+<ol>
+<li>BotFather oficial → <code>/newbot</code> → nombre → usuario disponible terminado en <code>bot</code>.</li>
+<li>Guarda el token como <strong><code>TELEGRAM_BOT_TOKEN</code></strong> en <strong>Secrets del mismo proyecto
+   Supabase</strong>. Pulsa Save; <code>TLG_BOT_TOKEN</code> no es el nombre que usa esta implementación.</li>
+<li>El agente despliega el instalador temporal, comprueba el bot y registra el webhook.
+   Después debe desplegar la versión definitiva, sin archivos de instalación privados.</li>
+<li>Inicia el chat con el bot. El agente genera un código para tu cuenta y registra
+   su hash; tú envías <code>/vincular CODIGO_PRIVADO</code> en ese chat.</li>
+<li>Comprueba «Chat vinculado» y <code>/pendientes</code>. <code>/start</code> por sí solo no concede acceso.</li>
+</ol>
+<p><strong>Punto de control:</strong> solo tu chat privado vinculado puede consultar y completar
+motivos. Una cuenta y un bot por proyecto en esta versión.</p>
+<h2>8. Completar razones y editar desde la web</h2>
+<p>Cuando el propietario abre o cierra una operación demo y llega el evento, el bot
+solicita la razón. Usa <strong>Responder</strong> sobre ese aviso: así la respuesta queda ligada
+a la operación y fase correctas. Un mensaje suelto no se asigna al último trade.
+<code>/cierre</code> registra una explicación; no cierra posiciones.</p>
+<p>Para editar en la web, completa <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/EDICION.md">EDICION.md</span>:
+configura origen HTTPS exacto y nombre del bot en <code>mt5_dashboard_web_config</code>,
+despliega <code>mt5-dashboard-editor</code> y el bot actualizado. Después:</p>
+<ol>
+<li>Pulsa <strong>Entrar con Telegram</strong> en el dashboard.</li>
+<li>Envía <code>/dashboard</code> al bot y pega el código privado <strong>en la web</strong>, no en el chat del agente.</li>
+<li>Pulsa <strong>Editar motivo</strong> o <strong>Completar motivo</strong> y guarda el texto.</li>
+<li>Consulta el historial; al terminar pulsa <strong>Salir de edición</strong>.</li>
+</ol>
+<p>El código dura cinco minutos y es de un solo uso; la sesión dura una hora y se
+pierde al recargar la página. Si hay un cambio simultáneo, carga la versión actual,
+compara y decide qué guardar. Tu borrador se conserva.</p>
+<h2>9. Saber qué texto significa cada cosa</h2>
+<table>
+<thead>
+<tr>
+<th>Texto</th>
+<th>Origen y uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comentario de ejecución/orden</td>
+<td>Literal recibido de MT5; puede contener una etiqueta del EA o del broker</td>
+</tr>
+<tr>
+<td><code>deal_reason</code> y <code>magic</code></td>
+<td>Metadatos técnicos; por sí solos no explican la intención humana</td>
+</tr>
+<tr>
+<td>Motivo de apertura</td>
+<td>Explicación escrita por el propietario en Telegram o en el dashboard</td>
+</tr>
+<tr>
+<td>Motivo de cierre</td>
+<td>Explicación de la salida o reducción de volumen ya recibida</td>
+</tr>
+</tbody>
+</table>
+<p>Los comentarios de un EA se conservan y muestran; no se traducen automáticamente
+en una explicación inventada. Si el broker o EA dejó el comentario vacío, no se
+reconstruye una razón. En operaciones discrecionales la completa el propietario.
+Los cierres parciales de una posición comparten el mismo motivo de cierre.</p>
+<h2>10. Verificar y conservar tu instalación</h2>
+<p>Completa el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/pruebas/README.md">plan de pruebas</span> y los
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ejemplos/README.md">ejercicios guiados</span>. Registra resultados en una copia de la
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/REGISTRO_INSTALACION.md">plantilla de instalación</span> dentro de <code>.local/</code>.
+No publiques números de cuenta, tokens, códigos de vinculación, capturas de Secrets,
+inputs privados, logs completos ni copias de la carpeta de datos de MT5.</p>
+<table>
+<thead>
+<tr>
+<th>Incidencia</th>
+<th>Primer paso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MetaEditor desconectado</td>
+<td>Revisar su MCP; el terminal y el compilador son servicios distintos</td>
+</tr>
+<tr>
+<td>MT5 error 4014</td>
+<td>Verificar WebRequest y contexto de ejecución, sin habilitar DLL</td>
+</tr>
+<tr>
+<td>Receptor 401 / 403</td>
+<td>Revisar token vigente / identidad y nombre exacto del proyecto, incluidos guiones; no usar una clave administrativa</td>
+</tr>
+<tr>
+<td>Comentarios nativos ausentes</td>
+<td>Contrastar versión del EA, columnas SQL y datos recibidos; pueden ser vacíos</td>
+</tr>
+<tr>
+<td>Telegram no responde</td>
+<td>Confirmar bot, nombre del secreto, proyecto y webhook</td>
+</tr>
+<tr>
+<td>No llega aviso de un deal antiguo</td>
+<td>El histórico no dispara solicitudes nuevas; usar <code>/pendientes</code></td>
+</tr>
+<tr>
+<td>Edición web rechazada por origen</td>
+<td>Usar el dominio de producción configurado, sin barra final</td>
+</tr>
+<tr>
+<td>Código web vencido</td>
+<td>Enviar <code>/dashboard</code> otra vez; el código previo deja de servir</td>
+</tr>
+<tr>
+<td>Guardado en conflicto</td>
+<td>Cargar versión actual y comparar con el borrador antes de guardar</td>
+</tr>
+</tbody>
+</table>
+<p>La bitácora no calcula MAE/MFE, riesgo inicial, Sharpe o equity histórica con datos
+que no recibe. La hora de los deals todavía requiere normalización; no asumir UTC.
+La entrega depende de MT5 y la red, y los reintentos del bot dependen de nuevas
+recepciones de telemetría. Consulta los límites completos en cada guía.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ESTADO.md">Estado y evidencias</span> · <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/README.md">Índice del seminario</span>.</p>
+<p>La ampliación vigente se explica en <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/AJUSTES_SIMPLES.md">Ajustes simples</span>: SL/TP, Telegram, edición, móvil y paginación.</p></div></details><details class="reference" id="ref-3"><summary>MT5</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/integraciones/metatrader/README.md</p><h1>Conexión con MetaTrader 5</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>La integración utiliza los servidores HTTP nativos de MetaTrader 5. La migración
+selectiva incorpora instrucciones y referencias técnicas; no instala otro servidor
+ni reemplaza el contenido MT5 ya incluido en el repositorio.</p>
+<h2>Componentes disponibles</h2>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Ubicación y propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Skill de operación</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: .agents/skills/mt5-platform-operator/SKILL.md">mt5-platform-operator</span>: contratos, esquemas, nueve módulos, preflight semántico y pruebas offline.</td>
+</tr>
+<tr>
+<td>Conocimiento técnico</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: MT5/knowledge/INDEX.md">Índice MT5</span>: cuatro manuales sobre arquitectura, tester, gráficos y datos.</td>
+</tr>
+<tr>
+<td>Terminal MCP</td>
+<td><code>http://127.0.0.1:22346/mcp</code>: herramientas y permisos sujetos al catálogo descubierto en cada sesión.</td>
+</tr>
+<tr>
+<td>MetaEditor MCP</td>
+<td><code>http://127.0.0.1:22345/mcp</code>: conexión independiente, requiere su servicio en ejecución.</td>
+</tr>
+</tbody>
+</table>
+<p>Las configuraciones <code>.codex/config.toml</code> y <code>.mcp.json</code> son archivos locales,
+excluidos de Git. No se copian desde el repositorio anterior ni se distribuyen
+credenciales. Un clon nuevo requiere configurar los conectores y autenticar cada
+servidor con sus propias credenciales. <code>127.0.0.1</code> identifica el equipo del cliente;
+estos archivos no instalan MT5, Wine ni MetaEditor en otro equipo.</p>
+<p>Codex puede descubrir la skill en <code>.agents/skills/</code>; la disponibilidad en una
+sesión nueva y en otros clientes debe comprobarse. No se presupone que Cursor,
+Claude Code y Antigravity compartan rutas o formatos de configuración.</p>
+<h2>Verificación</h2>
+<p>Desde la raíz del repositorio, el entorno Python 3.12 existente incluye
+<code>jsonschema</code>, requerido por las pruebas de contratos:</p>
+<pre><code class="language-sh">uv sync --locked
+uv run --locked python .agents/skills/mt5-platform-operator/tests/run_offline.py
+</code></pre>
+<p>Estas pruebas validan esquemas y ejemplos sintéticos; no llaman a MT5, no lanzan
+backtests y no certifican recuperación del agente ni ejecución conectada.
+El resultado histórico <code>offline_results.txt</code> del origen no se importa.</p>
+<p>Para verificar una conexión, iniciar el protocolo MCP, consultar <code>tools/list</code>
+y revisar el esquema antes de llamar a <code>get_workspace_info</code>. Es una consulta de
+metadatos; la disponibilidad del compilador declarada por el servidor no equivale
+a una compilación probada. No usar trading, tester ni despliegue como smoke test.</p>
+<h2>Selección de la migración</h2>
+<p>Se omiten el servidor stdio y los bridges antiguos: duplican el acceso nativo,
+contienen problemas de arranque, credenciales incrustadas o herramientas de
+terminación de procesos que no son necesarias para esta integración.
+Tampoco se importan perfiles de estudios, binarios, históricos, el manual de
+conexión antiguo con secretos ni otro <code>MT5/AGENTS.md</code> con instrucciones ajenas
+al alcance actual. Se conservan el inyector y el manual de auditoría existentes.</p>
+<p>La instalación de la skill no concede permiso para iniciar estudios, cambiar
+cuentas, activar AutoTrading, operar, desplegar EAs ni descargar históricos.
+Las autorizaciones de cada tarea siguen siendo necesarias.</p>
+<p>Las estrategias y scripts existentes permanecen en <code>MT5/</code> y en el
+<span class="repo-reference" title="Archivo complementario del repositorio: docs/strategies.md">catálogo canónico</span>. No se copian aquí.
+Solo se distribuyen instrucciones y referencias sin credenciales personales.</p>
+<h2>Telemetría hacia Supabase</h2>
+<p>La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/README.md">guía Supabase</span> documenta la creación del proyecto,
+tablas, permisos y parámetros del exportador. La fuente actual v3.40 está en
+<span class="repo-reference" title="Archivo complementario del repositorio: MT5/MT5_Telemetry_Exporter_Universal.mq5">MT5_Telemetry_Exporter_Universal.mq5</span>.
+La versión v3.40 se compiló por MCP nativo con 0 errores y 0 advertencias y
+binario verificado. La versión v3.40 está activa en el entorno docente, con
+snapshot reciente recibido e historial HTTP 200. La prueba de un cambio real
+de SL/TP y su motivo por Telegram sigue pendiente.
+Consulta <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/RECEPTOR.md">instalación y pruebas del receptor</span> para
+repetirlo en otro equipo. El EA no contiene funciones de trading ni cierre remoto.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/README.md">Volver al seminario 3</span>.</p>
+<h2>Ejemplos de configuración local, sin credenciales del docente</h2>
+<p>Autoría de los ejemplos: QRT Solutions. Sustituye <code>&lt;TOKEN_LOCAL&gt;</code> por la credencial
+que entregue tu instalación, únicamente en el archivo local ignorado por Git.
+Conserva los demás conectores. Estos ejemplos describen el formato usado en este
+recorrido; el agente debe verificar el soporte de su versión y cliente.</p>
+<p>Para un cliente que acepte <code>.mcp.json</code> con servidores HTTP:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;metaeditor&quot;: {
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;http://127.0.0.1:22345/mcp&quot;,
+      &quot;headers&quot;: {&quot;Authorization&quot;: &quot;Bearer &lt;TOKEN_LOCAL&gt;&quot;}
+    },
+    &quot;terminal&quot;: {
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;http://127.0.0.1:22346/mcp&quot;,
+      &quot;headers&quot;: {&quot;Authorization&quot;: &quot;Bearer &lt;TOKEN_LOCAL&gt;&quot;}
+    }
+  }
+}
+</code></pre>
+<p>Para la configuración de proyecto Codex <code>.codex/config.toml</code> utilizada en este recorrido:</p>
+<pre><code class="language-toml"># Author: QRT Solutions. Local configuration, never commit populated credentials.
+[mcp_servers.metaeditor]
+url = &quot;http://127.0.0.1:22345/mcp&quot;
+enabled = true
+http_headers = { &quot;Authorization&quot; = &quot;Bearer &lt;TOKEN_LOCAL&gt;&quot; }
+
+[mcp_servers.terminal]
+url = &quot;http://127.0.0.1:22346/mcp&quot;
+enabled = true
+http_headers = { &quot;Authorization&quot; = &quot;Bearer &lt;TOKEN_LOCAL&gt;&quot; }
+</code></pre>
+<p>Antigravity u otro IDE puede utilizar otro archivo o mecanismo. No copiar estos
+bloques a una ruta no verificada ni asumir que las cabeceras son compartidas entre
+ambos servicios. La autenticación Supabase y el token del bot Telegram son credenciales
+distintas. No usar ninguno de ellos como token del MCP local.</p></div></details><details class="reference" id="ref-4"><summary>orden documentado</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/supabase/sql/README.md</p><h1>Orden del SQL — instalación completa y comprobaciones</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>Estos archivos son <strong>referencias SQL</strong>, no un proyecto Supabase CLI inicializado.
+Se aplican como migraciones administrativas después de inspeccionar el destino.
+No son idempotentes: no los ejecutes dos veces ni uses un reset para ignorar diferencias.
+El agente debe conciliar el historial del proyecto con lo que ya existe.</p>
+<h2>Instalación en un proyecto nuevo</h2>
+<table>
+<thead>
+<tr>
+<th>Orden</th>
+<th>Archivo</th>
+<th>Qué prepara</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/esquema_telemetria.sql">esquema_telemetria.sql</span></td>
+<td>Tres tablas de datos y RLS</td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/receptor_telemetria.sql">receptor_telemetria.sql</span></td>
+<td>Credenciales restringidas, recepción UTC y permisos del servidor</td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/dashboard_publico.sql">dashboard_publico.sql</span></td>
+<td>Publicación optativa inicialmente vacía y RPC de lectura</td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/bitacora_trades.sql">bitacora_trades.sql</span></td>
+<td>Comentarios de MT5, motivos, editores, auditoría y RPC pública ampliada</td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/telegram_bitacora.sql">telegram_bitacora.sql</span></td>
+<td>Códigos de vinculación y consulta de motivos</td>
+</tr>
+<tr>
+<td>6</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/telegram_alertas_apertura.sql">telegram_alertas_apertura.sql</span></td>
+<td>Cola, reservas y asociación de mensajes</td>
+</tr>
+<tr>
+<td>7</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/telegram_alertas_cierre.sql">telegram_alertas_cierre.sql</span></td>
+<td>Amplía esa misma cola a cierres y reversiones</td>
+</tr>
+<tr>
+<td>8</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/dashboard_editor.sql">dashboard_editor.sql</span></td>
+<td>Códigos web, sesiones, configuración de origen y auditoría de ediciones</td>
+</tr>
+<tr>
+<td>9</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/protecciones_bitacora.sql">protecciones_bitacora.sql</span></td>
+<td>Historial de SL/TP, agrupación de avisos y edición auditada</td>
+</tr>
+<tr>
+<td>10</td>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/dashboard_paginado.sql">dashboard_paginado.sql</span></td>
+<td>Páginas y totales filtrados para el dashboard</td>
+</tr>
+</tbody>
+</table>
+<p>Instala 1–4 antes de recibir la fuente EA v3.40: sus campos de comentarios necesitan
+la cuarta extensión. El paso 3 es dependencia del paso 4 incluso si no habilitas
+publicación. Crear esa estructura no selecciona ni publica una cuenta.
+Para el recorrido completo conviene instalar las diez referencias antes de activar
+las funciones y el EA. Deben quedar <strong>17 tablas <code>mt5_</code></strong> con RLS, suponiendo que
+no había otras extensiones en el proyecto.</p>
+<p>En una instalación que ya recibe datos, la ampliación de cierre requiere que los
+receptores interpreten <code>phase</code> antes de activar el paso 7. Sigue la
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/telegram/README.md">guía Telegram</span> para el orden de actualización.
+No sustituir una función en producción con un paquete incompleto.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/restringir_rls_automatico.sql">restringir_rls_automatico.sql</span> es <strong>condicional</strong>:
+solo aplica si existe la función administrativa concreta descrita en
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONFIGURACION.md">CONFIGURACION.md</span>. No es un paso obligatorio.</p>
+<h2>Actualizar una instalación existente</h2>
+<p>Después de revisar sus migraciones, aplicar solo 9 y 10 si faltan. Desplegar
+receptor, bot y editor completos; actualizar el webhook para aceptar <code>message</code>
+y <code>callback_query</code> mediante el instalador temporal y retirarlo después.
+Compilar/instalar el EA v3.40 y publicar el nuevo dashboard. La API anterior sigue
+existiendo para compatibilidad, pero la web nueva usa <code>mt5_public_dashboard_page</code>.
+La captura requiere <code>position_id</code> en los snapshots: los clientes antiguos siguen
+siendo aceptados, pero no se infiere el identificador a partir del ticket.</p>
+<h2>Configuración posterior: no es esquema</h2>
+<p>Después de instalar, se registran por separado datos propios del alumno:</p>
+<ul>
+<li>Hash y alcance del token MT5: <code>register.sql</code> generado en <code>.local/</code>.</li>
+<li>Publicación de una sola demo: SQL de la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/README.md">guía web</span>,
+  únicamente si el propietario autoriza esa lectura pública.</li>
+<li>Hash del código <code>/vincular</code>: SQL generado por <code>crear_vinculo.py</code>.</li>
+<li>Origen HTTPS y bot del editor: SQL de <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/EDICION.md">EDICION.md</span>.</li>
+</ul>
+<p>No publiques esos registros administrativos ni copies valores del docente.</p>
+<h2>Comprobaciones</h2>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_telemetria.sql">verificar_telemetria.sql</span></td>
+<td>Estructura, RLS y permisos iniciales</td>
+</tr>
+<tr>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_receptor.sql">verificar_receptor.sql</span></td>
+<td>Recepción y acceso restringido del EA</td>
+</tr>
+<tr>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_telegram.sql">verificar_telegram.sql</span></td>
+<td>Permisos y estado del bot sin divulgar identidad</td>
+</tr>
+<tr>
+<td><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_dashboard_editor.sql">verificar_dashboard_editor.sql</span></td>
+<td>Guardado, códigos, sesiones, conflictos y auditoría con <code>ROLLBACK</code></td>
+</tr>
+</tbody>
+</table>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_protecciones.sql">verificar_protecciones.sql</span> añade fixtures sintéticas con <code>ROLLBACK</code> para SL/TP, revisiones, autorización y paginación. Ejecutarlo completo.</p>
+<p>La comprobación del editor necesita un editor activo y una apertura recibida. Ejecuta
+el archivo completo en una sola transacción: no ejecutes solo los fragmentos de
+escritura. No deja motivos ficticios persistentes. Las consultas de conteos no
+acreditan por sí solas una interacción del alumno con el bot o la web.</p>
+<p>Si usas Supabase CLI, consulta su ayuda y genera las migraciones con
+<code>supabase migration new</code>; no inventes marcas de tiempo ni ejecutes <code>db push</code> sin
+reconciliar el historial remoto. Para MCP, usa la herramienta de migraciones que
+ofrezca el conector. Los nombres exactos pueden variar según el cliente.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/README.md">Volver al recorrido</span>.</p></div></details><details class="reference" id="ref-5"><summary>configuración Supabase</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/supabase/CONFIGURACION.md</p><h1>Configuración de Supabase con tu agente</h1>
+<p>Autoría: QRT Solutions. Revisión: 8 de octubre de 2026, America/Santiago.</p>
+<h2>1. Revisar el entorno</h2>
+<p>Abre la raíz del repositorio y usa el mensaje del <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/README.md">README</span>. El agente
+debe revisar archivos, cambios locales, instrucciones y herramientas disponibles.
+Necesitas acceso a Supabase y permiso para crear un proyecto en tu organización.
+MT5 solo será necesario para el envío; consulta su
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/metatrader/README.md">guía de conexión</span> por separado.</p>
+<p>La fuente <span class="repo-reference" title="Archivo complementario del repositorio: MT5/MT5_Telemetry_Exporter_Universal.mq5">MT5_Telemetry_Exporter_Universal.mq5</span>
+se distribuye en el clon, versión 3.30. Leerla antes de compilar y seguir
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/RECEPTOR.md">RECEPTOR.md</span> para emitir la credencial y configurar el envío. No
+sustituirla por otro EA del catálogo ni asumir rutas del equipo docente.</p>
+<h2>2. Conectar el agente</h2>
+<p>Consulta la <a href="https://supabase.com/docs/guides/ai-tools/mcp" target="_blank" rel="noopener noreferrer">guía oficial del MCP de Supabase</a>
+y selecciona el cliente instalado. La configuración puede cambiar entre versiones.</p>
+<table>
+<thead>
+<tr>
+<th>Cliente</th>
+<th>Procedimiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codex</td>
+<td>Usar el conector/plugin Supabase existente o la configuración MCP vigente de su cliente</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>Incorporar el servidor HTTP en su configuración MCP, conservando los demás servidores</td>
+</tr>
+<tr>
+<td>Antigravity</td>
+<td>Revisar su configuración MCP y soporte de autenticación; no asumir que lee archivos de otro cliente</td>
+</tr>
+<tr>
+<td>Cliente sin herramientas conectadas</td>
+<td>Preparar y revisar SQL con el agente; ejecutar en el panel y aportar resultados sanitizados</td>
+</tr>
+</tbody>
+</table>
+<p>Endpoint del servicio alojado:</p>
+<pre><code class="language-text">https://mcp.supabase.com/mcp
+</code></pre>
+<p>Completa OAuth en el navegador y selecciona tu organización. El flujo habitual
+no requiere pegar contraseñas de base ni tokens personales en el chat. Si el
+cliente necesita otra configuración, consultar su documentación actual.</p>
+<p>Verifica la conexión con una consulta de solo lectura. Descubrir el catálogo y
+los esquemas antes de invocar herramientas: sus nombres pueden llevar prefijos
+distintos. Capacidades útiles: <code>list_projects</code>, <code>get_project</code>, <code>list_tables</code> y
+<code>search_docs</code>. Que una herramienta esté documentada no demuestra que el conector
+actual la ofrezca.</p>
+<p>Cuando exista el proyecto, limitar el conector a su referencia si el cliente lo
+permite:</p>
+<pre><code class="language-text">https://mcp.supabase.com/mcp?project_ref=TU_PROJECT_REF
+</code></pre>
+<p>Para inspección se puede añadir <code>&amp;read_only=true</code>; ese modo impide crear tablas.
+Un conector limitado a un proyecto puede omitir herramientas de organización y
+creación de proyectos. Estas opciones se describen en la guía oficial anterior.</p>
+<h2>3. Crear o seleccionar el proyecto</h2>
+<p>Comprobar primero si ya existe el proyecto que el alumno quiere utilizar.
+Resolver cualquier ambigüedad de organización o destino antes de modificarlo.</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Elección para el ejercicio</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organización</td>
+<td>La del alumno</td>
+<td>Separar entornos</td>
+</tr>
+<tr>
+<td>Nombre</td>
+<td>Por ejemplo, <code>seminario-3-alumno</code></td>
+<td>Reconocer el laboratorio</td>
+</tr>
+<tr>
+<td>Región</td>
+<td>Cercana al alumno; São Paulo en la demostración</td>
+<td>Reducir recorrido de red</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>Revisar precio, cupo y condiciones actuales</td>
+<td>No asumir creación gratuita</td>
+</tr>
+<tr>
+<td>Contraseña de base</td>
+<td>Introducir en el formulario y guardar en un gestor</td>
+<td>Credencial administrativa; no va en el EA</td>
+</tr>
+<tr>
+<td>Data API</td>
+<td>Habilitada para esta arquitectura</td>
+<td>Acceso del componente que escribirá datos</td>
+</tr>
+<tr>
+<td>Exponer tablas nuevas automáticamente</td>
+<td>Desactivado, si aparece la opción</td>
+<td>Conceder permisos expresamente</td>
+</tr>
+<tr>
+<td>Activar RLS automáticamente</td>
+<td>Activado, si aparece la opción</td>
+<td>Protección al crear tablas</td>
+</tr>
+</tbody>
+</table>
+<p>Si las herramientas de creación y costes existen y la acción está autorizada,
+el agente puede usarlas. En caso contrario, usar el panel. En la demostración
+faltó <code>get_cost</code>: se creó desde el panel y se verificó después con el conector.
+No repetir una herramienta ausente ni inventar una confirmación de coste.</p>
+<p>Después, comprobar nombre, referencia, organización, región y estado saludable.
+Obtener la URL mediante herramienta o panel, sin deducirla del nombre. Guardar
+estos detalles en el registro local del alumno.</p>
+<h2>4. Crear el esquema</h2>
+<p>Leer el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONTRATO_DATOS.md">contrato de datos</span> y el
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/esquema_telemetria.sql">SQL de referencia</span>, aplicado en la demostración al
+EA v3.10. No contiene credenciales ni datos del docente.</p>
+<p>Listar tablas y migraciones del destino antes de ejecutar:</p>
+<ul>
+<li>Si las tablas no existen, aplicar el SQL como migración remota mediante
+  <code>apply_migration</code> o el mecanismo equivalente documentado del cliente.</li>
+<li>Si existen, comparar columnas, tipos, claves y permisos; preparar solo las
+  diferencias necesarias. El SQL no está diseñado para ejecutarse repetidamente.</li>
+<li>No usar borrados, reinicios o <code>CREATE TABLE IF NOT EXISTS</code> para ocultar
+  incompatibilidades o evitar la revisión del esquema existente.</li>
+</ul>
+<p>Si se van a conservar migraciones mediante Supabase CLI, comprobar versión y ayuda
+con <code>supabase --help</code> y <code>supabase migration new --help</code>. Inicializar el directorio
+según la ayuda vigente solo si no está inicializado. Crear el archivo mediante
+<code>supabase migration new create_mt5_telemetry_storage</code> y copiar allí el SQL revisado.
+No inventar marcas de tiempo ni aplicar dos veces una migración que el conector
+ya ejecutó: conciliar antes los historiales local y remoto. Esta carpeta contiene
+referencias SQL, no una orden para ejecutar <code>db push</code> a ciegas.</p>
+<p>Las tablas activan RLS y revocan permisos a <code>anon</code> y <code>authenticated</code>. Los permisos
+determinan si se puede acceder a una tabla; RLS filtra después sus filas. En esta
+etapa no existen políticas de acceso de clientes y el envío directo del EA aún
+no debe funcionar. Consulta <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noopener noreferrer">RLS</a>
+y <a href="https://supabase.com/docs/guides/api/securing-your-api" target="_blank" rel="noopener noreferrer">protección de la API</a>.</p>
+<h2>5. Verificar y documentar</h2>
+<p>Ejecutar las <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_telemetria.sql">consultas de verificación</span> por separado
+si el cliente solo muestra el resultado de la última sentencia.</p>
+<table>
+<thead>
+<tr>
+<th>Comprobación</th>
+<th>Resultado inicial esperado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tablas</td>
+<td>Tres, con columnas y claves del contrato</td>
+</tr>
+<tr>
+<td>RLS</td>
+<td>Activado en las tres</td>
+</tr>
+<tr>
+<td>Roles <code>anon</code> y <code>authenticated</code></td>
+<td>Sin permisos sobre esas tablas</td>
+</tr>
+<tr>
+<td>Filas</td>
+<td>Cero en un proyecto nuevo; no vaciar uno reutilizado</td>
+</tr>
+<tr>
+<td>Asesores de seguridad</td>
+<td>Sin advertencias sin resolver; explicar avisos informativos</td>
+</tr>
+</tbody>
+</table>
+<p>En la demostración apareció una advertencia sobre <code>public.rls_auto_enable()</code>,
+creada por la opción de RLS automático del panel. Solo si existe y se verifica
+que es esa función administrativa, revisar el
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/restringir_rls_automatico.sql">SQL de corrección de permisos</span>. No crear esa
+función solo para aplicar la corrección. Volver a ejecutar los asesores.</p>
+<p>El aviso <a href="https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy" target="_blank" rel="noopener noreferrer">RLS sin políticas</a>
+es informativo y esperado en esta etapa. No silenciarlo con una política que
+permita todo. Guardar evidencia privada en <code>.local/supabase-setup/</code>, excluido de
+Git. Publicar fecha, acción, comprobación y limitaciones sin datos personales.</p>
+<h2>6. Instalar el receptor y conectar el EA</h2>
+<p>Continúa con <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/RECEPTOR.md">RECEPTOR.md</span>: contiene el SQL incremental, despliegue,
+generación local de credenciales, registro del hash, compilación del EA, inputs,
+WebRequest y verificación. La fuente v3.40 ya tiene compilación y recepción
+verificadas en el entorno docente; repetir ambas comprobaciones en cada instalación.
+Instalar primero las columnas de comentarios siguiendo el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/README.md">orden SQL</span>.</p>
+<p>Cada credencial queda vinculada a login, broker, servidor y etiqueta de proyecto.
+No colocar contraseñas de base ni claves administrativas de Supabase en el EA.
+La conexión OAuth del agente es independiente de la credencial de telemetría.</p>
+<p>La instalación requiere añadir el dominio propio a WebRequest en MT5. En la
+prueba docente, el error <code>4014</code> desapareció cuando el usuario añadió ese dominio;
+el EA reintentó y se comprobaron registros sin abrir operaciones ni activar DLL.</p>
+<h2>Problemas frecuentes</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Siguiente comprobación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agente sin acceso a Supabase</td>
+<td>Conector, OAuth, organización y catálogo real</td>
+</tr>
+<tr>
+<td>No puede crear proyectos</td>
+<td>Alcance <code>project_ref</code>, permisos y capacidades; panel como alternativa</td>
+</tr>
+<tr>
+<td>HTTP 401 o token inválido</td>
+<td>Mecanismo y cabeceras de autenticación; no intercambiar contraseña, API key y JWT</td>
+</tr>
+<tr>
+<td>HTTP 403</td>
+<td>Permisos y receptor; es esperado durante la etapa de tablas cerradas</td>
+</tr>
+<tr>
+<td>Conflicto al enviar</td>
+<td>Comparar <code>on_conflict</code> con las claves instaladas</td>
+</tr>
+<tr>
+<td>Compila pero no llegan filas</td>
+<td>Receptor, parámetros, WebRequest, HTTP y lectura en base; no activar trading como solución</td>
+</tr>
+</tbody>
+</table>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/README.md">Volver a Supabase</span>.</p>
+<h2>Continuar con Telegram</h2>
+<p>La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/telegram/README.md">guía de Telegram</span> explica desde BotFather
+hasta la vinculación y prueba de un motivo. Guardar <code>TELEGRAM_BOT_TOKEN</code> en Secrets
+del mismo proyecto que recibe MT5. Verificar nombre y referencia de proyecto y
+el nombre exacto del secreto antes de pulsar Save. El bot necesita un receptor
+desplegado y webhook; <code>/start</code> no autoriza a consultar la cuenta.</p>
+<h2>Origen del editor web</h2>
+<p>Después de configurar el bot y publicar Vercel, aplica la migración incremental
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/dashboard_editor.sql">dashboard_editor.sql</span>. Registra en
+<code>mt5_dashboard_web_config</code> el origen HTTPS exacto de tu dashboard y el nombre de
+tu bot, sin <code>@</code>. No son secretos; los códigos y sesiones sí lo son. El receptor
+<code>mt5-dashboard-editor</code> mantiene el acceso restringido mediante autenticación propia.
+Sigue la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/EDICION.md">guía de edición</span> para despliegue y pruebas.</p></div></details><details class="reference" id="ref-6"><summary>receptor y credencial</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/supabase/RECEPTOR.md</p><h1>Receptor de telemetría: instalación y operación</h1>
+<p>Autoría: QRT Solutions. Fuente del EA: v3.40; evidencia histórica de compilación: v3.20.</p>
+<h2>Diseño implementado</h2>
+<p>El EA envía JSON por HTTPS a <code>functions/v1/mt5-telemetry</code>. La Edge Function
+comprueba una credencial de dispositivo y la identidad autorizada antes de escribir
+las tres tablas. El EA no recibe permisos administrativos de Supabase ni puede
+consultar tablas a través de este receptor.</p>
+<p>La tabla adicional <code>mt5_ingest_credentials</code> guarda el SHA-256 de la credencial,
+login, broker, servidor, identificador de cuenta, etiqueta de proyecto, vigencia y
+estado de revocación. No almacena la credencial en texto claro. Las cuatro tablas
+mantienen RLS y no conceden acceso a <code>anon</code> ni <code>authenticated</code>. Solo el componente
+servidor puede consultar las autorizaciones y actualizar telemetría.</p>
+<p>El poseedor de una credencial puede enviar datos para la identidad asignada;
+esto no acredita criptográficamente que los datos provengan del broker. Debe
+protegerse como una contraseña. No se admite otra cuenta con la misma credencial.</p>
+<h2>1. Preparar el proyecto propio</h2>
+<p>Completa <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONFIGURACION.md">CONFIGURACION.md</span>, verifica proyecto y tablas, y revisa
+el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/receptor_telemetria.sql">SQL incremental</span>. Aplicarlo una sola vez como
+migración remota <code>add_scoped_telemetry_receiver</code>. Si ya existe, comparar estructura
+y permisos en lugar de repetirlo. La columna <code>received_at</code> se genera en el servidor
+para distinguir hora declarada por el EA y hora de recepción.</p>
+<p>Para migraciones en archivos CLI, crearlas con <code>supabase migration new</code>, como
+indica la guía de configuración; los archivos de <code>sql/</code> son referencias sin versión.</p>
+<p>La fuente actual v3.40 envía campos de comentarios. Antes de adjuntarla, aplicar
+además <code>dashboard_publico.sql</code> y <code>bitacora_trades.sql</code> según el
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/README.md">orden SQL</span>. Para el recorrido completo, preparar las diez referencias
+y sus dependencias antes de activar la integración.</p>
+<h2>2. Desplegar la función</h2>
+<p>El código está en <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-telemetry/index.ts">index.ts</span>, con autenticación
+y validación en <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-telemetry/core.mjs">core.mjs</span>, sin dependencias externas.</p>
+<p>Antes de desplegar, ejecutar desde la raíz:</p>
+<pre><code class="language-sh">node --test seminario_3/supabase/functions/mt5-telemetry/core.test.mjs
+</code></pre>
+<p>El agente debe descubrir <code>deploy_edge_function</code> o la herramienta equivalente y
+proporcionar:</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proyecto</td>
+<td>Referencia del proyecto del alumno, verificada antes de mutar</td>
+</tr>
+<tr>
+<td>Nombre</td>
+<td><code>mt5-telemetry</code></td>
+</tr>
+<tr>
+<td>Entrada</td>
+<td><code>index.ts</code></td>
+</tr>
+<tr>
+<td>Archivos</td>
+<td><code>index.ts</code>, <code>core.mjs</code>, <code>notifications.mjs</code>, <code>deno.jsonc</code>, con sus contenidos completos</td>
+</tr>
+<tr>
+<td><code>verify_jwt</code></td>
+<td><code>false</code>, porque el código valida una credencial propia en cada petición</td>
+</tr>
+</tbody>
+</table>
+<p>Desactivar la validación JWT <strong>no</strong> significa permitir peticiones anónimas: el
+receptor exige <code>x-mt5-token</code>, calcula su hash y consulta una autorización activa y
+no expirada antes de procesar datos. No desplegar una versión sin ese control.
+Consultar la <a href="https://supabase.com/docs/guides/functions/auth" target="_blank" rel="noopener noreferrer">autenticación de funciones</a>
+y la <a href="https://supabase.com/docs/guides/getting-started/migrating-to-new-api-keys" target="_blank" rel="noopener noreferrer">migración de claves</a>.</p>
+<p>La función obtiene el secreto administrativo exclusivamente del entorno de Supabase:
+<code>SUPABASE_SECRET_KEYS.default</code>, o <code>SUPABASE_SERVICE_ROLE_KEY</code> como compatibilidad
+con entornos anteriores. No hay que distribuir esos secretos al EA. Si faltan,
+corregir la configuración del entorno; no incrustarlos en el código.
+Para CLI se proporciona <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-telemetry/config.example.toml">config.example.toml</span>.
+Consultar la ayuda vigente antes de ejecutar un comando de despliegue.</p>
+<h2>3. Emitir la credencial restringida</h2>
+<p>Leer login, broker y servidor mediante MCP nativo de MT5. Obtener el proyecto de
+Supabase mediante su conector. No inventar valores ni reutilizar los del docente.
+Mantener <code>InpBrokerAlias</code> vacío para que coincida el broker leído.</p>
+<p>El script <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/scripts/crear_credencial.py">crear_credencial.py</span> genera una credencial
+aleatoria de 256 bits con prefijo <code>mt5_</code>, vigencia de 90 días por defecto y archivos
+locales con permisos restrictivos. No imprime el secreto ni registra nada remoto.
+Ejemplo con <strong>valores a sustituir</strong>, no ejecutable tal cual:</p>
+<pre><code class="language-sh">python seminario_3/supabase/scripts/crear_credencial.py \
+  --project-ref TU_PROJECT_REF \
+  --login TU_LOGIN \
+  --broker &quot;TU_BROKER&quot; \
+  --server &quot;TU_SERVIDOR&quot; \
+  --project-name &quot;Seminario-3&quot;
+</code></pre>
+<p>El destino predeterminado es <code>.local/supabase-setup/device/</code>. El script comprueba
+que Git lo ignora y rechaza sobrescribir un directorio existente. Para una rotación,
+utilizar un directorio nuevo con <code>--output</code>. En Windows, revisar también los permisos
+NTFS del directorio: el modo POSIX no sustituye las ACL de Windows.</p>
+<table>
+<thead>
+<tr>
+<th>Archivo local privado</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>connection.json</code></td>
+<td>Credencial, identidad, URL y vencimiento; nunca publicar</td>
+</tr>
+<tr>
+<td><code>parameters.json</code></td>
+<td>Valores exactos de los inputs para el agente</td>
+</tr>
+<tr>
+<td><code>MT5_Telemetry_Supabase.set</code></td>
+<td>Cargar los inputs desde MT5 sin transcribir el secreto</td>
+</tr>
+<tr>
+<td><code>register.sql</code></td>
+<td>Registrar el hash y el alcance en el proyecto correcto</td>
+</tr>
+<tr>
+<td><code>revoke.sql</code></td>
+<td>Desactivar únicamente esa credencial</td>
+</tr>
+</tbody>
+</table>
+<p>Revisar el alcance de <code>register.sql</code> y ejecutarlo mediante <code>execute_sql</code> autorizado.
+Es una operación de datos, no una migración de esquema. La credencial solo funciona
+cuando ese registro existe. No imprimir ni enviar <code>connection.json</code> al conector.
+El registro usa exclusivamente el hash, nunca el token en texto claro.</p>
+<h2>4. Compilar y configurar MT5</h2>
+<p>La fuente distribuible está en
+<span class="repo-reference" title="Archivo complementario del repositorio: MT5/MT5_Telemetry_Exporter_Universal.mq5">MT5_Telemetry_Exporter_Universal.mq5</span>.
+Descubrir MetaEditor MCP, comprobar sus raíces permitidas, respaldar la versión
+anterior y registrar hashes. En la demostración se compiló con el nombre
+<code>MT5_Telemetry_Exporter_Supabase.ex5</code> para conservar el binario anterior.
+Verificar errores, advertencias, existencia del binario y parámetros declarados.</p>
+<p>La fuente actual no contiene funciones de trading, ni consulta comandos remotos.
+<code>InpEnableKillSwitch</code> se conserva como parámetro de compatibilidad: debe ser
+<code>false</code>; si se cambia a <code>true</code>, el EA rechaza su inicialización.</p>
+<p>En MT5, <strong>Herramientas → Opciones → Asesores Expertos → Permitir WebRequest para
+las URL listadas</strong>, añadir la URL HTTPS del proyecto propio y conservar las URL
+existentes. Esto autoriza comunicación HTTP; no requiere activar trading ni DLL.
+Si el MCP nativo no ofrece esa configuración, el alumno realiza ese paso en el panel.</p>
+<p>Después, abrir Navegador (<code>Ctrl+N</code>), actualizar Asesores Expertos y cargar el EA
+en el gráfico elegido. Cargar el <code>.set</code> desde Entradas, o usar los valores del
+archivo privado <code>parameters.json</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InpSupabaseUrl</code></td>
+<td><code>https://TU_PROJECT_REF.supabase.co</code>, sin <code>/functions/v1/...</code></td>
+</tr>
+<tr>
+<td><code>InpSupabaseKey</code></td>
+<td>La credencial <code>mt5_...</code> generada, no una API key Supabase</td>
+</tr>
+<tr>
+<td><code>InpProjectName</code></td>
+<td>Exactamente el valor registrado al emitir la credencial</td>
+</tr>
+<tr>
+<td><code>InpBrokerAlias</code></td>
+<td>Vacío</td>
+</tr>
+<tr>
+<td><code>InpHeartbeatSeconds</code></td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>InpEventDrivenSync</code>, <code>InpExportDeals</code>, <code>InpExportSwapRates</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>InpWatchSymbols</code></td>
+<td>Vacío inicialmente</td>
+</tr>
+<tr>
+<td><code>InpEnableKillSwitch</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>InpSaveLocalBackup</code>, <code>InpShowVisualPanel</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<p>El gráfico y las posiciones abiertas determinan los símbolos cuyo swap se exporta;
+no se exporta automáticamente toda la Observación del Mercado. Adjuntar el EA
+inicia la primera lectura y puede exportar histórico. Elegir una sola instancia
+por cuenta evita trabajo y escrituras redundantes.</p>
+<p>El agente puede usar <code>chart_add_expert</code> si está disponible y autorizado. Descubrir
+su esquema y conservar los demás gráficos. Esta herramienta reemplaza el EA del
+gráfico elegido. Sus inputs son una cadena estricta de pares separados por comas,
+sin espacios: si un valor no se puede representar así, cargar el <code>.set</code> desde MT5
+sin modificar la identidad para acomodarla al formato del conector.</p>
+<h2>5. Comprobar recepción real</h2>
+<ol>
+<li>Confirmar inputs efectivos del gráfico sin mostrar el token en la salida.</li>
+<li>Buscar en el diario del EA <code>[TELEMETRY] ... HTTP 200</code> para cada recurso.</li>
+<li>Ejecutar las <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_receptor.sql">consultas de recepción y permisos</span>
+   para consultar conteos y <code>max(received_at)</code> mediante Supabase.</li>
+<li>Esperar otra lectura y comprobar que <code>received_at</code> avance sin duplicar la fila
+   de la cuenta ni los mismos tickets. Conservar horas y resultados sanitizados.</li>
+<li>Verificar rechazos HTTP <code>401</code> con credencial inválida y <code>403</code> con una identidad
+   distinta. Esas pruebas no deben insertar filas.</li>
+</ol>
+<p>Si la cuenta no tiene deals o posiciones, un conteo de cero puede ser correcto:
+contrastarlo con MT5, sin crear operaciones para obtener datos de prueba.
+El receptor limita cada petición a 512 KiB y 100 registros (un snapshot), y rechaza
+campos desconocidos. Los tickets viajan como cadenas decimales para evitar pérdida
+de precisión en JavaScript y se almacenan como números exactos en Postgres.</p>
+<table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error MT5 <code>4014</code></td>
+<td>Falta WebRequest permitido o ejecución en contexto no compatible; no hay evidencia de envío</td>
+</tr>
+<tr>
+<td>HTTP <code>401</code></td>
+<td>Token inválido, desconocido, revocado o vencido</td>
+</tr>
+<tr>
+<td>HTTP <code>403</code></td>
+<td>Cuenta, broker, servidor o etiqueta no coincide con la autorización</td>
+</tr>
+<tr>
+<td>HTTP <code>400</code></td>
+<td>Formato, campos o recurso no admitido</td>
+</tr>
+<tr>
+<td>HTTP <code>413</code></td>
+<td>Petición demasiado grande</td>
+</tr>
+<tr>
+<td>HTTP <code>503</code></td>
+<td>Fallo temporal del servicio o configuración del servidor; revisar sin divulgar secretos</td>
+</tr>
+<tr>
+<td>HTTP <code>200</code> y consulta con fila</td>
+<td>Recepción comprobada; continuar verificando las siguientes lecturas</td>
+</tr>
+</tbody>
+</table>
+<p>El EA reintenta lotes históricos fallidos sin avanzar su cursor. No hay una cola
+durable de todos los eventos: un evento de apertura fallido no tiene entrega
+individual garantizada. El snapshot y el histórico permiten reconciliar parte de esa información.
+v3.20 exportaba principalmente cierres; la fuente v3.40 incluye entradas y salidas,
+pero un reenvío histórico no genera un aviso inmediato equivalente al evento. Este límite debe conservarse en la bitácora.</p>
+<h2>6. Revocar, rotar y recuperar</h2>
+<p>Ejecutar el <code>revoke.sql</code> privado en el proyecto correspondiente. La función consulta
+el registro en cada solicitud: las siguientes peticiones serán rechazadas; una
+petición ya autorizada y en curso podría finalizar. No hace falta redeploy para
+revocar. Para rotar, emitir otro token, registrarlo, cargarlo en MT5, verificar
+recepción y revocar el anterior. No usar la contraseña de la base como reemplazo.</p>
+<p>Si la compilación o el despliegue falla, conservar fuente, logs sanitizados y
+estado real. Retirar solo la instancia de prueba si es necesario; no reiniciar
+MT5, restaurar credenciales antiguas ni activar cierre remoto como recuperación.</p>
+<p>La hora de los deals sigue siendo la hora del broker etiquetada por la fuente
+original; <code>received_at</code> sí es hora del servidor receptor. No usar aquella para
+análisis intradiario UTC sin la normalización pendiente indicada en el
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONTRATO_DATOS.md">contrato</span>.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/README.md">Volver a Supabase</span>.</p>
+<h2>Receptor independiente de Telegram</h2>
+<p><code>mt5-telegram</code> utiliza otra credencial y otra función, descritas en la
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/telegram/README.md">guía Telegram</span>. El token del bot no se coloca
+en los inputs del EA. El bot escribe únicamente motivos humanos en la bitácora;
+<code>mt5-telemetry</code> sigue recibiendo los datos originales. Ninguno incorpora órdenes
+de compra, venta o cierre remoto.</p>
+<p>Al activar las alertas, <code>mt5-telemetry</code> también utiliza el token del bot guardado en
+Supabase para entregar avisos de apertura y cierre desde una cola durable. Esa tarea corre
+en segundo plano y no cambia la credencial ni los inputs del EA. Aplicar antes el
+SQL de alertas indicado en la guía Telegram; el receptor conserva la telemetría
+aunque una notificación falle.</p>
+<h2>Receptor de edición del dashboard</h2>
+<p><code>mt5-dashboard-editor</code> es independiente del receptor de telemetría. Autentica
+códigos de Telegram de un solo uso y sesiones de una hora. CORS admite únicamente
+el origen configurado; cada operación privada requiere además una sesión válida
+y un editor activo. No recibe órdenes de trading, credenciales del EA ni cambios
+de precios o resultados. <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/EDICION.md">Procedimiento completo</span>.</p></div></details><details class="reference" id="ref-7"><summary>guía de instalación</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/integraciones/telegram/README.md</p><h1>Integración con Telegram</h1>
+<p>Autoría: QRT Solutions.</p>
+<h2>Qué construimos</h2>
+<p>Telegram es el canal para escribir; una Edge Function de Supabase valida el mensaje
+y registra el motivo en la bitácora. El dashboard en Vercel consulta esos datos.
+El bot no modifica comentarios del broker ni ejecuta compras, ventas o cierres.
+<code>/cierre</code> significa <strong>documentar una salida que ya fue recibida desde MT5</strong>.</p>
+<p>Diseño aprobado: chat privado autorizado, una cuenta vinculada por chat, un bot por
+proyecto y motivos de apertura/cierre por identificador de posición. Los cierres
+parciales comparten el motivo de cierre de esa posición; no son notas individuales
+por deal. Las horas históricas siguen en hora del broker, no UTC normalizado.</p>
+<p>Estado al 8 de octubre de 2026: código y SQL incluidos, receptor desplegado en el
+entorno docente, webhook confirmado por Telegram y chat del propietario vinculado.
+Avisos automáticos de apertura y respuesta directa verificados con una operación
+demo nueva del propietario; medición y alcance en la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/BITACORA.md">bitácora</span>.
+La aplicación web incorpora columnas de apertura y cierre, con comentarios de MT5
+y motivos humanos separados. Desplegar este receptor no despliega la aplicación
+web ni recompila el EA: seguir también la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/README.md">guía web</span>.</p>
+<h2>1. Crear tu bot</h2>
+<ol>
+<li>Abre el <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer">BotFather oficial</a>, con insignia de verificación.</li>
+<li>Pulsa <strong>Iniciar</strong> y envía <code>/newbot</code>.</li>
+<li>Introduce un nombre visible, por ejemplo <code>Bitácora de Trading</code>.</li>
+<li>Elige un usuario disponible que termine en <code>bot</code>, sin espacios, por ejemplo
+   <code>bitacora_tu_alias_bot</code>. Un nombre ocupado requiere elegir otro.</li>
+<li>Guarda el token en un gestor de contraseñas. No lo pegues en el chat del agente,
+   capturas, repositorio, EA ni dashboard.</li>
+<li>Abre el enlace de tu bot y pulsa <strong>Iniciar</strong> o envía <code>/start</code>. Antes de conectar
+   el receptor puede no responder; eso no indica que la creación falló.</li>
+</ol>
+<p>Si ya tienes un bot para este proyecto, reutilízalo. Antes de cambiar un webhook,
+comprobar si otro proceso lo utiliza. No ejecutar a la vez <code>getUpdates</code> y un webhook.
+Documentación: <a href="https://core.telegram.org/bots/features#botfather" target="_blank" rel="noopener noreferrer">BotFather</a>.</p>
+<h2>2. Guardar la credencial en el proyecto correcto</h2>
+<p>En Supabase abre <strong>tu proyecto → Edge Functions → Secrets</strong>. Compara nombre y
+referencia del proyecto con la instalación MT5; no basta con estar en la organización.</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><code>TELEGRAM_BOT_TOKEN</code></td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Token completo entregado por BotFather</td>
+</tr>
+</tbody>
+</table>
+<p>Pulsa <strong>Save</strong> y comprueba que aparezca en <strong>Custom secrets</strong>. <code>TLG_BOT_TOKEN</code> es
+otro nombre: este receptor solo lee <code>TELEGRAM_BOT_TOKEN</code>. La función usa los secretos
+administrativos incorporados por Supabase exclusivamente en el servidor.</p>
+<p>La credencial del webhook se deriva dentro del servidor mediante HMAC-SHA256,
+usando el token del bot como clave y el contexto fijo
+<code>QRT Solutions:mt5-telegram:webhook:v1</code>. No es el token del bot ni se expone en la
+URL. Telegram la entrega en <code>X-Telegram-Bot-Api-Secret-Token</code>; la función la exige
+antes de leer el mensaje. Rotar el token requiere volver a configurar el webhook.
+Consulta <a href="https://supabase.com/docs/guides/functions/secrets" target="_blank" rel="noopener noreferrer">Supabase Secrets</a> y
+<a href="https://core.telegram.org/bots/api#setwebhook" target="_blank" rel="noopener noreferrer">setWebhook</a>.</p>
+<h2>3. Preparar la base y probar el código</h2>
+<p>El agente debe leer el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/AGENTS.md">protocolo Supabase</span> y comprobar
+esquema, migraciones y cuenta existentes. Aplicar solo las diferencias necesarias:</p>
+<ol>
+<li><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/bitacora_trades.sql">bitacora_trades.sql</span>: comentarios
+   originales, motivos separados, editores autorizados, auditoría y consulta pública.</li>
+<li><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/telegram_bitacora.sql">telegram_bitacora.sql</span>: códigos de
+   vinculación y consulta restringida de motivos pendientes. Ambas son referencias
+   SQL para aplicar una vez; no son scripts idempotentes.</li>
+<li>Ejecutar desde la raíz:</li>
+</ol>
+<pre><code class="language-sh">node --test seminario_3/supabase/functions/mt5-telegram/core.test.mjs
+</code></pre>
+<p>La función pública del dashboard solo publica la demo expresamente habilitada.
+Un dashboard público también hará públicos los motivos humanos cuando los muestre;
+el chat privado no convierte esas notas en información privada.</p>
+<h2>4. Instalar el receptor y registrar el webhook</h2>
+<p>La función <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-telegram/index.ts">mt5-telegram</span> no requiere
+librerías externas. El agente descubre la herramienta de despliegue disponible.
+Si usa CLI, consultar primero la versión y ayuda vigentes, sin suponer comandos.
+El destino es el proyecto del alumno; nombre de función <code>mt5-telegram</code> y
+<code>verify_jwt=false</code> porque Telegram usa la credencial de webhook validada por el código.
+Nunca desactivar JWT en una función que no valide otra credencial.</p>
+<p>Para instalar sin sacar el token de Supabase, se incluye un instalador temporal:</p>
+<pre><code class="language-sh">python3 seminario_3/integraciones/telegram/preparar_instalacion.py \
+  --bot-username TU_USUARIO_BOT \
+  --output .local/telegram-setup/instalacion-1
+</code></pre>
+<p>El directorio debe ser nuevo y estar ignorado por Git. Se generan una clave aleatoria
+privada y su hash, con vigencia de 15 minutos. No contienen el token de Telegram.</p>
+<table>
+<thead>
+<tr>
+<th>Despliegue</th>
+<th>Entrada</th>
+<th>Archivos que se envían</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temporal</td>
+<td><code>setup.ts</code></td>
+<td><code>setup.ts</code>, <code>runtime.ts</code>, <code>core.mjs</code>, <code>deno.jsonc</code> y el archivo generado <code>setup.private.json</code></td>
+</tr>
+<tr>
+<td>Definitivo</td>
+<td><code>index.ts</code></td>
+<td>Solo <code>index.ts</code>, <code>runtime.ts</code>, <code>core.mjs</code>, <code>deno.jsonc</code></td>
+</tr>
+</tbody>
+</table>
+<p>Los archivos fuente están en <code>seminario_3/supabase/functions/mt5-telegram/</code>.
+En el despliegue temporal se envía el contenido del JSON privado bajo el nombre
+<code>setup.private.json</code>, sin copiarlo a una carpeta pública del repositorio.</p>
+<p>Después del despliegue temporal:</p>
+<pre><code class="language-sh">python3 seminario_3/integraciones/telegram/configurar_webhook.py \
+  --project-ref TU_PROJECT_REF \
+  --installation .local/telegram-setup/instalacion-1
+</code></pre>
+<p>El instalador verifica el nombre del bot con <code>getMe</code>, rechaza reemplazar un webhook
+de otra URL, registra la URL canónica <code>https://TU_PROJECT_REF.supabase.co/functions/v1/mt5-telegram</code>,
+conserva mensajes pendientes y configura el menú. El resultado se guarda localmente.
+No imprime ni devuelve el token, las claves administrativas o el secreto del webhook.</p>
+<p><strong>Desplegar inmediatamente la versión definitiva</strong>, incluso si la instalación
+falla. Eliminar del paquete remoto <code>setup.ts</code> y <code>setup.private.json</code>; no basta con
+ocultar el enlace. El receptor definitivo carece de ruta administrativa. Si falla,
+corregir el motivo y generar otra instalación temporal con otra clave y vencimiento.
+La ruta temporal también caduca por sí sola.</p>
+<h2>5. Vincular al propietario</h2>
+<p>El agente obtiene <code>account_id</code> de los registros del proyecto y confirma que
+corresponde a la cuenta elegida. No reutiliza la cuenta ni el chat del docente.</p>
+<pre><code class="language-sh">python3 seminario_3/integraciones/telegram/crear_vinculo.py \
+  --account-id TU_ACCOUNT_ID \
+  --output .local/telegram-setup/vinculo-1
+</code></pre>
+<p>Revisar y ejecutar el <code>register.sql</code> generado en el proyecto propio. Debe devolver
+exactamente una fecha de vencimiento; cero filas significa cuenta no encontrada.
+La base guarda solo SHA-256 del código. El agente entrega el código del archivo
+privado únicamente al propietario por el canal de la tarea:</p>
+<pre><code class="language-text">/vincular CODIGO_PRIVADO
+</code></pre>
+<p>El propietario lo envía a su bot en chat privado. Caduca una hora después de
+registrarlo y queda consumido por el primer usuario que lo canjea. No compartirlo:
+es una autorización. La base comprueba que chat y usuario coincidan y asocia esa
+identidad a la cuenta del código. <code>/start</code> por sí solo <strong>no autoriza</strong> a nadie.
+Se rechazan grupos y mensajes reenviados como sustituto de identidad: el emisor
+del mensaje actual debe ser el usuario del chat privado.</p>
+<h2>6. Uso y prueba real</h2>
+<h3>Avisos automáticos de apertura y cierre</h3>
+<p>El flujo recomendado ya no requiere copiar referencias: cuando llega un <strong>nuevo
+deal de apertura por evento</strong>, el bot envía «Nueva apertura», símbolo, dirección,
+volumen y precio, y solicita la razón. El usuario pulsa <strong>Responder</strong> sobre ese
+mensaje y escribe su motivo verdadero. Telegram suele abrir automáticamente el
+campo de respuesta gracias a <code>ForceReply</code>.</p>
+<p>Cuando llega una salida, el bot envía <strong>«Cierre registrado»</strong> y pide la razón
+para cerrar o reducir volumen. Responder directamente a ese aviso guarda el motivo
+de cierre; responder al de apertura guarda el motivo de entrada. La confirmación
+indica la fase correspondiente y nunca sobrescribe el motivo de la otra fase.</p>
+<p>El servidor resuelve el mensaje original por su identificador almacenado y por
+el chat autorizado, no por texto citado que pueda falsificarse. Confirma el
+guardado y permite consultarlo con <code>/ver REFERENCIA</code>. Las correcciones también
+pueden enviarse como otra respuesta al mismo aviso. No se interpretan mensajes
+sueltos como motivos de la última operación: así no se asignan a un trade equivocado.</p>
+<p>Para activar este flujo en el proyecto del alumno:</p>
+<ol>
+<li>Aplicar <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/telegram_alertas_apertura.sql">telegram_alertas_apertura.sql</span>
+   después de las migraciones de bitácora y vinculación y luego
+   <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/telegram_alertas_cierre.sql">telegram_alertas_cierre.sql</span>.
+   No generan alertas antiguas. En una instalación activa, desplegar primero las
+   funciones que distinguen la fase y después aplicar la extensión de cierre.</li>
+<li>Desplegar también <code>mt5-telemetry</code> con <code>index.ts</code>, <code>core.mjs</code>, <code>notifications.mjs</code>
+   y <code>deno.jsonc</code>; desplegar <code>mt5-telegram</code> con sus cuatro archivos definitivos.</li>
+<li>Verificar en el EA activo <code>InpEventDrivenSync=true</code>, <code>InpExportDeals=true</code>
+   y <code>InpEnableKillSwitch=false</code>. El EA v3.20 dispone del envío por evento requerido.</li>
+<li>Vincular primero el chat y esperar la confirmación del agente de que está activo.</li>
+<li>Si el propietario decide abrir una operación demo, comprobar recepción del deal,
+   envío del mensaje y guardado de su respuesta. El agente no abre trades de prueba.</li>
+</ol>
+<p>La alerta se prepara por cada posición, usuario y fase al insertar un deal BUY/SELL
+con <code>approval_status=PENDING</code>, la marca usada por el exportador en <code>OnTradeTransaction</code>.
+<code>IN</code> pide apertura; <code>OUT</code> y <code>OUT_BY</code> piden cierre; <code>INOUT</code> permite ambas fases.
+No significa aprobación humana. Los lotes históricos <code>APPROVED</code> y deals ya existentes
+no generan avisos. Una posición tiene como máximo una solicitud por fase y usuario:
+los aumentos de volumen y cierres parciales posteriores no generan otra solicitud.
+El primer cierre parcial ya puede pedir motivo; el mensaje no afirma que toda la
+posición haya quedado cerrada. Esta versión conserva un motivo de salida por posición.</p>
+<p>La extensión mantiene los nombres RPC originales que contienen <code>opening</code> para
+permitir el despliegue sin interrumpir la telemetría; ahora la cola devuelve <code>phase</code>
+y selecciona el motivo pendiente de esa fase. No basta con cambiar solo el texto
+del mensaje: también deben ampliarse el CHECK, el trigger y la consulta de la cola.
+Un aviso omitido antes de activar esta extensión puede recuperarse administrativamente
+para una operación identificada y verificada, sin reencolar todo el historial.</p>
+<p>La cola <code>mt5_telegram_notifications</code> se inserta dentro de la transacción del deal.
+El receptor inicia la entrega en segundo plano con <code>EdgeRuntime.waitUntil</code>, sin
+hacer esperar al EA por Telegram. Una reserva temporal evita envíos simultáneos;
+el identificador de mensaje devuelto por Telegram queda asociado a la posición.
+Si falla, las siguientes recepciones de telemetría reintentan la cola, con espera
+mínima de 30 segundos. Si MT5 deja de enviar, esos reintentos también esperan.
+No hay un cron independiente ni una garantía de latencia o entrega exactamente
+una vez: un timeout después de enviar y antes de guardar el recibo puede duplicar
+el aviso. La respuesta escrita se deduplica mediante <code>update_id</code>.</p>
+<p>En condiciones normales se espera el aviso en segundos; la medición de una prueba
+real debe documentarse. Si MT5 pierde el evento de apertura o cierre antes de enviarlo, esta
+cola no puede recuperar ese evento. No activar trading ni DLL para intentar resolverlo.</p>
+<h3>Comandos alternativos</h3>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/ayuda</code></td>
+<td>Explica la bitácora y sus límites</td>
+</tr>
+<tr>
+<td><code>/pendientes</code></td>
+<td>Hasta 20 operaciones recientes con motivos humanos pendientes para fases recibidas</td>
+</tr>
+<tr>
+<td><code>/ver REFERENCIA</code></td>
+<td>Consulta motivos actuales</td>
+</tr>
+<tr>
+<td><code>/apertura REFERENCIA motivo</code></td>
+<td>Guarda o corrige la razón de entrada</td>
+</tr>
+<tr>
+<td><code>/cierre REFERENCIA motivo</code></td>
+<td>Guarda o corrige la razón de salida ya recibida; no opera en MT5</td>
+</tr>
+</tbody>
+</table>
+<p>La referencia son los primeros ocho caracteres del UUID de la bitácora. La base
+rechaza referencias ambiguas. Los motivos admiten de 1 a 1000 caracteres; no se
+interpretan como HTML, SQL ni instrucciones. Esta versión recibe texto, no voz.
+Las ediciones posteriores del mensaje en Telegram se ignoran: para corregir un
+motivo, enviar otro comando completo. Los comentarios nativos se conservan aparte.</p>
+<p><code>/pendientes</code> también puede incluir operaciones de EA: no se inventa una explicación
+humana a partir del Magic Number ni se copia automáticamente un comentario ambiguo.
+No muestra motivos pendientes de una fase que aún no haya llegado a Supabase.</p>
+<p>Después de vincular:</p>
+<ol>
+<li>Enviar <code>/pendientes</code> y elegir una referencia real.</li>
+<li>Registrar un motivo verdadero para una fase existente; no inventar razones para
+   probar ni abrir/cerrar operaciones de prueba.</li>
+<li>Consultar <code>/ver REFERENCIA</code> y verificar el motivo en base y en el dashboard.</li>
+<li>Ejecutar <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_telegram.sql">verificar_telegram.sql</span>.
+   Debe haber RLS y ningún permiso anon/authenticated sobre las RPC de Telegram.</li>
+<li>Una petición HTTP sin secreto al receptor debe devolver 401 sin escribir datos.</li>
+</ol>
+<p>Cada cambio conserva una auditoría con <code>update_id</code>. Reintentos del mismo mensaje
+no duplican cambios y un mensaje atrasado no sobrescribe otro más reciente.
+La escritura y su auditoría son atómicas; la respuesta de Telegram no forma parte
+de esa transacción. Si Telegram falla después de guardar, reintenta y puede repetir
+la confirmación. No se promete entrega de respuestas exactamente una vez.</p>
+<h2>7. Revocación y resolución de problemas</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Comprobación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No responde antes del despliegue</td>
+<td>Crear el bot no instala su programa</td>
+</tr>
+<tr>
+<td>HTTP 503</td>
+<td>Nombre exacto del secreto, credencial válida y disponibilidad de Telegram/base</td>
+</tr>
+<tr>
+<td>Instalador 401</td>
+<td>Clave temporal incorrecta o vencida; generar una nueva instalación</td>
+</tr>
+<tr>
+<td>Instalador 409</td>
+<td>Bot distinto o webhook existente de otra integración; revisar antes de reemplazar</td>
+</tr>
+<tr>
+<td>Código inválido</td>
+<td>Caducó, se copió mal o lo consumió otro usuario</td>
+</tr>
+<tr>
+<td>Motivo rechazado</td>
+<td>Referencia ambigua/inexistente, fase no recibida, texto vacío/largo o chat revocado</td>
+</tr>
+<tr>
+<td>Guardado pero no visible en web</td>
+<td>Revisar por separado la consulta pública, publicación de la demo y versión del dashboard</td>
+</tr>
+</tbody>
+</table>
+<p>Para revocar un editor, el administrador pone <code>active=false</code> en su fila exacta
+de <code>mt5_telegram_editors</code>; no borra el historial. Para reautorizarlo, emite otro código.
+Un código ya consumido no reactiva una autorización revocada. Cambiar de bot exige
+revisar el espacio de <code>update_id</code>: esta versión admite <strong>un bot por proyecto</strong>.</p>
+<p>RLS sin políticas es deliberado para estas tablas sin acceso directo de clientes.
+Los asesores pueden seguir avisando de la RPC pública SECURITY DEFINER del dashboard;
+no se extiende ese permiso a las RPC de Telegram. Revisar su
+<a href="https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable" target="_blank" rel="noopener noreferrer">aviso de seguridad</a>
+y conservar la publicación limitada a la demo autorizada.</p>
+<h2>Mensaje para el agente del alumno</h2>
+<pre><code class="language-text">Configura mi bot de Telegram como bitácora de mi cuenta MT5 en mi proyecto Supabase.
+Lee AGENTS.md, seminario_3/supabase/AGENTS.md y esta guía completa. Descubre qué está
+instalado y aplica solo lo necesario. Ayúdame a crear el bot o reutiliza el mío;
+no me pidas el token en el chat: lo guardaré como TELEGRAM_BOT_TOKEN en Secrets.
+Prueba y despliega el receptor, comprueba el bot y webhook sin reemplazar otra
+integración y retira el instalador temporal. Emite un código para mi cuenta,
+espera a que yo lo envíe al bot y verifica la vinculación y un motivo real.
+Documenta resultados y pendientes sin secretos ni identificadores privados.
+No operes en MT5 ni actives cierre remoto. No hagas commits o publicaciones Git.
+</code></pre>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/README.md">Volver al seminario 3</span>.</p>
+<h2>Acceso al editor web</h2>
+<p>El comando <code>/dashboard</code>, enviado desde el chat privado autorizado, entrega un
+código de un solo uso que vence en cinco minutos. Se pega en <strong>Entrar con Telegram</strong>
+en la web del alumno. Un comando nuevo invalida el código anterior; no modifica
+la vinculación de la cuenta. La sesión de edición dura una hora y permite cambiar
+solo motivos humanos. No ejecuta órdenes ni cierra posiciones.</p>
+<p>El procedimiento de instalación, control de versiones, historial y pruebas está
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/EDICION.md">documentado con el dashboard</span>. El comando escrito
+funciona aunque el menú de una instalación anterior todavía no lo incluya; el
+instalador actualizado lo registra al configurar un bot nuevo.</p>
+<h2>Cambios de SL/TP y razones</h2>
+<p>Aplicar las referencias 9 y 10 del <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/README.md">orden SQL</span>.
+Actualizar receptor, bot, editor y EA v3.40. Repetir el instalador temporal con
+<code>allowed_updates: [message, callback_query]</code>; retirar <code>setup.ts</code> y su configuración
+privada al terminar. No cambiar de bot, token ni vinculación por esta actualización.</p>
+<p>Cada aviso agrupa cambios observados de una posición durante un minuto. Los
+botones <strong>Reducir riesgo</strong> y <strong>Cambio de estructura</strong> guardan esa razón; <strong>Noticia</strong>
+y <strong>Otro</strong> piden responder al aviso original con texto (y enlace opcional).
+<strong>Después</strong> deja el grupo pendiente, sin crear un recordatorio nuevo.</p>
+<ul>
+<li><code>/protecciones</code>: hasta veinte grupos pendientes, con ID y comando para responder.</li>
+<li><code>/proteccion ID explicación</code>: completar o corregir un grupo, guardando revisiones.</li>
+<li>Responder al aviso original: se utiliza su asociación en base, no el texto citado.</li>
+<li>En web: entrar con Telegram y abrir <strong>Cambios de SL / TP → Completar/Editar motivo</strong>.</li>
+</ul>
+<p>Los comandos de apertura y cierre existentes se mantienen. Un botón o un mensaje
+nunca modifica SL/TP en MT5. No enviar secretos como parte de las razones públicas.</p></div></details><details class="reference" id="ref-8"><summary>SQL de publicación</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/aplicaciones/web/README.md</p><h1>Dashboard público de telemetría MT5</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>La interfaz vive en <strong>Vercel</strong> y lee la telemetría desde <strong>Supabase</strong>. MT5 debe
+seguir abierto y conectado para enviar nuevos estados. Si se apaga, la web sigue
+accesible y muestra la antigüedad del último dato recibido.</p>
+<p>La interfaz toma como referencia visual <code>dashboard_traders_dual.html</code> del docente:
+logo Pepperstone, cabecera compacta, seis tarjetas de cuenta, cuatro resúmenes con etiquetas
+de color, gráficos antes de las bitácoras y tablas con distintivos BUY/SELL.
+Los enlaces superiores llevan a resumen, resultados, posiciones, comentarios y
+ejecuciones. El original se conserva sin cambios. El recurso de marca está en
+<code>src/pepperstone.png</code>, incluido por el build y el servidor de vista previa. Las operaciones provienen del
+EA; los motivos de muestra conservan la procedencia documentada en
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ESTADO.md">ESTADO</span>.</p>
+<p>La adaptación es visual: no importa los datos de prueba, estrategias, métricas
+porcentuales ni la afirmación «auditado» de la referencia. El margen utilizado
+procede directamente del snapshot. Los totales del historial abarcan todo el
+filtro; gráficos y exportación corresponden a la página actual. La bitácora de
+comentarios conserva su paginación independiente y la edición con Telegram.
+En celular las tablas se convierten en tarjetas; los campos y botones mantienen
+un tamaño táctil. Las métricas aún no disponibles se consultan en el desplegable
+<strong>Métricas avanzadas · Disponibilidad de datos</strong>.</p>
+<h2>Qué muestra</h2>
+<table>
+<thead>
+<tr>
+<th>Vista</th>
+<th>Fuente y significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Balance, equity, flotante, margen libre y utilizado</td>
+<td>Último snapshot completo de MT5</td>
+</tr>
+<tr>
+<td>Posiciones abiertas</td>
+<td>Estado actual; no son órdenes para ejecutar</td>
+</tr>
+<tr>
+<td>Historial y neto por símbolo</td>
+<td>Ejecuciones BUY/SELL recibidas; beneficio + comisión + swap</td>
+</tr>
+<tr>
+<td>Neto acumulado</td>
+<td>Suma secuencial de los registros seleccionados; <strong>no</strong> es equity histórica</td>
+</tr>
+<tr>
+<td>Tasas de swap</td>
+<td>Valores nativos del broker; la unidad depende del modo MT5</td>
+</tr>
+<tr>
+<td>Retornos porcentuales, Sharpe, drawdown, MAE/MFE, riesgo y estrategia</td>
+<td>No disponibles con la cobertura actual; no se inventan ni se sustituyen por ratios monetarios</td>
+</tr>
+</tbody>
+</table>
+<p>La unidad del historial es el <strong>deal</strong>, no una posición completa. Un deal SELL
+puede cerrar una compra. El histórico recibido de v3.20 contiene principalmente cierres y
+puede omitir comisiones de entradas previas; v3.40 prepara entradas y salidas,
+pero hay que verificar su recepción antes de asumir cobertura completa. Su neto no reconcilia necesariamente
+con la variación del balance. Las fechas de deals se muestran como hora del broker,
+sin tratarlas como UTC; la hora de recepción sí proviene del servidor y es UTC.</p>
+<p>El servidor entrega páginas de <strong>25 ejecuciones</strong> y <strong>10 operaciones</strong>. Los
+filtros se aplican en Supabase; las tarjetas monetarias suman todo el filtro.
+Los gráficos y la exportación contienen únicamente la página descargada, como
+indica la interfaz. El estado se consulta cada 30 segundos y el historial cada
+2 minutos con la pestaña visible; filtros, páginas, guardado y Actualizar fuerzan
+una consulta completa. Tras 120 segundos sin recepción se señala atraso.</p>
+<p>En celular, posiciones, ejecuciones y bitácora aparecen como tarjetas. En
+computador se conservan tablas. La columna <strong>Cambios de SL / TP</strong> muestra los
+últimos diez grupos por operación, con anterior/nuevo, hora UTC de observación,
+número de cambios y motivo editable mediante la sesión existente. El total de
+grupos permite reconocer cobertura limitada; todos los eventos se conservan en
+la base. Los detalles de cada ejecución se despliegan por separado.</p>
+<h2>Separación de permisos</h2>
+<pre><code class="language-mermaid">flowchart LR
+  EA[EA en MT5] --&gt;|Token restringido de envío| R[Receptor de telemetría]
+  R --&gt; DB[(Tablas privadas en Supabase)]
+  DB --&gt; F[Consulta pública limitada a una demo]
+  F --&gt;|Solo lectura| W[Dashboard en Vercel]
+</code></pre>
+<p>La publicación pública es <strong>optativa</strong>. Ser una demo no autoriza al agente a
+publicarla: debe existir autorización del propietario. En la instalación docente
+el usuario pidió expresamente acceso público sin inicio de sesión.</p>
+<p>La función <code>mt5_public_dashboard_page()</code> no recibe identificadores de cuenta. Lee una
+sola publicación habilitada y comprueba <code>account_type = 'DEMO'</code> en cada consulta.
+Devuelve una lista explícita de campos y excluye login, servidor, account_id,
+tickets y credenciales. Las tablas originales mantienen RLS y ningún permiso
+SELECT/INSERT/UPDATE/DELETE para <code>anon</code> o <code>authenticated</code>.</p>
+<p>Se utiliza <code>SECURITY DEFINER</code> deliberadamente para esta proyección limitada, con
+<code>search_path</code> vacío, nombres de tablas completos, sin SQL dinámico ni escrituras.
+Los asesores de Supabase advierten que la función es ejecutable públicamente:
+ese es su propósito autorizado; <strong>no</strong> significa que el asesor esté sin avisos.
+Los avisos RLS sin políticas corresponden a tablas cerradas al cliente.
+Consultar los controles de <a href="https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable" target="_blank" rel="noopener noreferrer">funciones públicas</a>
+y <a href="https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy" target="_blank" rel="noopener noreferrer">RLS sin políticas</a>.</p>
+<p>La clave <code>sb_publishable_…</code> es pública por diseño. No concede escritura ni acceso
+a las tablas privadas. No usar <code>service_role</code>, <code>sb_secret_…</code>, contraseña de base
+de datos o token del EA en esta aplicación. El cierre remoto sigue desactivado;
+no hay controles ni API de trading en el dashboard.</p>
+<h2>Reproducir con tu agente</h2>
+<p>Primero completa el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/RECEPTOR.md">receptor y EA</span> en <strong>tu propio</strong>
+proyecto. Después entrega este mensaje a Codex, Claude Code o Antigravity:</p>
+<pre><code class="language-text">Lee AGENTS.md y seminario_3/aplicaciones/web/README.md. Quiero desplegar este
+ dashboard con los datos de mi cuenta demo. Comprueba primero receptor, tablas,
+ cuenta y conectores disponibles; no reutilices el proyecto ni credenciales
+ del docente. Antes de publicar datos, confirma si quiero acceso público.
+ Si autorizo publicación pública, aplica solo el SQL que falte, habilita mi
+ cuenta demo y usa exclusivamente la clave publishable en la web. Mantén tablas
+ y credenciales privadas. Compila la aplicación, verifica permisos, filtros,
+ gráficos y datos reales. Despliega en mi proyecto Vercel y comprueba la URL
+ de producción sin sesión. Documenta resultados y pendientes; no operes en MT5.
+</code></pre>
+<h3>1. Habilitar la lectura pública de una demo</h3>
+<p>Revisa primero tablas y migraciones existentes. Aplica una sola vez
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/dashboard_publico.sql"><code>dashboard_publico.sql</code></span> después de las
+migraciones del receptor, mediante el conector <code>apply_migration</code> o el SQL Editor
+con una sesión administrativa. Es SQL de referencia, no una migración CLI con
+nombre inventado; si usas Supabase CLI, genera el archivo con <code>supabase migration new</code>.</p>
+<p>Para mostrar comentarios y motivos, instala también <code>bitacora_trades.sql</code> antes
+de usar la aplicación actual; sigue el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/README.md">orden SQL completo</span>.
+No basta con la versión inicial de la consulta pública.</p>
+<p>Esta migración crea una tabla de publicación vacía y la función de lectura;
+no habilita automáticamente ninguna cuenta. Inspecciona el snapshot de tu cuenta
+y sustituye el marcador siguiente usando el editor administrativo:</p>
+<pre><code class="language-sql">-- Author: QRT Solutions. Solo con autorización de publicación de esta demo.
+insert into public.mt5_dashboard_publication
+  (singleton, account_id, enabled, display_name)
+select true, account_id, true, 'Mi cuenta demo'
+from public.mt5_accounts_snapshot
+where account_id = 'ID_DE_TU_CUENTA_DEMO' and account_type = 'DEMO'
+on conflict (singleton) do update
+set account_id = excluded.account_id, enabled = excluded.enabled,
+    display_name = excluded.display_name;
+
+select public.mt5_public_dashboard_page();
+</code></pre>
+<p>Verifica que el <code>account_id</code> elegido corresponde a tu demo. Si no existe o es
+real, el INSERT no debe publicar nada nuevo; revisa cualquier publicación anterior.
+Nunca habilites todas las cuentas. Para <strong>retirar</strong> la publicación:</p>
+<pre><code class="language-sql">-- Author: QRT Solutions. Revoca futuras lecturas; no retira copias ya descargadas.
+update public.mt5_dashboard_publication set enabled = false where singleton;
+</code></pre>
+<p>La siguiente consulta del navegador devolverá <code>account: null</code> y ocultará los datos.
+No modifica ni detiene el envío del EA.</p>
+<h3>2. Configurar y ejecutar localmente</h3>
+<p>Requisitos: Node.js 22.19 o posterior compatible y npm. Chart.js 4.4.1 está fijado
+en <code>package.json</code> y <code>package-lock.json</code>, se instala desde npm y se incluye en el
+build; no se descarga desde un CDN al abrir la página. No se requiere un framework.</p>
+<p>Desde esta carpeta:</p>
+<pre><code class="language-bash">npm ci
+cp .env.example .env.local
+# Edita .env.local con los dos valores públicos de tu proyecto.
+npm test
+npm run dev
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Valor que debes usar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PUBLIC_SUPABASE_URL</code></td>
+<td>Project URL de tu proyecto: <code>https://TU_REFERENCIA.supabase.co</code></td>
+</tr>
+<tr>
+<td><code>PUBLIC_SUPABASE_PUBLISHABLE_KEY</code></td>
+<td>Clave moderna <code>sb_publishable_…</code> de Settings → API Keys</td>
+</tr>
+</tbody>
+</table>
+<p>La vista previa abre en <code>http://127.0.0.1:4173</code>. <code>npm run build</code> genera <code>dist/</code>.
+El proceso rechaza claves que no sean publishable. <code>.env.local</code>, <code>dist/</code>,
+<code>node_modules/</code> y <code>.vercel/</code> quedan fuera de Git. Solo hay ejemplos en el clon.</p>
+<h3>3. Desplegar en Vercel</h3>
+<p>Crea o selecciona un proyecto propio. Para importar el repositorio configura:</p>
+<table>
+<thead>
+<tr>
+<th>Ajuste</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Root Directory</td>
+<td><code>seminario_3/aplicaciones/web</code></td>
+</tr>
+<tr>
+<td>Framework</td>
+<td>Other</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>22.x o una versión compatible posterior</td>
+</tr>
+<tr>
+<td>Install Command</td>
+<td><code>npm ci</code></td>
+</tr>
+<tr>
+<td>Build Command</td>
+<td><code>npm run build</code></td>
+</tr>
+<tr>
+<td>Output Directory</td>
+<td><code>dist</code></td>
+</tr>
+<tr>
+<td>Variables de producción</td>
+<td>Las dos variables públicas anteriores</td>
+</tr>
+</tbody>
+</table>
+<p>Con MCP también se puede desplegar una lista explícita de estos archivos relativos
+a la raíz de la aplicación: <code>package.json</code>, <code>package-lock.json</code>, <code>vercel.json</code>,
+<code>scripts/build.mjs</code>, <code>src/index.html</code>, <code>src/style.css</code>, <code>src/app.mjs</code>,
+<code>src/metrics.mjs</code>, <code>src/editor.mjs</code> y <code>src/pepperstone.png</code>. No enviar el repositorio
+completo, <code>.local/</code>, <code>.env.local</code> ni configuraciones MCP.</p>
+<p>En la instalación docente se utilizó inicialmente el despliegue por archivos
+mediante MCP; la actualización posterior se publicó con CLI autenticada del mismo
+equipo y proyecto, tras un rechazo de alcance del conector. No se conectó Git ni se
+hizo commit o push. Por tanto, editar el clon no actualiza automáticamente el sitio:
+hay que repetir el despliegue o configurar posteriormente la integración Git.</p>
+<p>Verifica la <strong>URL de producción</strong> que devuelve Vercel. La URL generada para un
+deployment puede pedir sesión aunque el dominio de producción sea público.
+No desactives protecciones de previews para probar la URL equivocada.</p>
+<h3>4. Verificar la historia completa</h3>
+<ol>
+<li><code>node --check src/app.mjs</code>, <code>npm test</code> y <code>npm run build</code> deben terminar bien.</li>
+<li>Con <strong>solo la clave publishable</strong>, llama a <code>POST /rest/v1/rpc/mt5_public_dashboard_page</code>
+   con cuerpo <code>{}</code> y cabecera <code>apikey</code>. Debe devolver solo la demo habilitada.</li>
+<li>Con esa misma clave, intentar leer directamente snapshots, deals, credenciales
+   o la tabla de publicación debe fallar. Revisa además que el rol <code>anon</code> no tenga
+   permisos de escritura; no pruebes borrados contra datos reales.</li>
+<li>Contrasta cifras del navegador con la consulta. Aplica filtros combinados,
+   restablécelos, prueba una selección vacía y exporta JSON. La suma de la tabla,
+   los gráficos y el archivo debe coincidir.</li>
+<li>Abre la URL de producción sin una sesión Vercel y verifica datos, tablas y
+   gráficos en escritorio y móvil. Comprueba nueva recepción del EA y la fecha
+   visible; una compilación exitosa no basta.</li>
+</ol>
+<p>Pruebas incluidas: coste de entrada, totales, acumulados, filtros intersectados,
+valores nulos frente a cero y detección de datos atrasados. Los fixtures de pruebas
+son sintéticos y nunca se incluyen en el sitio.</p>
+<h2>Evidencia y límites</h2>
+<p>Validado en el entorno docente el 8 de octubre de 2026: consulta pública HTTP 200,
+acceso directo a tablas denegado, cinco tablas con RLS y sin permisos de cliente,
+cuatro pruebas unitarias aprobadas y lectura real en navegador. Los resultados de
+publicación y revisión final se registran en la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/BITACORA.md">bitácora</span>.</p>
+<p>La aplicación no completa el historial ausente, no reconstruye posiciones parciales,
+no infiere estrategias, no registra equity histórica y no implementa autenticación
+privada. Para una cuenta privada hace falta diseñar autorización por usuario antes
+de habilitarla; la ruta pública actual excluye cuentas reales. Un enlace público
+permite a cualquier visitante leer y descargar los campos publicados.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/README.md">Volver al seminario 3</span>.</p>
+<h1>Comentarios de apertura y cierre</h1>
+<p>Autoría: QRT Solutions. Actualización del 8 de octubre de 2026.</p>
+<p>La sección <strong>Comentarios de las operaciones</strong> muestra una fila por identificador
+de posición y columnas separadas de apertura y cierre. Lee <code>journals</code> de la RPC
+<code>mt5_public_dashboard_page()</code>; requiere la extensión
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/bitacora_trades.sql">bitacora_trades.sql</span>.</p>
+<ul>
+<li><strong>Motivo · Telegram</strong> muestra la explicación humana guardada desde el bot.</li>
+<li><strong>MT5 · Ejecución / Orden</strong> conserva los comentarios originales cuando el EA
+  los envía. No se interpreta el Magic Number como una razón de entrada o salida.</li>
+<li><strong>Motivo pendiente</strong> indica fase recibida sin comentario o explicación.</li>
+<li><strong>Sin apertura/cierre recibido</strong> indica ausencia de esa fase en los datos
+  cargados, no una afirmación del estado de la posición.</li>
+<li>Los detalles despliegan fecha del broker, dirección del deal, volumen y precio.
+  Entradas parciales, salidas parciales y reversiones conservan sus ejecuciones.</li>
+</ul>
+<p>Se consultan 10 posiciones por página en el servidor, con hasta 200 ejecuciones por
+posición. La cobertura aparece junto al título; si se
+recortaron ejecuciones, se señala en la fila. Esta tabla tiene paginación propia
+y no está afectada por los filtros ni por la exportación del historial de deals.
+En pantallas estrechas cada operación se presenta como una tarjeta.
+El estado se actualiza cada 30 segundos; el historial cada 2 minutos o mediante <strong>Actualizar</strong>.</p>
+<p>El texto se inserta con <code>textContent</code>: los comentarios no se ejecutan como HTML.
+Si la exportación original no incluye comentarios, se informa de esa ausencia.
+La versión del bot y del dashboard se despliegan por separado; guardar un motivo
+en Supabase no actualiza por sí solo el código de Vercel.</p>
+<h2>Edición de motivos desde la web</h2>
+<p>Disponible mediante <strong>Entrar con Telegram</strong> para el chat privado ya autorizado.
+La lectura sigue siendo pública; únicamente se editan los motivos humanos de
+apertura, cierre y grupos de cambios SL/TP, con historial y control de cambios simultáneos. Consulta el
+<span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/EDICION.md">paso a paso de edición e instalación</span>. La clave de servicio y el token
+del bot permanecen en Supabase; no se añaden secretos a Vercel.</p></div></details><details class="reference" id="ref-9"><summary>editor web</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/aplicaciones/web/EDICION.md</p><h1>Editar motivos desde el dashboard</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>La web sigue siendo pública para lectura. El propietario autorizado en el bot puede
+completar o corregir los <strong>motivos humanos</strong> de apertura y cierre. La edición vive
+en Vercel; el guardado, los permisos y el historial viven en Supabase.
+Los comentarios originales del EA/broker, precios, volúmenes, fechas y resultados
+recibidos de MT5 no se editan desde esta función. El cierre remoto permanece desactivado.</p>
+<h2>Uso del propietario</h2>
+<ol>
+<li>Abre tu dashboard y pulsa <strong>Entrar con Telegram</strong>.</li>
+<li>Abre el bot indicado y envía <code>/dashboard</code> en el chat privado ya vinculado.
+   Puedes escribir el comando aunque todavía no figure en el menú del bot.</li>
+<li>Copia el código de la respuesta y pégalo únicamente en el dashboard. Dura
+   <strong>cinco minutos</strong>, sirve una vez y un nuevo <code>/dashboard</code> invalida el anterior.
+   No es el token de BotFather ni el código <code>/vincular</code>.</li>
+<li>Pulsa <strong>Entrar</strong>. Aparecen <strong>Editar motivo</strong> o <strong>Completar motivo</strong> en cada
+   fase recibida de las operaciones. Una fase sin ejecuciones todavía no se edita.</li>
+<li>Escribe entre 1 y 1000 caracteres y pulsa <strong>Guardar motivo</strong>. El texto será
+   visible para los visitantes porque esta bitácora es pública.</li>
+<li>Abre <strong>Historial</strong> dentro del editor para consultar los últimos 50 registros.
+   Los cambios web incluyen el valor anterior. Las solicitudes de Telegram se
+   presentan como solicitudes recibidas: el historial antiguo no identifica si
+   una petición atrasada llegó a reemplazar el valor vigente.</li>
+<li>Usa <strong>Salir de edición</strong> al terminar. La sesión dura una hora. Recargar o cerrar
+   la página descarta la credencial del navegador; no la guarda en cookies ni en
+   almacenamiento persistente. El registro servidor expira como máximo en una hora.</li>
+</ol>
+<p>Si Telegram u otra ventana cambian el motivo mientras escribes, el guardado se
+rechaza para evitar perder esa modificación. Pulsa <strong>Cargar versión actual</strong>,
+compara el motivo vigente con tu borrador (se conserva) y vuelve a guardar cuando
+corresponda. <strong>Renovar acceso</strong> permite iniciar sesión sin perder el borrador.
+El historial conserva las versiones; restaurar una versión consiste en copiar su
+texto y guardarlo como una modificación nueva, sin borrar registros anteriores.</p>
+<h2>Muestras didácticas autorizadas</h2>
+<p>Si el propietario pide completar una demo con ejemplos, marcar cada motivo como
+<code>Ejemplo didáctico</code> y aclarar cuando la intención sea ficticia. No deducir señales
+de soporte, tendencia o noticias solamente por la hora o el resultado del trade.
+Conservar los motivos existentes y los comentarios originales del broker; llenar
+únicamente fases que tengan ejecuciones recibidas. Los ejemplos no sirven como
+evidencia de la decisión real ni deben mezclarse con motivos reales al analizarlos.</p>
+<p>El propietario pidió después abreviar los 199 textos de esta muestra y retirar
+el prefijo visible. Ahora muestran el efecto buscado, por ejemplo «Capturar rebote
+alcista en soporte» y «Reducir exposición». Su origen continúa siendo sintético:
+las revisiones conservan el texto anterior etiquetado en <code>previous_reason</code> y la
+bitácora registra la solicitud. Una frase sin etiqueta visible no acredita una
+intención real; para análisis de motivos se debe consultar esa procedencia.</p>
+<p>En la muestra del 8 de octubre se agruparon aperturas del mismo símbolo, dirección
+y tipo de ejecución con separación máxima de cinco segundos y duración máxima
+de treinta segundos por grupo. Los cierres se agruparon por proximidad temporal
+y tipo de ejecución, incluso entre símbolos. Cada grupo comparte exactamente el
+mismo texto. Esta es una convención de la muestra, no una prueba de señal común.</p>
+<p>La carga administrativa autorizada añadió 199 motivos en 100 operaciones y
+conservó cinco motivos previos: las 102 operaciones quedaron completas. Se guardó
+respaldo privado, se ensayó con ROLLBACK y se registraron las 199 revisiones en
+<code>mt5_web_reason_audit</code> con <code>actor_user_id=0</code>, identificador administrativo de esta
+carga; no representa a un usuario de Telegram. El historial actual las presenta
+con origen <code>web</code> por reutilizar esa tabla, aunque se cargaron mediante SQL
+administrativo. La bitácora documenta esta diferencia. No se emitieron sesiones
+ni mensajes del bot. Los alumnos no deben ejecutar esta carga automáticamente
+en sus cuentas: cada muestra requiere autorización y datos propios.</p>
+<h2>Instalación reproducible con tu agente</h2>
+<p>Primero completa la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/integraciones/telegram/README.md">conexión del bot</span>,
+la <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/CONTRATO_DATOS.md">bitácora de operaciones</span> y la publicación de
+este <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/aplicaciones/web/README.md">dashboard</span>. Cada alumno usa sus propios proyectos, bot y cuenta;
+ninguna credencial del docente forma parte del clon.</p>
+<ol>
+<li>El agente confirma el proyecto Supabase destino, la URL pública de Vercel y el
+   <code>username</code> del bot. Revisa tablas y migraciones existentes para aplicar solo
+   lo que falta. No reutiliza identificadores del docente.</li>
+<li>Aplica como administrador <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/dashboard_editor.sql">dashboard_editor.sql</span>
+   <strong>una vez</strong>, después de las migraciones de bitácora y Telegram. Crea cuatro
+   tablas privadas y dos funciones accesibles únicamente por <code>service_role</code>.</li>
+<li>Configura el origen exacto y el bot con los valores del alumno. Ejemplo ilustrativo:</li>
+</ol>
+<p><code>sql
+   -- Autor: QRT Solutions. Sustituir ambos ejemplos antes de ejecutar.
+   insert into public.mt5_dashboard_web_config(singleton,origin,bot_username)
+   values (true,'https://mi-dashboard.vercel.app','mi_bitacora_bot')
+   on conflict(singleton) do update
+     set origin=excluded.origin,bot_username=excluded.bot_username;</code></p>
+<p>El origen no lleva barra final, ruta ni parámetros. Se permite un origen HTTPS.
+   Los despliegues Preview y localhost no obtienen permiso de edición por defecto.
+   Para probar toda la integración, usa un proyecto separado con su propio origen.
+4. Despliega la carpeta <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-dashboard-editor/index.ts">mt5-dashboard-editor</span>
+   con <code>index.ts</code>, <code>core.mjs</code> y <code>deno.jsonc</code>. Usa su
+   <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-dashboard-editor/config.example.toml">configuración de ejemplo</span>.
+   <code>verify_jwt=false</code> corresponde a autenticación propia en el código: <strong>no</strong> hace
+   públicas las escrituras. Nunca desactivar la comprobación de sesión.
+5. Despliega la versión actual de <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/functions/mt5-telegram/index.ts">mt5-telegram</span>,
+   incluyendo <code>runtime.ts</code>, <code>core.mjs</code> y <code>deno.jsonc</code>. Ya utiliza el secreto
+   <code>TELEGRAM_BOT_TOKEN</code> guardado en Supabase; no se necesita copiarlo a Vercel.
+   El comando <code>/dashboard</code> requiere un editor activo y un chat privado previamente
+   vinculado. Una instalación nueva con <code>setup.ts</code> también lo añade al menú.
+6. Publica la aplicación web con <code>npm ci</code> y <code>npm run build</code>, directorio <code>dist</code>.
+   Incluye <code>src/editor.mjs</code> al desplegar fuentes. Conserva únicamente las variables
+   públicas <code>PUBLIC_SUPABASE_URL</code> y <code>PUBLIC_SUPABASE_PUBLISHABLE_KEY</code> de la guía web.
+7. Ejecuta las pruebas siguientes y verifica visualmente acceso, edición de una
+   razón real autorizada, consulta pública y salida. No inventes motivos para
+   probar en datos de alumnos o del docente.</p>
+<h2>Verificación y límites</h2>
+<p>Desde la raíz del repositorio:</p>
+<pre><code class="language-bash">node --test seminario_3/supabase/functions/mt5-dashboard-editor/core.test.mjs seminario_3/supabase/functions/mt5-telegram/core.test.mjs
+npm --prefix seminario_3/aplicaciones/web test
+npm --prefix seminario_3/aplicaciones/web run build
+</code></pre>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/verificar_dashboard_editor.sql">verificar_dashboard_editor.sql</span>
+comprueba códigos, consumo único, guardado, concurrencia, auditoría, revocación,
+expiración y permisos dentro de una transacción con <code>ROLLBACK</code>. Necesita al menos
+un editor activo y una apertura recibida. No deja razones de prueba publicadas.</p>
+<p>El navegador recibe una sesión aleatoria; Supabase conserva solo su hash. La
+cuenta y la identidad se resuelven en el servidor, nunca desde campos enviados
+por el navegador. Cada guardado comprueba además la autorización activa y la
+existencia de la fase. La clave de reintento impide duplicar un mismo guardado.
+La versión utiliza el <code>updated_at</code> original con toda su precisión, sin redondearlo
+con <code>Date</code> en JavaScript. Los textos se muestran literalmente mediante <code>textContent</code>.</p>
+<p>Este acceso utiliza códigos privados enviados por el bot; no requiere instalar
+el widget OAuth/OIDC de Telegram. Quien tenga un código aún válido puede consumirlo:
+trátalo como una credencial temporal. El token del bot y la clave de servicio
+nunca se envían al navegador. No hay permisos de trading asociados a esta sesión.</p>
+<p>Para revocar el acceso, desactiva la fila correspondiente de
+<code>mt5_telegram_editors</code> siguiendo la guía de Telegram: las sesiones existentes
+fallan en su próxima operación. Los registros de códigos consumidos y sesiones
+expiradas se conservan para diagnóstico; esta versión no instala limpieza programada.</p>
+<p>Los avisos informativos de RLS sin políticas corresponden a tablas sin acceso
+directo de clientes. Las advertencias de ejecución pública de
+<code>mt5_public_dashboard()</code> son anteriores y corresponden a la lectura demo autorizada;
+las nuevas funciones de edición no tienen permisos para <code>anon</code> o <code>authenticated</code>.
+Consulta la <a href="https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy" target="_blank" rel="noopener noreferrer">explicación oficial de RLS sin políticas</a>
+y la <a href="https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable" target="_blank" rel="noopener noreferrer">advertencia de funciones públicas</a>.</p>
+<h2>Motivos de protección</h2>
+<p>La extensión <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/sql/protecciones_bitacora.sql">protecciones_bitacora.sql</span>
+añade las acciones autenticadas <code>protection</code> y <code>save_protection</code>. Reutiliza la
+sesión de una hora y valida propiedad, identificador, idempotencia y versión
+actual antes de guardar. Cada revisión conserva anterior/nuevo y actor; solo el
+motivo vigente se publica. No permite editar niveles ni comentarios del broker.</p></div></details><details class="reference" id="ref-10"><summary>registro de instalación</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/guias/REGISTRO_INSTALACION.md</p><h1>Plantilla privada de instalación del alumno</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>Copia este archivo dentro de <code>.local/</code> y complétalo allí. No escribas tokens,
+contraseñas ni códigos de acceso, incluso en este registro; referencia únicamente
+la ubicación privada o el gestor donde los guardas.</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Valor de tu instalación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fecha, sistema operativo y cliente de IA</td>
+<td>Por completar</td>
+</tr>
+<tr>
+<td>Versión/commit del clon</td>
+<td>Por completar</td>
+</tr>
+<tr>
+<td>Proyecto Supabase y URL</td>
+<td>Por completar localmente</td>
+</tr>
+<tr>
+<td>Cuenta demo, broker y servidor</td>
+<td>Por completar localmente</td>
+</tr>
+<tr>
+<td>Versión y hash de la fuente EA</td>
+<td>Por completar</td>
+</tr>
+<tr>
+<td>Resultado de compilación: errores/advertencias</td>
+<td>Por completar</td>
+</tr>
+<tr>
+<td>Gráfico elegido y versión activa</td>
+<td>Por completar localmente</td>
+</tr>
+<tr>
+<td>URL Vercel y nombre de bot</td>
+<td>Por completar localmente</td>
+</tr>
+<tr>
+<td>Ubicación de parámetros privados y fecha de rotación</td>
+<td>Por completar sin copiar secretos</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Paso</th>
+<th>Estado: pendiente / comprobado / bloqueado</th>
+<th>Evidencia sanitizada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pruebas offline</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Descubrimiento de ambos MCP de MT5</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>SQL revisado y aplicado en orden</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Receptor desplegado y credencial registrada</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Fuente compilada y EA configurado</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>WebRequest y recepción repetida</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Autorización de publicación demo</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Dashboard con datos reales</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Webhook definitivo, sin instalador</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Propietario vinculado</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Aviso y razón real de apertura</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Aviso y razón real de cierre</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Acceso web, edición, historial y salida</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+<tr>
+<td>Comprobación de permisos y asesores</td>
+<td>Pendiente</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>Incidencias y continuación</h2>
+<ul>
+<li>Problema observado:</li>
+<li>Acción realizada y por qué:</li>
+<li>Resultado comprobado:</li>
+<li>Pendiente y siguiente paso:</li>
+</ul>
+<p>Mantén el cierre remoto desactivado. Una fila marcada «comprobado» requiere
+resultado observado, no solo una llamada a una herramienta.</p></div></details><details class="reference" id="ref-11"><summary>estado y límites</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/ESTADO.md</p><h1>Estado, versiones y evidencia</h1>
+<p>Autoría: QRT Solutions. Corte documental: 8 de octubre de 2026.</p>
+<p>Esta tabla describe el trabajo registrado en el entorno docente. No certifica
+que un clon nuevo ya esté conectado ni que se hayan probado todos los clientes.
+La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/BITACORA.md">bitácora histórica</span> conserva los detalles cronológicos.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Disponible en el repositorio</th>
+<th>Evidencia y límite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base heredada</td>
+<td>Catálogo, contratos, scripts, metodología y presentación anterior</td>
+<td>Sus pruebas son independientes de la integración nube</td>
+</tr>
+<tr>
+<td>Operación MT5</td>
+<td>Skill local, esquemas, pruebas y cuatro manuales</td>
+<td>Pruebas offline; servicios MCP se descubren en cada equipo</td>
+</tr>
+<tr>
+<td>Exportador EA</td>
+<td>Fuente v3.40, sin credenciales ni funciones de trading</td>
+<td>v3.40 compilada por MCP nativo: 0 errores, 0 advertencias; activa en gráfico, snapshot recibido e historial HTTP 200 verificados</td>
+</tr>
+<tr>
+<td>Supabase</td>
+<td>Diez referencias SQL principales, tres funciones Edge y consultas</td>
+<td>Instalación y recepción reales verificadas en el proyecto docente</td>
+</tr>
+<tr>
+<td>Credencial MT5</td>
+<td>Generador local con hash, alcance y revocación</td>
+<td>Identidad y acceso restringido comprobados; secreto no distribuido</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Código, lockfile, build, pruebas y configuración Vercel</td>
+<td>Producción READY y lectura pública real verificadas</td>
+</tr>
+<tr>
+<td>Comentarios</td>
+<td>Apertura/cierre, metadatos y motivos humanos separados</td>
+<td>Motivos visibles; comentarios nativos requieren recepción desde fuente compatible</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>Creación, secreto, instalador temporal, webhook y vinculación</td>
+<td>Bot definitivo y chat vinculado verificados; usuario confirmó <code>/pendientes</code></td>
+</tr>
+<tr>
+<td>Avisos de apertura/cierre</td>
+<td>Cola, reintentos y respuesta ligada al mensaje</td>
+<td>Apertura y respuesta verificadas; recibo de envío de cierre documentado</td>
+</tr>
+<tr>
+<td>Edición web</td>
+<td>Código de un uso, sesión, editor e historial</td>
+<td>Pruebas de HTTP, SQL con ROLLBACK e interfaz local aprobadas; primer acceso real del propietario pendiente de confirmación</td>
+</tr>
+<tr>
+<td>Protección SL/TP</td>
+<td>Comparación de snapshots, eventos, grupos y auditoría</td>
+<td>SQL aplicado y EA v3.40 activo; permisos y revisiones probados con rollback; pendiente comprobar un cambio real y su motivo por Telegram</td>
+</tr>
+<tr>
+<td>Dashboard móvil y páginas</td>
+<td>Diseño inspirado en Trackrecord Dual, tarjetas, páginas en servidor y totales del filtro</td>
+<td>Pruebas locales 320/390/768/1440 px; producción verificada a 390/1440 px, edición probada con respuestas simuladas</td>
+</tr>
+<tr>
+<td>Documentación docente</td>
+<td>Recorrido, resumen de configuración, ayuda memoria, prompt, mapa SQL, ejercicios y registro</td>
+<td>Enlaces y construcción estática se verifican al preparar la entrega</td>
+</tr>
+<tr>
+<td>Motivos de muestra</td>
+<td>Procedimiento y procedencia documentados; datos solo en la demo</td>
+<td>199 motivos breves de muestra, cinco originales conservados, 102 operaciones verificadas; no certifican intención real</td>
+</tr>
+</tbody>
+</table>
+<h2>Qué significa «probado»</h2>
+<ul>
+<li><strong>Offline:</strong> ejecuta código con casos controlados; no contacta servicios.</li>
+<li><strong>Compilado:</strong> el compilador produjo un binario de esa fuente específica.</li>
+<li><strong>Desplegado:</strong> el proveedor aceptó y publicó los archivos; falta comprobar el uso.</li>
+<li><strong>Recepción real:</strong> registros leídos en Supabase y contrastados con el origen.</li>
+<li><strong>Validado por el propietario:</strong> la persona usó su bot o dashboard y confirmó el resultado.</li>
+</ul>
+<p>No sustituir una evidencia por otra. No se ha ejecutado el recorrido completo desde
+un clon limpio por un alumno independiente en Windows, Codex, Claude Code y
+Antigravity. Los agentes deben adaptar la instalación, no declarar portabilidad probada.</p>
+<h2>Límites funcionales actuales</h2>
+<table>
+<thead>
+<tr>
+<th>Límite</th>
+<th>Implicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Una cuenta por proyecto y un bot por proyecto</td>
+<td>Revisar claves y alcance antes de un servicio multiusuario</td>
+</tr>
+<tr>
+<td>Snapshot sobrescrito</td>
+<td>No existe serie histórica de equity</td>
+</tr>
+<tr>
+<td>Hora del broker etiquetada por el EA sin normalizar</td>
+<td>No usarla como UTC para análisis intradiario</td>
+</tr>
+<tr>
+<td>Precios y volumen con ocho decimales en v3.40</td>
+<td>Datos previos no recuperan precisión descartada</td>
+</tr>
+<tr>
+<td>Sin MAE/MFE ni riesgo inicial</td>
+<td>Esas métricas aparecen no disponibles</td>
+</tr>
+<tr>
+<td>Un motivo por posición y fase</td>
+<td>Cierres parciales comparten motivo; no se solicitan de nuevo por cada parcial</td>
+</tr>
+<tr>
+<td>Eventos de MT5 sin cola durable completa</td>
+<td>Una desconexión puede omitir un aviso; histórico y avisos son mecanismos distintos</td>
+</tr>
+<tr>
+<td>Reintentos Telegram ligados a recepciones de telemetría</td>
+<td>Sin nuevas recepciones no hay entrega de reintentos independiente</td>
+</tr>
+<tr>
+<td>Red y colas</td>
+<td>No se garantiza latencia instantánea ni entrega exactamente una vez</td>
+</tr>
+<tr>
+<td>Estado cada 30 s; historial cada 2 min</td>
+<td>Actualizar fuerza consulta; un motivo puede tardar en aparecer a otro visitante</td>
+</tr>
+<tr>
+<td>Sesión web en memoria, una hora</td>
+<td>Recargar exige otro código; origen Preview/local no autorizado por defecto</td>
+</tr>
+<tr>
+<td>Datos de prueba del docente</td>
+<td>No vienen en el clon ni deben copiarse al proyecto de un alumno</td>
+</tr>
+</tbody>
+</table>
+<h2>Estado de distribución</h2>
+<p>El trabajo está preparado en el árbol local del repositorio. El remoto configurado
+sigue siendo el de <code>seminario_2-public</code>; no se ha creado un remoto nuevo ni hecho
+commit/push del seminario 3 durante esta consolidación. No afirmar que el código
+nuevo ya está disponible para clonar en una URL remota hasta publicarlo.
+Sigue <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ENTREGA.md">ENTREGA.md</span> para ese último paso.</p></div></details><details class="reference" id="ref-12"><summary>entrega</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/ENTREGA.md</p><h1>Entrega del repositorio a los alumnos</h1>
+<p>Autoría: QRT Solutions. Preparación documental: 8 de octubre de 2026.</p>
+<p>La entrada de aprendizaje es <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/README.md">Guía completa del alumno</span>, seguida
+del <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/PROMPT_AGENTE.md">mensaje para el agente</span>. Los archivos de implementación
+están en el mismo árbol: no hay que recuperar código ni instrucciones desde el chat.</p>
+<h2>Contenido preparado</h2>
+<ul>
+<li>Fuente EA actual en <code>MT5/</code>, skill local completa y cuatro referencias técnicas.</li>
+<li>SQL ordenado, tres funciones Supabase y generadores de credenciales/vinculación.</li>
+<li>Aplicación Vercel con dependencias fijadas, motivos de apertura/cierre y editor.</li>
+<li>Procedimiento BotFather → Secrets → webhook → vinculación → avisos.</li>
+<li>Pruebas, estado de evidencia, bitácora, ejercicios, guion y registro de instalación.</li>
+<li><a href="#top">Resumen paso a paso</a> y
+  <a href="ayuda-memoria.html">ayuda memoria para presentar</a>.</li>
+<li>Navegación MkDocs que reúne las guías y conserva la documentación del seminario anterior.</li>
+</ul>
+<p>No se incluyen el acceso a la nube del docente, datos de su cuenta ni sus tokens.
+Los servicios que estén funcionando para el docente no configuran el clon de un alumno.
+La fuente v3.40 y el primer acceso real al editor tienen los límites de validación
+indicados en <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ESTADO.md">ESTADO.md</span>; no anunciarlos como verificados si falta evidencia.</p>
+<h2>Revisión antes de compartir</h2>
+<ol>
+<li>Ejecuta el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/pruebas/README.md">plan de pruebas</span> y revisa el diff.</li>
+<li>Comprueba que los archivos nuevos deseados aparezcan en <code>git status --short</code>.
+   Un archivo local sin commit no aparecerá en un clon remoto.</li>
+<li>Revisa la exclusión de <code>.local/</code>, <code>.env.local</code>, configuraciones MCP con tokens,
+   archivos <code>*.private.json</code>, binarios compilados y accesos directos <code>*.lnk</code>.
+   No borres los archivos privados del equipo: simplemente quedan fuera de la entrega.</li>
+<li>Ejecuta el escáner de publicación. Para el escáner general del proyecto:</li>
+</ol>
+<p><code>sh
+   uv run --locked python tools/install_gitleaks.py
+   .local/tools/gitleaks git --redact --no-banner --log-opts=--all .</code></p>
+<p>El instalador verifica el SHA-256 del binario fijado en el manifiesto. En Windows,
+   usar una instalación oficial compatible y consultar su ayuda. El modo <code>git</code>
+   inspecciona historia: antes de publicar, revisa también el árbol final de archivos
+   seleccionados con el modo <code>dir</code> de Gitleaks. No escanees/exportes toda la carpeta
+   de trabajo como si fuera el contenido público: contiene configuración local ignorada.
+5. Comprueba que el build de documentación no contenga configuraciones privadas.
+6. Guarda la evidencia de revisión sin secretos; registra qué fue probado y qué queda pendiente.</p>
+<p>El escaneo es heurístico y no certifica ausencia absoluta de secretos. Si encuentra
+algo, revisar la coincidencia sin imprimir el valor y resolver el origen antes de compartir.</p>
+<h2>Resultado de la preparación local</h2>
+<p>La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/pruebas/VERIFICACION.md">verificación documental</span> registra resultados y límites
+de esta entrega, incluidos los escaneos de archivos e historia.</p>
+<h2>Publicación Git pendiente</h2>
+<p>En esta copia <code>origin</code> todavía apunta al seminario 2. <strong>No ejecutar <code>git push</code> al
+remoto heredado para publicar el seminario 3.</strong> Falta definir/verificar el repositorio
+destino, registrar los cambios elegidos y publicar allí. Esta tarea preparó archivos
+y documentación; no creó repositorios, commits ni publicaciones Git.</p>
+<p>Cuando el mantenedor autorice el destino concreto, revisar cambios y estado Git,
+publicar el contenido seleccionado y comprobar un clon limpio de la URL resultante.
+Actualizar entonces <code>repo_url</code>/<code>site_url</code> de MkDocs y los metadatos que deban apuntar
+al seminario 3. Se retiraron de MkDocs las URL del sitio anterior para que el build
+local nuevo no anuncie aquella publicación como su destino.</p>
+<p>La documentación histórica de distribución del seminario 2 sigue en
+<span class="repo-reference" title="Archivo complementario del repositorio: docs/release.md">docs/release.md</span>; sus aprobaciones no certifican esta ampliación.
+No incluir <code>.git/</code> ni el directorio de trabajo completo en un ZIP de alumnos.</p>
+<h2>Comprobación del alumno independiente</h2>
+<p>Un alumno debería poder empezar con el repositorio público, sus propias cuentas y
+el prompt incluido. Debe generar su propio registro y verificar cada tramo.
+El recorrido completo en un clon nuevo y otros clientes/sistemas sigue siendo una
+prueba de aceptación adicional, no algo demostrado por el build local del docente.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/README.md">Índice del seminario</span>.</p></div></details></section>
+<footer class="doc-footer"><span>QRT Solutions · <a href="https://www.qrtsolutions.com">www.qrtsolutions.com</a></span><span>Seminario 3 · Material de formación</span></footer></main></div>
+<div class="status" role="status" aria-live="polite"></div><script>
+// Author: QRT Solutions. Local document controls; no network or storage.
+const status=document.querySelector('.status');let statusTimer;
+function announce(message){status.textContent=message;clearTimeout(statusTimer);statusTimer=setTimeout(()=>status.textContent='',3500);}
+document.querySelector('#print').addEventListener('click',()=>window.print());
+document.querySelector('#present').addEventListener('click',event=>{const on=document.body.classList.toggle('presenting');event.currentTarget.setAttribute('aria-pressed',String(on));event.currentTarget.textContent=on?'Vista normal':'Modo presentación';});
+for(const pre of document.querySelectorAll('pre')){const code=pre.querySelector('code');if(!code)continue;const button=document.createElement('button');button.className='copy';button.type='button';button.textContent='Copiar comando';button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(code.textContent);announce('Comando copiado. Sustituye los valores de ejemplo antes de ejecutarlo.');}catch{const selection=window.getSelection(),range=document.createRange();range.selectNodeContents(code);selection.removeAllRanges();selection.addRange(range);announce('Texto seleccionado. Usa Ctrl+C o ⌘C para copiar.');}});pre.append(button);}
+for(const table of document.querySelectorAll('table')){const labels=[...table.querySelectorAll('thead th')].map(t=>t.textContent);for(const tr of table.querySelectorAll('tbody tr'))[...tr.children].forEach((cell,i)=>cell.dataset.label=labels[i]||'');const wrap=document.createElement('div');wrap.className='table-wrap';table.before(wrap);wrap.append(table);}
+function openReference(hash){if(!hash.startsWith('#ref-'))return;const ref=document.getElementById(hash.slice(1));if(ref instanceof HTMLDetailsElement){ref.open=true;ref.scrollIntoView({block:'start'});}}
+document.querySelectorAll('a[href^="#ref-"]').forEach(link=>link.addEventListener('click',()=>openReference(link.hash)));
+window.addEventListener('hashchange',()=>openReference(location.hash));openReference(location.hash);
+document.querySelectorAll('.mobile-nav .toc a').forEach(link=>link.addEventListener('click',()=>document.querySelector('.mobile-nav').open=false));
+const sections=[...document.querySelectorAll('main>.section')],links=[...document.querySelectorAll('.toc a')];let ticking=false;
+function update(){const y=window.scrollY,max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(max>0?Math.min(100,100*y/max):0)+'%';let current=sections[0]?.id;for(const section of sections)if(section.getBoundingClientRect().top<180)current=section.id;for(const link of links){const active=link.hash==='#'+current;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}ticking=false;}
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});window.addEventListener('resize',update);update();
+</script></body></html>

@@ -1,14 +1,14 @@
-site_name: QRT Quantitative Seminar
+site_name: QRT Seminario 3
 site_description: Diseño y validación de estrategias con experimentos reproducibles
 site_author: QRT Solutions
-site_url: https://qrt-solutions.github.io/seminario_2-public/
-repo_url: https://github.com/QRT-Solutions/seminario_2-public
 edit_uri: ''
 docs_dir: docs
 site_dir: site
 use_directory_urls: false
 hooks:
   - tools/docs_hook.py
+exclude_docs: |
+  !/.agents/skills/mt5-platform-operator/**
 theme:
   name: mkdocs
   highlightjs: false
@@ -17,6 +17,31 @@ theme:
   user_color_mode_toggle: true
 nav:
   - Inicio: index.md
+  - Seminario 3:
+      - Componentes y estado: seminario_3/README.md
+      - Empieza aquí (Sin credenciales): seminario_3/guias/EMPIEZA_AQUI.md
+      - Guía completa del alumno: seminario_3/guias/README.md
+      - Resumen de configuración: seminario_3/guias/RESUMEN_CONFIGURACION.md
+      - Ayuda memoria de presentación: seminario_3/material/AYUDA_MEMORIA.md
+      - Mensaje para tu agente: seminario_3/guias/PROMPT_AGENTE.md
+      - Registro de instalación: seminario_3/guias/REGISTRO_INSTALACION.md
+      - Estado y evidencias: seminario_3/ESTADO.md
+      - Entrega al alumno: seminario_3/ENTREGA.md
+      - Aplicación web: seminario_3/aplicaciones/web/README.md
+      - Edición web: seminario_3/aplicaciones/web/EDICION.md
+      - Telegram: seminario_3/integraciones/telegram/README.md
+      - MetaTrader: seminario_3/integraciones/metatrader/README.md
+      - Supabase:
+          - Inicio y mensaje para agentes: seminario_3/supabase/README.md
+          - Configuración paso a paso: seminario_3/supabase/CONFIGURACION.md
+          - Datos y parámetros del EA: seminario_3/supabase/CONTRATO_DATOS.md
+          - Receptor y conexión del EA: seminario_3/supabase/RECEPTOR.md
+          - Orden del SQL: seminario_3/supabase/sql/README.md
+          - Bitácora: seminario_3/supabase/BITACORA.md
+      - Ejemplos: seminario_3/ejemplos/README.md
+      - Pruebas: seminario_3/pruebas/README.md
+      - Verificación de entrega: seminario_3/pruebas/VERIFICACION.md
+      - Material docente: seminario_3/material/README.md
   - Empieza aquí: docs/start.md
   - Guía rápida: docs/quickstart.md
   - English: README.en.md

@@ -1,0 +1,26 @@
+// Author: QRT Solutions. Local-only compilation; never deploys or reads credentials.
+import {existsSync} from 'node:fs';
+import {mkdir,readFile,writeFile,copyFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const here=path.dirname(fileURLToPath(import.meta.url));
+const repository=path.resolve(here,'../../..');
+const runtime=path.join(repository,'.local/kpi-preview-runtime');
+const plugin=process.argv[2]||process.env.DATA_PLUGIN_ROOT;
+if(!plugin||!existsSync(path.join(plugin,'scripts/data-app.mjs')))throw new Error('Pass the installed Data plugin root as the first argument');
+const env={...process.env};delete env.CODEX_SESSION_ID;delete env.CODEX_THREAD_ID;
+const run=(file,args)=>execFileSync(process.execPath,[path.join(plugin,'scripts',file),...args],{stdio:'inherit',env});
+if(!existsSync(runtime))run('prepare-data-app.mjs',['--surface','dashboard','--output',runtime,'--snapshot',path.join(here,'fixture.json')]);
+for(const name of ['DashboardContent.jsx','dashboard.css','engine.mjs'])await copyFile(path.join(here,name),path.join(runtime,'src/content/dashboard',name));
+await mkdir(path.join(runtime,'src/content/assets'),{recursive:true});
+await copyFile(path.join(here,'../web/src/pepperstone.png'),path.join(runtime,'src/content/assets/pepperstone.png'));
+const existing=JSON.parse(await readFile(path.join(runtime,'src/data.json'),'utf8'));
+const fixture=JSON.parse(await readFile(path.join(here,'fixture.json'),'utf8'));
+fixture.id=existing.id;fixture.buildStatus='complete';
+await writeFile(path.join(runtime,'src/data.json'),JSON.stringify(fixture,null,2)+'\n');
+run('data-app.mjs',['build','--project-dir',runtime,'--separate-data']);
+const offline=path.join(runtime,'.data-app-offline/exports/kpi-preview.html');
+run('data-app.mjs',['export-offline','--project-dir',runtime,'--output',offline]);
+await copyFile(offline,path.join(here,'preview.html'));
+console.log('Ready: local preview.html. No cloud deployment.');

@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-SKIP = {".git", ".venv", ".local", "artifacts", "site", "dist", "build"}
+SKIP = {".git", ".venv", ".local", "artifacts", "site", "dist", "build", "node_modules"}
 
 
 def imported_reference_baseline(root: Path) -> dict[str, str]:
@@ -42,6 +42,10 @@ def main() -> int:
         if not source.is_file() or any(part in SKIP for part in source.relative_to(ROOT).parts):
             continue
         if source.suffix not in {".md", ".html"}:
+            continue
+        # The web HTML is a build input: vendor/chart.js is supplied by npm.
+        # Its emitted asset references are checked by scripts/build.mjs.
+        if source == ROOT / "seminario_3/aplicaciones/web/src/index.html":
             continue
         text = source.read_text(encoding="utf-8")
         imported_unchanged = baseline.get(

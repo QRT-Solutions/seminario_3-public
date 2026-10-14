@@ -1,0 +1,64 @@
+{
+  "task_id": "TASK-COMPILE-BREAKOUT3-M5-20261008-002",
+  "operation": "compile",
+  "status": "completed",
+  "reused_cached_result": false,
+  "execution_metadata": {
+    "timestamp_utc": "2026-10-08T19:16:40Z",
+    "elapsed_seconds": 0.785
+  },
+  "effective_configuration": {
+    "author": "QRT Solutions",
+    "strategy_id": "STRAT-20261008-BREAKOUT3_LONG-M5-v1.0",
+    "compiler_build": 6230,
+    "target": "x64",
+    "source_sha256": "0e7a0353113a65aee0c9ff7c9a841e8f51cdd98ab9d798d121665a718d1a3457",
+    "errors": 0,
+    "warnings": 0,
+    "binary_bytes": 41596,
+    "source_byte_identical": true,
+    "binary_signature": "EX5",
+    "live_execution_enabled_by_default": false
+  },
+  "query_payload": {
+    "source_path": "C:\\Program Files\\MetaTrader 5\\MQL5\\Experts\\STRAT-20261008-BREAKOUT3_LONG-M5-v1.0.mq5",
+    "output_path": "C:\\Program Files\\MetaTrader 5\\MQL5\\Experts\\STRAT-20261008-BREAKOUT3_LONG-M5-v1.0.ex5",
+    "binary_metadata": {
+      "name": "STRAT-20261008-BREAKOUT3_LONG-M5-v1.0",
+      "size": 41596,
+      "path": "C:\\Program Files\\MetaTrader 5\\MQL5\\Experts\\STRAT-20261008-BREAKOUT3_LONG-M5-v1.0.ex5",
+      "version": "1.00",
+      "description": "M5 breakout: High[1..3], 0.10 lots, ATR D1 barriers, 600-second exit.",
+      "build_time": "2026-10-08T19:15:36Z",
+      "compiler_build": 6230,
+      "total_parameters_count": 3,
+      "inputs_count": 3,
+      "groups_count": 0,
+      "parameters": [
+        {
+          "index": 0,
+          "name": "InPenableTrading",
+          "type": "bool",
+          "value": "false"
+        },
+        {
+          "index": 1,
+          "name": "InpMagicNumber",
+          "type": "ulong",
+          "value": "2026100801"
+        },
+        {
+          "index": 2,
+          "name": "InTesterCriterion",
+          "type": "enum",
+          "value": "0"
+        }
+      ]
+    },
+    "program_detected": true
+  },
+  "limitations_encountered": [
+    "No se ejecutó backtest ni se verificó rendimiento o ejecución temporal en el tester.",
+    "Fuente Pine v6 creada; no compilada en TradingView."
+  ]
+}

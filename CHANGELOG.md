@@ -1,5 +1,56 @@
 # Changelog — QRT Solutions
 
+
+## 2026-10-08 — Compilado documental del seminario 3
+
+Autoría: QRT Solutions.
+
+- Guía completa del alumno y prompt reutilizable para Codex, Claude Code y Antigravity.
+- Orden canónico de SQL, estado de versiones, registro privado, ejercicios y guion docente.
+- Integración documentada de MT5, Supabase, dashboard Vercel, Telegram y edición restringida.
+- Índices y navegación corregidos; fuente v3.30 distinguida de la compilación histórica v3.20.
+- Exclusión de configuración privada y accesos directos; entrega local preparada, sin push.
+
+
+## 2026-10-08 — Dashboard público MT5 en Vercel
+
+Autoría: QRT Solutions.
+
+- Adaptado el diseño del dashboard docente a telemetría real de una demo, con
+  filtros, exportación y métricas monetarias verificables. Sin dataset aleatorio.
+- Añadida consulta pública optativa de solo lectura; tablas y credencial del EA
+  permanecen privadas. Cierre remoto desactivado.
+- Documentado el despliegue reproducible y verificado en Vercel; porcentajes y
+  excursiones sin datos suficientes se muestran no disponibles.
+- Cuatro pruebas unitarias, comprobación de permisos y revisión visual en móvil
+  y escritorio. Documentación excluye configuración local y dependencias instaladas.
+
+## 2026-10-07 — Receptor de telemetría y EA conectado
+
+- Implementada Edge Function con credencial por cuenta, broker y servidor,
+  revocación, expiración y validación de payloads; claves administrativas solo en servidor.
+- Incluida fuente EA v3.20 sin funciones de trading, con tickets sin pérdida de
+  precisión y reintento de lotes históricos; compilación nativa sin errores ni advertencias.
+- Verificada recepción real desde MT5 y actualización periódica sin duplicar snapshots.
+- Añadidos generador local de credenciales, pruebas offline y recorrido docente
+  de despliegue, WebRequest, configuración, diagnóstico y rotación.
+
+## 2026-10-07 — Documentación reproducible de Supabase
+
+- Añadidos recorrido para alumnos, mensaje para agentes, contrato del EA y bitácora.
+- Incorporados SQL de referencia sin datos privados y consultas de verificación.
+- Documentadas las tablas y restricciones verificadas en el entorno docente;
+  receptor, fuente del EA en el clon y envío extremo a extremo siguen pendientes.
+- Añadida regla canónica para mantener las instrucciones al avanzar con Codex,
+  Claude Code o Antigravity; navegación actualizada sin credenciales del docente.
+
+## 2026-10-07 — Estructura inicial del seminario 3
+
+- Conservada la base del seminario 2 en sus rutas originales.
+- Añadidas carpetas y guías de alcance para las nuevas aplicaciones e integraciones.
+- Actualizados los puntos de entrada y la navegación de la documentación.
+- Integraciones todavía pendientes de incorporar; sin cambios en servicios remotos.
+
 ## 2026-09-11 — Agente Educador, Gobernanza Multi-Agente, Inyección de Datos y Métricas Porcentuales
 
 - **Agente Educador Cuantitativo (`QuantEducatorAgent`):** Incorporada directiva pedagógica de 3 capas didácticas (Metáfora -> Matemática -> Decisión) en `AGENTS.md` para guiar al alumno paso a paso.

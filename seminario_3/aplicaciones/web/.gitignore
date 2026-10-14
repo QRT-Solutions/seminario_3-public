@@ -1,0 +1,5 @@
+# Author: QRT Solutions
+node_modules/
+dist/
+.env.local
+.vercel/

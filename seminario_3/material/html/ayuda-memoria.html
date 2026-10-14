@@ -1,0 +1,645 @@
+<!doctype html>
+<!-- Author: QRT Solutions. Generated from seminario_3/material/AYUDA_MEMORIA.md; SHA256 8b4f6d6b3bdd27260102b2f4bad839dd950fd6ba0aac1826fecf056a28f66651. -->
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="QRT Solutions"><meta name="description" content="Un guion de 15 minutos. Qué mostrar, qué explicar y qué tener a mano.">
+<title>Ayuda memoria · Presentación Seminario 3 · QRT Solutions</title><style>
+:root{--ink:#152c39;--muted:#526872;--teal:#007c71;--line:#dce6e5;--paper:#fff;--wash:#f2f6f5;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--wash);color:var(--ink);font:16px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--teal);text-underline-offset:4px}a:hover{color:#004d46}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #ce862b;outline-offset:4px}
+.skip{position:absolute;left:12px;top:-80px;background:white;padding:12px;z-index:5}.skip:focus{top:12px}.progress{position:fixed;top:0;left:0;height:4px;background:#15b39b;z-index:8;width:0}
+.masthead{max-width:1440px;margin:auto;padding:25px 4vw;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}.monogram{background:var(--ink);color:white;border-radius:12px;padding:7px 11px;font-size:16px;font-weight:800;letter-spacing:-1px}.brand b{display:block;font-size:14px;letter-spacing:1px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}
+.switcher{display:flex;border:1px solid var(--line);border-radius:24px;padding:4px;background:white;gap:4px}.switcher a{padding:7px 15px;text-decoration:none;font-size:13px;color:var(--muted);border-radius:22px}.switcher a[aria-current=page]{background:var(--ink);color:white}
+.layout{max-width:1440px;margin:auto;padding:0 4vw 64px;display:grid;grid-template-columns:246px minmax(0,1fr);gap:44px}.rail{position:sticky;top:30px;align-self:start;max-height:calc(100vh - 60px);overflow:auto;padding:12px 6px 20px 0}.rail-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:750;color:var(--muted);margin:0 0 18px}.toc{display:flex;flex-direction:column;gap:5px}.toc a{border-left:2px solid transparent;padding:6px 11px;font-size:13px;text-decoration:none;color:var(--muted);line-height:1.45}.toc a:hover,.toc a.active{border-left-color:var(--teal);color:var(--teal);background:#e5efec;border-radius:0 6px 6px 0}.rail-note{font-size:12px;margin-top:25px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+main{min-width:0}.hero{background:var(--ink);border-radius:22px;padding:44px 44px 36px;color:#fff;position:relative;overflow:hidden}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;font-weight:700;color:#80d6c8}.hero h1{font-size:clamp(32px,3.3vw,48px);line-height:1.13;letter-spacing:-1.5px;margin:17px 0 19px;max-width:800px}.hero p{font-size:17px;color:#c6d9dc;max-width:680px;margin:0}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:27px}.chips span{border:1px solid #4b6570;border-radius:18px;padding:4px 11px;font-size:11px;letter-spacing:.4px;color:#e4efee}.hero-footer{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:26px;padding-top:22px;border-top:1px solid #3a5460;font-size:12px;color:#bfd1d2}.actions{display:flex;gap:8px;flex-wrap:wrap}.action{border:1px solid #b8cfcb;background:white;color:var(--ink);border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600}.action:hover{background:#e8f4f0}.action.secondary{background:transparent;color:white;border-color:#65828b}.intro{padding:22px 5px 3px;color:var(--muted)}.intro p{margin:0 0 16px}
+.section{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 34px;margin:22px 0;scroll-margin-top:24px}.section h2{font-size:25px;letter-spacing:-.6px;line-height:1.3;margin:0 0 23px;padding-bottom:17px;border-bottom:1px solid var(--line)}.section h3{font-size:19px;margin-top:27px}.section p{margin:15px 0}.section p:last-child{margin-bottom:0}.section ol,.section ul{padding-left:25px}.section li{margin-bottom:11px;padding-left:5px}.section li::marker{color:var(--teal);font-weight:700}strong{font-weight:700}code{font:0.86em/1.5 var(--mono);background:#edf3f1;border:1px solid #dce8e4;border-radius:4px;padding:2px 5px;color:#225447;overflow-wrap:anywhere}
+pre{position:relative;background:#132b36;color:#e3f0ee;border-radius:10px;padding:48px 20px 20px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;tab-size:2}pre code{background:none;border:0;color:inherit;padding:0;font-size:12px}pre .copy{position:absolute;top:9px;right:10px;border:1px solid #58747b;background:#24414e;color:white;border-radius:6px;padding:4px 10px;font-size:11px}.table-wrap{max-width:100%;overflow:auto;border:1px solid var(--line);border-radius:10px;margin:22px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.55;text-align:left}thead{background:#edf4f1}th{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#36534e;padding:13px 15px;vertical-align:top}td{padding:13px 15px;border-top:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}td:first-child{font-weight:600}tr:nth-child(even){background:#fafcfb}td code{font-size:11px}blockquote{margin:20px 0;border-left:4px solid var(--teal);padding:12px 23px;background:#eff7f3;font-size:21px;line-height:1.6;letter-spacing:-.3px}
+.references{margin-top:36px}.references h2{font-size:21px}.references>p{font-size:13px;color:var(--muted)}.reference{background:white;border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:15px 20px;scroll-margin-top:25px}.reference summary{font-size:14px;cursor:pointer;font-weight:650;color:var(--teal)}.reference .reference-body{margin-top:20px;font-size:14px}.reference-body h1{font-size:24px}.reference-body h2{font-size:21px}.reference-body h3{font-size:18px}.source-label{font:11px/1.5 var(--mono);overflow-wrap:anywhere;color:var(--muted)}.repo-reference{border-bottom:1px dotted #91a7a3}.doc-footer{border-top:1px solid var(--line);padding:25px 5px;display:flex;gap:15px;justify-content:space-between;font-size:12px;color:var(--muted)}.status{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);border-radius:10px;padding:10px 18px;background:var(--ink);color:white;box-shadow:0 5px 20px #142f3929;z-index:7;font-size:13px}.status:empty{display:none}.mobile-nav{display:none}.presenting .layout{grid-template-columns:1fr;max-width:1200px}.presenting .rail{display:none}.presenting .section{font-size:21px}.presenting .section h2{font-size:33px}.presenting table{font-size:18px}.presenting .hero h1{font-size:52px}.presenting td code{font-size:15px}
+@media(max-width:1000px){.layout{grid-template-columns:195px minmax(0,1fr);gap:24px}.hero{padding:32px}.section{padding:26px}.hero-footer{align-items:flex-start;flex-direction:column}}
+@media(max-width:720px){body{font-size:15px}.masthead{padding:18px 5vw;flex-wrap:wrap;gap:15px}.switcher{width:100%;justify-content:center}.layout{display:block;padding:0 5vw 25px}.rail{display:none}.hero{padding:29px 24px;border-radius:16px}.hero h1,.presenting .hero h1{font-size:34px}.hero p{font-size:15px}.mobile-nav{display:block;background:white;border:1px solid var(--line);border-radius:10px;padding:13px 17px;margin:18px 0}.mobile-nav summary{font-size:13px;font-weight:650;color:var(--teal);cursor:pointer}.mobile-nav .toc{padding-top:12px}.section{padding:24px 19px}.section h2,.presenting .section h2{font-size:23px}table,thead,tbody,tr,td{display:block}thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}tr{padding:10px 14px;border-top:1px solid var(--line)}tr:first-child{border-top:0}td{border:0;padding:7px 0;font-size:14px}td:before{content:attr(data-label);display:block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}.table-wrap{overflow:visible}.doc-footer{flex-direction:column}.presenting .section{font-size:17px}blockquote{font-size:19px;padding:10px 17px}.reference{padding:14px}.actions{gap:7px}.hero-footer{gap:15px}pre{padding-left:14px;padding-right:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{@page{size:A4;margin:16mm}body{background:white;color:#111;font-size:10pt;line-height:1.5}.masthead,.rail,.mobile-nav,.actions,.progress,.copy,.references,.status,.skip{display:none!important}.layout,.presenting .layout{display:block;max-width:none;padding:0}.hero{background:white!important;color:#111;border-radius:0;padding:0 0 15px;border-bottom:2px solid #007c71}.hero h1,.presenting .hero h1{font-size:27pt;letter-spacing:-.6px}.hero p,.eyebrow,.hero-footer{color:#333}.hero-footer{margin:10px 0 0;padding:0;border:0}.chips{display:none}.section,.presenting .section{border:0;padding:16px 0 0;margin:12px 0;font-size:10pt}.section h2,.presenting .section h2{font-size:16pt;break-after:avoid}.section h3{break-after:avoid}.intro{padding:15px 0 0}table,.presenting table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}pre,blockquote{break-inside:avoid;background:#f2f5f4;color:#111}pre{padding:10px;white-space:pre-wrap}pre code{color:#111}a{color:inherit;text-decoration:none}.doc-footer{margin-top:20px;font-size:9pt}p,li{orphans:3;widows:3}}
+</style></head>
+<body id="top"><a class="skip" href="#contenido">Saltar al contenido</a><div class="progress" aria-hidden="true"></div>
+<header class="masthead"><a class="brand" href="https://www.qrtsolutions.com" target="_blank" rel="noopener noreferrer"><span class="monogram">QRT</span><span><b>QRT SOLUTIONS</b><small>Seminario 03 / Bitácora conectada</small></span></a>
+<nav class="switcher" aria-label="Documentos"><a href="configuracion.html" >Configuración</a><a href="ayuda-memoria.html" aria-current="page">Presentación</a></nav></header>
+<div class="layout"><aside class="rail"><p class="rail-title">En este documento</p><nav class="toc" aria-label="Índice"><a href="#la-frase-de-apertura">La frase de apertura</a><a href="#recorrido-en-pantalla">Recorrido en pantalla</a><a href="#antes-de-compartir-pantalla">Antes de compartir pantalla</a><a href="#los-valores-que-no-conviene-confundir">Los valores que no conviene confundir</a><a href="#comandos-para-tener-a-mano">Comandos para tener a mano</a><a href="#preguntas-habituales-y-respuesta-breve">Preguntas habituales y respuesta breve</a><a href="#que-esta-demostrado-y-que-no-prometer">Qué está demostrado y qué no prometer</a></nav><p class="rail-note">Material de QRT Solutions.<br>Lectura sin conexión y referencias incluidas.<br><a href="#referencias">Ver referencias</a></p></aside>
+<main id="contenido"><div class="hero"><div class="eyebrow">Ayuda memoria del docente</div><h1>Todo listo para<br>la presentación.</h1><p>Un guion de 15 minutos. Qué mostrar, qué explicar y qué tener a mano.</p><div class="chips"><span>15 minutos</span><span>Guion docente</span><span>Comandos y preguntas</span></div>
+<div class="hero-footer"><span>8 de octubre de 2026 · QRT Solutions</span><div class="actions"><button class="action secondary" id="present" type="button" aria-pressed="false">Modo presentación</button><button class="action" id="print" type="button">Imprimir / PDF</button></div></div></div>
+<details class="mobile-nav"><summary>Ir a una sección</summary><nav class="toc" aria-label="Índice móvil"><a href="#la-frase-de-apertura">La frase de apertura</a><a href="#recorrido-en-pantalla">Recorrido en pantalla</a><a href="#antes-de-compartir-pantalla">Antes de compartir pantalla</a><a href="#los-valores-que-no-conviene-confundir">Los valores que no conviene confundir</a><a href="#comandos-para-tener-a-mano">Comandos para tener a mano</a><a href="#preguntas-habituales-y-respuesta-breve">Preguntas habituales y respuesta breve</a><a href="#que-esta-demostrado-y-que-no-prometer">Qué está demostrado y qué no prometer</a></nav></details>
+<div class="intro"><p>Guion de 15 minutos para mostrar lo construido. No hace falta reinstalar servicios
+durante la presentación. Para reproducir la configuración después, entregar el
+<a href="configuracion.html">resumen paso a paso</a> y el
+<a href="#ref-1">prompt para el agente</a>.</p>
+</div><section id="la-frase-de-apertura" class="section" aria-labelledby="title-la-frase-de-apertura"><h2 id="title-la-frase-de-apertura">La frase de apertura</h2>
+<blockquote>
+<p>MT5 registra lo que ocurrió; nosotros registramos por qué tomamos la decisión.
+Supabase conserva ambas cosas, Telegram facilita escribirlas y Vercel las muestra.</p>
+</blockquote>
+</section><section id="recorrido-en-pantalla" class="section" aria-labelledby="title-recorrido-en-pantalla"><h2 id="title-recorrido-en-pantalla">Recorrido en pantalla</h2>
+<table>
+<thead>
+<tr>
+<th>Minutos</th>
+<th>Mostrar / hacer</th>
+<th>Qué explicar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–2</td>
+<td>Dashboard con datos de la demo</td>
+<td>La web vive en Vercel; los datos, permisos y receptores viven en Supabase</td>
+</tr>
+<tr>
+<td>2–4</td>
+<td>Mapa de la configuración y funciones</td>
+<td>Proyecto propio → SQL → receptor → clave de cuenta → EA → bot → web</td>
+</tr>
+<tr>
+<td>4–6</td>
+<td>Recepción reciente y HTTP 200, sin mostrar inputs secretos</td>
+<td>El EA v3.40 se compiló, está activo y se verificó recepción; un binario por sí solo no prueba conexión</td>
+</tr>
+<tr>
+<td>6–9</td>
+<td>Una operación con apertura y cierre</td>
+<td>Separar comentario nativo, motivo humano y resultado; aclarar qué textos son de muestra</td>
+</tr>
+<tr>
+<td>9–12</td>
+<td>En el bot: <code>/dashboard</code>; en la web: <strong>Entrar con Telegram</strong></td>
+<td>Copiar el código privadamente, editar un motivo elegido y mostrar su historial; no mostrar el código al público</td>
+</tr>
+<tr>
+<td>12–14</td>
+<td>Dashboard desde el celular o ventana estrecha</td>
+<td>Misma información en tarjetas; lectura pública, edición solo del propietario</td>
+</tr>
+<tr>
+<td>14–15</td>
+<td>Resumen de instalación y prompt</td>
+<td>Cada alumno crea sus recursos y verifica cada tramo con su agente</td>
+</tr>
+</tbody>
+</table>
+<p>Si no quieres modificar ningún motivo durante la presentación, muestra el editor
+y su historial y cancela sin guardar. No es necesario abrir o cerrar un trade.</p>
+</section><section id="antes-de-compartir-pantalla" class="section" aria-labelledby="title-antes-de-compartir-pantalla"><h2 id="title-antes-de-compartir-pantalla">Antes de compartir pantalla</h2>
+<ul>
+<li>Abrir la URL de producción, el chat privado del bot y esta ayuda memoria.</li>
+<li>Comprobar recepción reciente con <strong>Actualizar</strong> y MT5 conectado.</li>
+<li>Tener elegida una operación existente; si es una muestra, decirlo al presentarla.</li>
+<li>Mantener fuera de la pantalla los inputs del EA, Secrets, <code>connection.json</code>,
+  <code>.set</code> privados y códigos de acceso. No abrir esos archivos para explicar las claves.</li>
+<li>Probar el acceso al editor antes de la clase; no confundir pruebas del agente
+  con una sesión de edición comprobada por el propietario.</li>
+<li>No compartir una URL Git heredada como si ya contuviera este trabajo: consultar
+  <a href="#ref-2">ENTREGA.md</a>. La publicación Git del seminario 3 está pendiente.</li>
+</ul>
+</section><section id="los-valores-que-no-conviene-confundir" class="section" aria-labelledby="title-los-valores-que-no-conviene-confundir"><h2 id="title-los-valores-que-no-conviene-confundir">Los valores que no conviene confundir</h2>
+<table>
+<thead>
+<tr>
+<th>Recordatorio</th>
+<th>Valor / explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secret del bot</td>
+<td><code>TELEGRAM_BOT_TOKEN</code>, exactamente así</td>
+</tr>
+<tr>
+<td>Nombre del proyecto en el EA</td>
+<td>Debe coincidir con el registrado; <code>Seminario3</code> ≠ <code>Seminario-3</code></td>
+</tr>
+<tr>
+<td>Clave del EA</td>
+<td><code>mt5_…</code>: la genera nuestro script y luego se registra su hash</td>
+</tr>
+<tr>
+<td>Clave de la web</td>
+<td><code>sb_publishable_…</code>: proviene de Supabase</td>
+</tr>
+<tr>
+<td>WebRequest</td>
+<td>URL base del proyecto Supabase</td>
+</tr>
+<tr>
+<td>Cierre remoto</td>
+<td>Siempre <code>false</code></td>
+</tr>
+<tr>
+<td><code>/vincular</code></td>
+<td>Autoriza el chat; el código dura una hora y se usa una vez</td>
+</tr>
+<tr>
+<td><code>/dashboard</code></td>
+<td>Acceso al editor: código de cinco minutos; sesión de una hora</td>
+</tr>
+<tr>
+<td>Actualización web</td>
+<td>Estado 30 s, historial 2 min; botón <strong>Actualizar</strong> para consultar ahora</td>
+</tr>
+</tbody>
+</table>
+</section><section id="comandos-para-tener-a-mano" class="section" aria-labelledby="title-comandos-para-tener-a-mano"><h2 id="title-comandos-para-tener-a-mano">Comandos para tener a mano</h2>
+<table>
+<thead>
+<tr>
+<th>Comando o acción</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/pendientes</code></td>
+<td>Consultar hasta 20 operaciones recientes con motivos pendientes</td>
+</tr>
+<tr>
+<td>Responder al aviso original</td>
+<td>Completar el motivo de esa operación y fase</td>
+</tr>
+<tr>
+<td><code>/ver REFERENCIA</code></td>
+<td>Revisar los motivos de una operación</td>
+</tr>
+<tr>
+<td><code>/apertura REFERENCIA texto</code></td>
+<td>Registrar o corregir la entrada</td>
+</tr>
+<tr>
+<td><code>/cierre REFERENCIA texto</code></td>
+<td>Registrar o corregir la salida; no cierra un trade</td>
+</tr>
+<tr>
+<td><code>/dashboard</code></td>
+<td>Obtener código para editar en la web</td>
+</tr>
+<tr>
+<td><code>/protecciones</code></td>
+<td>Consultar cambios de SL/TP sin explicación</td>
+</tr>
+<tr>
+<td><code>/proteccion ID texto</code></td>
+<td>Registrar la explicación del cambio; no modifica MT5</td>
+</tr>
+</tbody>
+</table>
+</section><section id="preguntas-habituales-y-respuesta-breve" class="section" aria-labelledby="title-preguntas-habituales-y-respuesta-breve"><h2 id="title-preguntas-habituales-y-respuesta-breve">Preguntas habituales y respuesta breve</h2>
+<table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿El dashboard vive en Supabase?</td>
+<td>Vive en Vercel; consulta y guarda información a través de Supabase</td>
+</tr>
+<tr>
+<td>¿De dónde sale <code>mt5_</code>?</td>
+<td>Del generador local del repositorio; autoriza una identidad concreta y vence por defecto a los 90 días</td>
+</tr>
+<tr>
+<td>¿Crear el bot basta?</td>
+<td>No: faltan secreto, función, webhook y vinculación del propietario</td>
+</tr>
+<tr>
+<td>¿<code>/start</code> ya me autoriza?</td>
+<td>No; la autorización se completa con <code>/vincular</code></td>
+</tr>
+<tr>
+<td>¿Cualquiera puede editar?</td>
+<td>La lectura de la demo es pública; escribir requiere acceso temporal del bot vinculado</td>
+</tr>
+<tr>
+<td>¿Puedo corregir un comentario del broker?</td>
+<td>Esta aplicación conserva el original y permite corregir el motivo humano separado</td>
+</tr>
+<tr>
+<td>¿Si cierro MT5 sigue llegando información?</td>
+<td>La nube conserva lo recibido; la telemetría nueva requiere MT5 y el EA funcionando</td>
+</tr>
+<tr>
+<td>¿Telegram mueve el stop?</td>
+<td>No; documenta y explica los cambios observados</td>
+</tr>
+</tbody>
+</table>
+</section><section id="que-esta-demostrado-y-que-no-prometer" class="section" aria-labelledby="title-que-esta-demostrado-y-que-no-prometer"><h2 id="title-que-esta-demostrado-y-que-no-prometer">Qué está demostrado y qué no prometer</h2>
+<p>En el entorno docente se verificaron compilación v3.40 con <strong>0 errores y
+0 advertencias</strong>, recepción real, dashboard público, vinculación del bot y motivos
+guardados. Se verificó la interfaz móvil y existen pruebas controladas de edición
+y protecciones. La primera sesión real de edición del propietario y el recorrido
+completo de un cambio SL/TP con su motivo siguen sujetos a la evidencia del
+<a href="#ref-3">registro actual</a>; no presentarlos como certificados por los tests.</p>
+<p>La muestra revisada tiene <strong>102 operaciones</strong>: se añadieron <strong>199 motivos</strong> de
+muestra y se conservaron <strong>cinco</strong> del propietario. Después se abreviaron los
+textos visibles a petición del docente. Su origen sintético queda en historial
+y documentación: <strong>no son evidencia de señales reales ni del razonamiento del trader</strong>.
+Los alumnos pueden usarlos para entender el formato, no para validar estrategias.</p>
+<p>No prometer entrega instantánea, métricas MAE/MFE, equity histórica ni soporte
+multiusuario completo. Los filtros y totales del historial se calculan en el
+servidor; los gráficos y <strong>Exportar página</strong> corresponden solo a la página actual.</p>
+<p><a href="configuracion.html">Configuración resumida</a> ·
+<a href="#ref-4">Guion ampliado</a> · <a href="#ref-3">Estado</a>.</p></section>
+<section class="references" id="referencias"><h2>Referencias incluidas</h2><p>Documentos complementarios del repositorio, incluidos para consultar sin conexión. No se imprimen con el resumen. Las referencias más profundas se identifican por su ruta en el repositorio; los enlaces oficiales requieren internet.</p><details class="reference" id="ref-1"><summary>prompt para el agente</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/guias/PROMPT_AGENTE.md</p><h1>Mensaje inicial para Codex, Claude Code o Antigravity</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>Abre tu clon en el cliente y pega este mensaje. Los datos faltantes se resuelven
+durante el recorrido, no copiando valores de la instalación del docente.</p>
+<pre><code class="language-text">Quiero instalar el recorrido completo del seminario 3 para mi cuenta demo:
+MT5 → Supabase → dashboard Vercel, con Telegram para completar motivos y
+acceso restringido para editarlos en la web.
+
+Lee AGENTS.md, seminario_3/README.md, seminario_3/guias/README.md,
+seminario_3/ESTADO.md y seminario_3/supabase/AGENTS.md. Sigue las guías enlazadas
+y el orden de seminario_3/supabase/sql/README.md. Para operar MT5, lee y aplica
+.agents/skills/mt5-platform-operator/SKILL.md.
+
+Inspecciona el clon, los cambios locales, mi sistema operativo y los conectores
+reales disponibles. Detecta instalaciones existentes y aplica solo diferencias.
+No copies carpetas, claves, IDs o rutas del docente. Conserva configuraciones,
+archivos, gráficos y datos que ya existan; no reinicies ni borres para resolver
+una incompatibilidad. No inventes capacidades MCP ni nombres de herramientas.
+
+Explícame cada paso y comprueba su resultado. Pregunta únicamente los datos que
+no puedas obtener con seguridad y que sean necesarios para avanzar. Comprueba
+organización y proyecto destino antes de mutar recursos. Los accesos OAuth y
+credenciales se introducen en las pantallas o archivos privados correspondientes,
+no en el chat ni en el repositorio público.
+
+Configura mi proyecto Supabase y sus permisos, emite una credencial restringida
+a mi cuenta demo, instala el receptor y compila la fuente v3.40 de este clon.
+Antes de adjuntarla, identifica conmigo el gráfico y explica que empezará a
+exportar datos e histórico; evita reemplazar otro EA sin mi autorización.
+Mantén InpEnableKillSwitch=false. No ejecutes órdenes, no cierres posiciones,
+no cambies de cuenta ni actives trading o DLL para probar la conexión.
+
+Prepara el dashboard y pregunta si autorizo lectura pública de mi demo y de los
+motivos antes de habilitarla. No publiques cuentas reales ni concedas escritura
+anónima. Usa solo la clave publishable en la web; los secretos se quedan en Supabase.
+Despliega en mi Vercel cuando el destino y el alcance estén definidos y autorizados.
+
+Ayúdame a crear o reutilizar mi bot. Yo guardaré TELEGRAM_BOT_TOKEN en Secrets.
+Verifica bot y webhook sin sustituir otra integración. Retira el instalador
+temporal del despliegue final, emite la vinculación de mi cuenta y espera a que yo
+la envíe al bot. Habilita alertas de apertura/cierre y edición web mediante /dashboard.
+
+Ejecuta las pruebas locales; comprueba después recepción y permisos en mi proyecto.
+No abras trades ni inventes motivos para la demostración: yo decido cualquier
+operación demo y escribo la razón real. Distingue pruebas offline, despliegue,
+compilación, recepción y validación del propietario.
+
+Documenta lo realizado y los pendientes en .local/ usando la plantilla
+seminario_3/guias/REGISTRO_INSTALACION.md. Actualiza instrucciones públicas cuando
+encuentres una mejora reutilizable, sin incluir datos privados. Al terminar,
+entrégame las URL propias, pasos de uso, evidencia y límites reales. No hagas
+commit, push ni cambios de visibilidad de repositorios en esta instalación.
+</code></pre>
+<p>Si el cliente no tiene una herramienta necesaria, el agente debe dejar preparado
+el archivo o cambio revisable e indicar el paso manual concreto. Un asistente web
+sin acceso al equipo no puede declarar que compiló un archivo local.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/README.md">Volver al recorrido</span>.</p></div></details><details class="reference" id="ref-2"><summary>ENTREGA.md</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/ENTREGA.md</p><h1>Entrega del repositorio a los alumnos</h1>
+<p>Autoría: QRT Solutions. Preparación documental: 8 de octubre de 2026.</p>
+<p>La entrada de aprendizaje es <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/README.md">Guía completa del alumno</span>, seguida
+del <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/PROMPT_AGENTE.md">mensaje para el agente</span>. Los archivos de implementación
+están en el mismo árbol: no hay que recuperar código ni instrucciones desde el chat.</p>
+<h2>Contenido preparado</h2>
+<ul>
+<li>Fuente EA actual en <code>MT5/</code>, skill local completa y cuatro referencias técnicas.</li>
+<li>SQL ordenado, tres funciones Supabase y generadores de credenciales/vinculación.</li>
+<li>Aplicación Vercel con dependencias fijadas, motivos de apertura/cierre y editor.</li>
+<li>Procedimiento BotFather → Secrets → webhook → vinculación → avisos.</li>
+<li>Pruebas, estado de evidencia, bitácora, ejercicios, guion y registro de instalación.</li>
+<li><a href="configuracion.html">Resumen paso a paso</a> y
+  <a href="#top">ayuda memoria para presentar</a>.</li>
+<li>Navegación MkDocs que reúne las guías y conserva la documentación del seminario anterior.</li>
+</ul>
+<p>No se incluyen el acceso a la nube del docente, datos de su cuenta ni sus tokens.
+Los servicios que estén funcionando para el docente no configuran el clon de un alumno.
+La fuente v3.40 y el primer acceso real al editor tienen los límites de validación
+indicados en <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ESTADO.md">ESTADO.md</span>; no anunciarlos como verificados si falta evidencia.</p>
+<h2>Revisión antes de compartir</h2>
+<ol>
+<li>Ejecuta el <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/pruebas/README.md">plan de pruebas</span> y revisa el diff.</li>
+<li>Comprueba que los archivos nuevos deseados aparezcan en <code>git status --short</code>.
+   Un archivo local sin commit no aparecerá en un clon remoto.</li>
+<li>Revisa la exclusión de <code>.local/</code>, <code>.env.local</code>, configuraciones MCP con tokens,
+   archivos <code>*.private.json</code>, binarios compilados y accesos directos <code>*.lnk</code>.
+   No borres los archivos privados del equipo: simplemente quedan fuera de la entrega.</li>
+<li>Ejecuta el escáner de publicación. Para el escáner general del proyecto:</li>
+</ol>
+<p><code>sh
+   uv run --locked python tools/install_gitleaks.py
+   .local/tools/gitleaks git --redact --no-banner --log-opts=--all .</code></p>
+<p>El instalador verifica el SHA-256 del binario fijado en el manifiesto. En Windows,
+   usar una instalación oficial compatible y consultar su ayuda. El modo <code>git</code>
+   inspecciona historia: antes de publicar, revisa también el árbol final de archivos
+   seleccionados con el modo <code>dir</code> de Gitleaks. No escanees/exportes toda la carpeta
+   de trabajo como si fuera el contenido público: contiene configuración local ignorada.
+5. Comprueba que el build de documentación no contenga configuraciones privadas.
+6. Guarda la evidencia de revisión sin secretos; registra qué fue probado y qué queda pendiente.</p>
+<p>El escaneo es heurístico y no certifica ausencia absoluta de secretos. Si encuentra
+algo, revisar la coincidencia sin imprimir el valor y resolver el origen antes de compartir.</p>
+<h2>Resultado de la preparación local</h2>
+<p>La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/pruebas/VERIFICACION.md">verificación documental</span> registra resultados y límites
+de esta entrega, incluidos los escaneos de archivos e historia.</p>
+<h2>Publicación Git pendiente</h2>
+<p>En esta copia <code>origin</code> todavía apunta al seminario 2. <strong>No ejecutar <code>git push</code> al
+remoto heredado para publicar el seminario 3.</strong> Falta definir/verificar el repositorio
+destino, registrar los cambios elegidos y publicar allí. Esta tarea preparó archivos
+y documentación; no creó repositorios, commits ni publicaciones Git.</p>
+<p>Cuando el mantenedor autorice el destino concreto, revisar cambios y estado Git,
+publicar el contenido seleccionado y comprobar un clon limpio de la URL resultante.
+Actualizar entonces <code>repo_url</code>/<code>site_url</code> de MkDocs y los metadatos que deban apuntar
+al seminario 3. Se retiraron de MkDocs las URL del sitio anterior para que el build
+local nuevo no anuncie aquella publicación como su destino.</p>
+<p>La documentación histórica de distribución del seminario 2 sigue en
+<span class="repo-reference" title="Archivo complementario del repositorio: docs/release.md">docs/release.md</span>; sus aprobaciones no certifican esta ampliación.
+No incluir <code>.git/</code> ni el directorio de trabajo completo en un ZIP de alumnos.</p>
+<h2>Comprobación del alumno independiente</h2>
+<p>Un alumno debería poder empezar con el repositorio público, sus propias cuentas y
+el prompt incluido. Debe generar su propio registro y verificar cada tramo.
+El recorrido completo en un clon nuevo y otros clientes/sistemas sigue siendo una
+prueba de aceptación adicional, no algo demostrado por el build local del docente.</p>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/README.md">Índice del seminario</span>.</p></div></details><details class="reference" id="ref-3"><summary>registro actual</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/ESTADO.md</p><h1>Estado, versiones y evidencia</h1>
+<p>Autoría: QRT Solutions. Corte documental: 8 de octubre de 2026.</p>
+<p>Esta tabla describe el trabajo registrado en el entorno docente. No certifica
+que un clon nuevo ya esté conectado ni que se hayan probado todos los clientes.
+La <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/supabase/BITACORA.md">bitácora histórica</span> conserva los detalles cronológicos.</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Disponible en el repositorio</th>
+<th>Evidencia y límite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base heredada</td>
+<td>Catálogo, contratos, scripts, metodología y presentación anterior</td>
+<td>Sus pruebas son independientes de la integración nube</td>
+</tr>
+<tr>
+<td>Operación MT5</td>
+<td>Skill local, esquemas, pruebas y cuatro manuales</td>
+<td>Pruebas offline; servicios MCP se descubren en cada equipo</td>
+</tr>
+<tr>
+<td>Exportador EA</td>
+<td>Fuente v3.40, sin credenciales ni funciones de trading</td>
+<td>v3.40 compilada por MCP nativo: 0 errores, 0 advertencias; activa en gráfico, snapshot recibido e historial HTTP 200 verificados</td>
+</tr>
+<tr>
+<td>Supabase</td>
+<td>Diez referencias SQL principales, tres funciones Edge y consultas</td>
+<td>Instalación y recepción reales verificadas en el proyecto docente</td>
+</tr>
+<tr>
+<td>Credencial MT5</td>
+<td>Generador local con hash, alcance y revocación</td>
+<td>Identidad y acceso restringido comprobados; secreto no distribuido</td>
+</tr>
+<tr>
+<td>Dashboard</td>
+<td>Código, lockfile, build, pruebas y configuración Vercel</td>
+<td>Producción READY y lectura pública real verificadas</td>
+</tr>
+<tr>
+<td>Comentarios</td>
+<td>Apertura/cierre, metadatos y motivos humanos separados</td>
+<td>Motivos visibles; comentarios nativos requieren recepción desde fuente compatible</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>Creación, secreto, instalador temporal, webhook y vinculación</td>
+<td>Bot definitivo y chat vinculado verificados; usuario confirmó <code>/pendientes</code></td>
+</tr>
+<tr>
+<td>Avisos de apertura/cierre</td>
+<td>Cola, reintentos y respuesta ligada al mensaje</td>
+<td>Apertura y respuesta verificadas; recibo de envío de cierre documentado</td>
+</tr>
+<tr>
+<td>Edición web</td>
+<td>Código de un uso, sesión, editor e historial</td>
+<td>Pruebas de HTTP, SQL con ROLLBACK e interfaz local aprobadas; primer acceso real del propietario pendiente de confirmación</td>
+</tr>
+<tr>
+<td>Protección SL/TP</td>
+<td>Comparación de snapshots, eventos, grupos y auditoría</td>
+<td>SQL aplicado y EA v3.40 activo; permisos y revisiones probados con rollback; pendiente comprobar un cambio real y su motivo por Telegram</td>
+</tr>
+<tr>
+<td>Dashboard móvil y páginas</td>
+<td>Diseño inspirado en Trackrecord Dual, tarjetas, páginas en servidor y totales del filtro</td>
+<td>Pruebas locales 320/390/768/1440 px; producción verificada a 390/1440 px, edición probada con respuestas simuladas</td>
+</tr>
+<tr>
+<td>Documentación docente</td>
+<td>Recorrido, resumen de configuración, ayuda memoria, prompt, mapa SQL, ejercicios y registro</td>
+<td>Enlaces y construcción estática se verifican al preparar la entrega</td>
+</tr>
+<tr>
+<td>Motivos de muestra</td>
+<td>Procedimiento y procedencia documentados; datos solo en la demo</td>
+<td>199 motivos breves de muestra, cinco originales conservados, 102 operaciones verificadas; no certifican intención real</td>
+</tr>
+</tbody>
+</table>
+<h2>Qué significa «probado»</h2>
+<ul>
+<li><strong>Offline:</strong> ejecuta código con casos controlados; no contacta servicios.</li>
+<li><strong>Compilado:</strong> el compilador produjo un binario de esa fuente específica.</li>
+<li><strong>Desplegado:</strong> el proveedor aceptó y publicó los archivos; falta comprobar el uso.</li>
+<li><strong>Recepción real:</strong> registros leídos en Supabase y contrastados con el origen.</li>
+<li><strong>Validado por el propietario:</strong> la persona usó su bot o dashboard y confirmó el resultado.</li>
+</ul>
+<p>No sustituir una evidencia por otra. No se ha ejecutado el recorrido completo desde
+un clon limpio por un alumno independiente en Windows, Codex, Claude Code y
+Antigravity. Los agentes deben adaptar la instalación, no declarar portabilidad probada.</p>
+<h2>Límites funcionales actuales</h2>
+<table>
+<thead>
+<tr>
+<th>Límite</th>
+<th>Implicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Una cuenta por proyecto y un bot por proyecto</td>
+<td>Revisar claves y alcance antes de un servicio multiusuario</td>
+</tr>
+<tr>
+<td>Snapshot sobrescrito</td>
+<td>No existe serie histórica de equity</td>
+</tr>
+<tr>
+<td>Hora del broker etiquetada por el EA sin normalizar</td>
+<td>No usarla como UTC para análisis intradiario</td>
+</tr>
+<tr>
+<td>Precios y volumen con ocho decimales en v3.40</td>
+<td>Datos previos no recuperan precisión descartada</td>
+</tr>
+<tr>
+<td>Sin MAE/MFE ni riesgo inicial</td>
+<td>Esas métricas aparecen no disponibles</td>
+</tr>
+<tr>
+<td>Un motivo por posición y fase</td>
+<td>Cierres parciales comparten motivo; no se solicitan de nuevo por cada parcial</td>
+</tr>
+<tr>
+<td>Eventos de MT5 sin cola durable completa</td>
+<td>Una desconexión puede omitir un aviso; histórico y avisos son mecanismos distintos</td>
+</tr>
+<tr>
+<td>Reintentos Telegram ligados a recepciones de telemetría</td>
+<td>Sin nuevas recepciones no hay entrega de reintentos independiente</td>
+</tr>
+<tr>
+<td>Red y colas</td>
+<td>No se garantiza latencia instantánea ni entrega exactamente una vez</td>
+</tr>
+<tr>
+<td>Estado cada 30 s; historial cada 2 min</td>
+<td>Actualizar fuerza consulta; un motivo puede tardar en aparecer a otro visitante</td>
+</tr>
+<tr>
+<td>Sesión web en memoria, una hora</td>
+<td>Recargar exige otro código; origen Preview/local no autorizado por defecto</td>
+</tr>
+<tr>
+<td>Datos de prueba del docente</td>
+<td>No vienen en el clon ni deben copiarse al proyecto de un alumno</td>
+</tr>
+</tbody>
+</table>
+<h2>Estado de distribución</h2>
+<p>El trabajo está preparado en el árbol local del repositorio. El remoto configurado
+sigue siendo el de <code>seminario_2-public</code>; no se ha creado un remoto nuevo ni hecho
+commit/push del seminario 3 durante esta consolidación. No afirmar que el código
+nuevo ya está disponible para clonar en una URL remota hasta publicarlo.
+Sigue <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ENTREGA.md">ENTREGA.md</span> para ese último paso.</p></div></details><details class="reference" id="ref-4"><summary>Guion ampliado</summary><div class="reference-body"><p class="source-label">Fuente: seminario_3/material/README.md</p><h1>Guion docente — Del trade a la bitácora en la nube</h1>
+<p>Autoría: QRT Solutions.</p>
+<p>Material de apoyo al <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/guias/README.md">recorrido del alumno</span>. Este guion consolida
+la sesión; no es una presentación de diapositivas ni reemplaza las guías técnicas.
+La presentación del seminario anterior continúa en <span class="repo-reference" title="Archivo complementario del repositorio: masterclass/index.html">masterclass</span>.</p>
+<p>Para la sesión del 8 de octubre, abrir la <a href="#top">ayuda memoria de 15 minutos</a>.
+El <a href="configuracion.html">resumen de configuración</a> reúne los pasos
+que los alumnos reproducen después con su agente.</p>
+<h2>Dos HTML para abrir y compartir</h2>
+<ul>
+<li><a href="configuracion.html">Configuración paso a paso</a>.</li>
+<li><a href="#top">Ayuda memoria de la presentación</a>.</li>
+</ul>
+<p>Abre los archivos con un navegador y conserva ambos en la misma carpeta para
+usar los enlaces entre ellos. Incluyen estilos, controles y referencias directas
+sin dependencias externas: el contenido se lee sin conexión. Los enlaces a las
+páginas oficiales requieren internet. Las referencias más profundas indican el
+archivo que se consulta en el repositorio.</p>
+<p>Tienen índice, tablas adaptadas al celular, copia de comandos, modo presentación
+y botón <strong>Imprimir / PDF</strong>. La impresión incluye el documento principal; las
+referencias desplegables se consultan en pantalla. No contienen credenciales ni
+consultan datos de trading. Son copias de la documentación al generarlas.</p>
+<p>Para actualizarlos después de editar las fuentes Markdown, desde la raíz:</p>
+<pre><code class="language-sh"># Autor: QRT Solutions
+uv run --locked python tools/build_seminario3_handouts.py
+</code></pre>
+<p>El generador usa Markdown del entorno de documentación. Verifica ambas versiones
+en navegador después de regenerar; no edites el HTML generado como fuente canónica.</p>
+<table>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Demostración</th>
+<th>Aprendizaje observable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Arquitectura</td>
+<td>Dibujar MT5 → Supabase → Vercel y el circuito Telegram</td>
+<td>El alumno ubica datos, interfaz y agente</td>
+</tr>
+<tr>
+<td>2. Preparación</td>
+<td>Leer el clon y detectar conectores</td>
+<td>Distingue infraestructura existente de componentes faltantes</td>
+</tr>
+<tr>
+<td>3. Identidad y credenciales</td>
+<td>Generar token restringido sin mostrarlo</td>
+<td>Explica por qué una contraseña administrativa no va en el EA</td>
+</tr>
+<tr>
+<td>4. Recepción</td>
+<td>Contrastar snapshot, HTTP y <code>received_at</code></td>
+<td>No confunde compilación con integración funcionando</td>
+</tr>
+<tr>
+<td>5. Dashboard</td>
+<td>Leer posiciones, deals y comentarios</td>
+<td>Diferencia ejecución, posición, resultado monetario y motivo</td>
+</tr>
+<tr>
+<td>6. Telegram</td>
+<td>Crear bot, guardar secreto, vincular chat y responder aviso</td>
+<td>Comprende que crear el bot no instala su programa y <code>/start</code> no autoriza</td>
+</tr>
+<tr>
+<td>7. Edición</td>
+<td>Entrar con código, corregir motivo y consultar historial</td>
+<td>Comprueba lectura pública y escritura restringida</td>
+</tr>
+<tr>
+<td>8. Reproducción</td>
+<td>Ejecutar pruebas y llenar el registro privado</td>
+<td>Declara evidencia y pendientes sin copiar secretos del docente</td>
+</tr>
+</tbody>
+</table>
+<h2>Preparación del docente</h2>
+<ul>
+<li>Usar una demo, comprobar WebRequest, receptor y vinculación antes de la clase.</li>
+<li>Ocultar tokens y pantallas de Secrets al compartir pantalla.</li>
+<li>Distinguir los motivos reales de los textos de muestra: los 199 motivos breves
+  añadidos para la presentación conservan su procedencia sintética en la auditoría.</li>
+<li>Tener una operación histórica propia disponible si no se hará trading durante la clase.</li>
+<li>Explicar que los avisos dependen de eventos y red; no prometer instantaneidad.</li>
+<li>Entregar la URL del repositorio que realmente contenga esta versión, tras publicar
+  siguiendo <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ENTREGA.md">ENTREGA.md</span>.</li>
+</ul>
+<h2>Preguntas para cerrar la sesión</h2>
+<ol>
+<li>¿Dónde viven los datos si Vercel deja de servir la web?</li>
+<li>¿Por qué <code>/start</code> y <code>/vincular</code> cumplen funciones diferentes?</li>
+<li>¿Qué diferencia hay entre comentario del EA y motivo humano?</li>
+<li>¿Qué evita sobrescribir una edición hecha desde otra ventana?</li>
+<li>¿Qué métricas no podemos calcular con esta telemetría y por qué?</li>
+<li>¿Qué evidencia falta para declarar que otro alumno completó la instalación?</li>
+</ol>
+<p><span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ejemplos/README.md">Ejercicios</span> · <span class="repo-reference" title="Archivo complementario del repositorio: seminario_3/ESTADO.md">Estado y límites</span>.</p></div></details></section>
+<footer class="doc-footer"><span>QRT Solutions · <a href="https://www.qrtsolutions.com">www.qrtsolutions.com</a></span><span>Seminario 3 · Material de formación</span></footer></main></div>
+<div class="status" role="status" aria-live="polite"></div><script>
+// Author: QRT Solutions. Local document controls; no network or storage.
+const status=document.querySelector('.status');let statusTimer;
+function announce(message){status.textContent=message;clearTimeout(statusTimer);statusTimer=setTimeout(()=>status.textContent='',3500);}
+document.querySelector('#print').addEventListener('click',()=>window.print());
+document.querySelector('#present').addEventListener('click',event=>{const on=document.body.classList.toggle('presenting');event.currentTarget.setAttribute('aria-pressed',String(on));event.currentTarget.textContent=on?'Vista normal':'Modo presentación';});
+for(const pre of document.querySelectorAll('pre')){const code=pre.querySelector('code');if(!code)continue;const button=document.createElement('button');button.className='copy';button.type='button';button.textContent='Copiar comando';button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(code.textContent);announce('Comando copiado. Sustituye los valores de ejemplo antes de ejecutarlo.');}catch{const selection=window.getSelection(),range=document.createRange();range.selectNodeContents(code);selection.removeAllRanges();selection.addRange(range);announce('Texto seleccionado. Usa Ctrl+C o ⌘C para copiar.');}});pre.append(button);}
+for(const table of document.querySelectorAll('table')){const labels=[...table.querySelectorAll('thead th')].map(t=>t.textContent);for(const tr of table.querySelectorAll('tbody tr'))[...tr.children].forEach((cell,i)=>cell.dataset.label=labels[i]||'');const wrap=document.createElement('div');wrap.className='table-wrap';table.before(wrap);wrap.append(table);}
+function openReference(hash){if(!hash.startsWith('#ref-'))return;const ref=document.getElementById(hash.slice(1));if(ref instanceof HTMLDetailsElement){ref.open=true;ref.scrollIntoView({block:'start'});}}
+document.querySelectorAll('a[href^="#ref-"]').forEach(link=>link.addEventListener('click',()=>openReference(link.hash)));
+window.addEventListener('hashchange',()=>openReference(location.hash));openReference(location.hash);
+document.querySelectorAll('.mobile-nav .toc a').forEach(link=>link.addEventListener('click',()=>document.querySelector('.mobile-nav').open=false));
+const sections=[...document.querySelectorAll('main>.section')],links=[...document.querySelectorAll('.toc a')];let ticking=false;
+function update(){const y=window.scrollY,max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(max>0?Math.min(100,100*y/max):0)+'%';let current=sections[0]?.id;for(const section of sections)if(section.getBoundingClientRect().top<180)current=section.id;for(const link of links){const active=link.hash==='#'+current;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}ticking=false;}
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});window.addEventListener('resize',update);update();
+</script></body></html>

@@ -4,7 +4,9 @@ Autoría: **QRT Solutions**. Fecha: 2026-10-08.
 
 Strategy UUID: `STRAT-20261008-BREAKOUT3_LONG-M5-v1.0`.
 
-Estado: variante B aprobada; diseño escrito para revisión antes de implementar.
+Estado: diseño aprobado mediante la solicitud de inyección y compilación.
+Fuentes implementadas; compilación MQL5 verificada con cero errores y advertencias.
+Backtest y compilación Pine pendientes.
 Contrato: [StrategySpecification](2026-10-08-breakout3-m5-contract.json).
 
 ## Decisiones del usuario

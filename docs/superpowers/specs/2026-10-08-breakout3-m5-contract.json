@@ -4,12 +4,13 @@
   "schema_version": "breakout3-m5-design-1.0",
   "strategy_id": "STRAT-20261008-BREAKOUT3_LONG-M5-v1.0",
   "timestamp": "2026-10-08T19:05:41Z",
-  "status": "design_review",
+  "status": "implemented_mql5_compiled",
   "human_decisions": {
     "variant": "B",
     "symbol_scope": "any_chart_symbol",
     "fixed_volume_lots": 0.1,
-    "timeframe": "M5"
+    "timeframe": "M5",
+    "written_design_approval": "user_request_to_inject_and_compile"
   },
   "hypothesis": {
     "condition_x": "Ask reaches the maximum high of the three preceding closed M5 bars.",
@@ -88,8 +89,9 @@
     "exact_temporal_parity_claimed": false
   },
   "evidence": {
-    "implementation_complete": false,
-    "native_compile_verified": false,
+    "implementation_complete": true,
+    "native_compile_verified": true,
+    "pine_compile_verified": false,
     "backtest_run": false,
     "performance_claimed": false
   }

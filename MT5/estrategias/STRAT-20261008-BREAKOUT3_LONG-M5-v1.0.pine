@@ -1,0 +1,70 @@
+//@version=6
+// Author: QRT Solutions
+// STRAT-20261008-BREAKOUT3_LONG-M5-v1.0
+// Educational emulator companion. MQL5 is the 600-second execution reference.
+strategy("QRT | Breakout3 Long M5 v1.0", overlay = true, pyramiding = 0,
+     calc_on_every_tick = false, calc_on_order_fills = false,
+     process_orders_on_close = false, use_bar_magnifier = true,
+     default_qty_type = strategy.fixed, margin_long = 100)
+
+// Pine qty represents chart units/contracts, not a universal MT5 lot.
+float unitsPerLot = input.float(0.0, "Unidades por lote MT5 (obligatorio)", minval = 0.0)
+const float MT5_LOTS = 0.10
+const int HOLD_MS = 600000
+float chartUnits = MT5_LOTS * unitsPerLot
+if barstate.isfirst and timeframe.in_seconds() != 300
+    runtime.error("Esta estrategia requiere un gráfico M5.")
+if barstate.isfirst and unitsPerLot <= 0
+    runtime.error("Indica las unidades/contratos equivalentes a un lote de tu símbolo en MT5.")
+
+// With lookahead_off, snapshot the previous chart bar at a new daily session.
+// Its daily ATR was confirmed at the close of the preceding daily session.
+float dailyATRRaw = request.security(syminfo.tickerid, "1D", ta.atr(14),
+     gaps = barmerge.gaps_off, lookahead = barmerge.lookahead_off)
+var float closedDailyATR = na
+if timeframe.change("1D")
+    closedDailyATR := dailyATRRaw[1]
+
+// At a confirmed bar close, high[0..2] are the three closed bars used for
+// the next M5 bar. This equals MT5 High[1..3] at the next bar's opening.
+float nextHigh3 = ta.highest(high, 3)
+var float plannedEntry = na
+var float plannedSL = na
+var float plannedTP = na
+
+if barstate.isconfirmed
+    if strategy.position_size > 0
+        strategy.cancel("Long")
+        strategy.exit("Barriers", "Long", stop = plannedSL, limit = plannedTP)
+        int filledAt = strategy.opentrades.entry_time(0)
+        if time_close >= filledAt + HOLD_MS
+            // Historical M5: first bar close at/after the deadline, not a
+            // promise of an exact wall-clock ten-minute execution.
+            strategy.close("Long", comment = "Time stop 600s", immediately = true)
+    else
+        strategy.cancel("Long")
+        strategy.cancel("Barriers")
+        plannedEntry := na
+        plannedSL := na
+        plannedTP := na
+        int lastExit = strategy.closedtrades > 0 ? strategy.closedtrades.exit_time(strategy.closedtrades - 1) : 0
+        bool canReenter = time_close > lastExit
+        bool ready = bar_index >= 2 and not na(closedDailyATR) and closedDailyATR > 0
+        if ready and canReenter
+            float level = math.ceil(nextHigh3 / syminfo.mintick - 1e-9) * syminfo.mintick
+            float sl = math.round_to_mintick(level - 0.25 * closedDailyATR)
+            float tp = math.round_to_mintick(level + 0.50 * closedDailyATR)
+            if level > close and sl > 0 and sl < level and tp > level
+                plannedEntry := level
+                plannedSL := sl
+                plannedTP := tp
+                strategy.entry("Long", strategy.long, qty = chartUnits, stop = plannedEntry)
+                strategy.exit("Barriers", "Long", stop = plannedSL, limit = plannedTP)
+
+plot(plannedEntry, "Buy Stop", color = color.blue, style = plot.style_linebr)
+plot(plannedSL, "SL", color = color.red, style = plot.style_linebr)
+plot(plannedTP, "TP", color = color.green, style = plot.style_linebr)
+var table note = table.new(position.top_right, 1, 2)
+if barstate.islast
+    table.cell(note, 0, 0, "QRT Solutions | 0,10 lotes MT5")
+    table.cell(note, 0, 1, "Pine: salida al cierre posterior a 600s.\nReferencia de ejecución: EA MQL5.")

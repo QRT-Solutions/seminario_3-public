@@ -1,0 +1,4 @@
+# Author: QRT Solutions. Merge into the Supabase CLI configuration when using CLI.
+# JWT is replaced by explicit x-mt5-token authentication, never by anonymous access.
+[functions.mt5-telemetry]
+verify_jwt = false

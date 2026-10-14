@@ -1,0 +1,3 @@
+# Author: QRT Solutions. The handler verifies the Telegram secret on every request.
+[functions.mt5-telegram]
+verify_jwt = false

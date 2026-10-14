@@ -1,4 +1,11 @@
-# Empieza aquí
+# Empieza aquí — Base del seminario 2
+
+Autoría: QRT Solutions.
+
+Para las incorporaciones del seminario 3, elige tu punto de partida:
+- **Ruta introductoria (sin credenciales):** [primer ejercicio con diez KPIs](../seminario_3/guias/EMPIEZA_AQUI.md).
+- **Ruta técnica completa:** [recorrido de integraciones](../seminario_3/guias/README.md).
+Los pasos siguientes corresponden al laboratorio heredado del seminario 2.
 
 Aprenderás a convertir una idea en reglas que otra persona pueda revisar.
 Necesitas nociones de precios OHLC y lectura básica de código; el recorrido de

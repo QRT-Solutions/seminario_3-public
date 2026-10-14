@@ -1,4 +1,17 @@
-# QRT Quantitative Seminar — Strategy design and validation
+# Seminar 3 — Quantitative laboratory and integrations
+
+Author: QRT Solutions.
+
+> [!IMPORTANT]
+> **Priority Scope Notice (Public Release Preparation):**  
+> Per owner directive, **Seminar 2 is preserved as the foundation of this repository** (interactive masterclass, 17-strategy catalog, and knowledge base are retained, subject to future narrative sanitization and independent copyright review). The public release strictly prohibits including **transaction data** (real, synthetic, or simulated) and measured account results, with KPI lab fixtures (`fixture.json` and embedded data in `preview.html`) excluded from the distributed package. See the full scope matrix in [seminario_3/ALCANCE_SIN_DATOS.md](seminario_3/ALCANCE_SIN_DATOS.md). Previous guides and materials are preserved in this workspace as development and historical reference.
+
+This repository builds on Seminar 2. Choose your learning path:
+
+1. **Introductory Path (No credentials required):** Explore the local simulated 10-KPI laboratory ([`seminario_3/aplicaciones/kpi-laboratorio/preview.html`](seminario_3/aplicaciones/kpi-laboratorio/preview.html)) directly in your browser. See [Empieza aquí (Start here)](seminario_3/guias/EMPIEZA_AQUI.md).
+2. **Full Technical Path:** Connect MT5 telemetry to Supabase, Telegram bot prompts for trade reasoning, and an optional public reading dashboard with restricted web editing. See the [complete student guide](seminario_3/guias/README.md) and [agent handoff prompt](seminario_3/guias/PROMPT_AGENTE.md) (in Spanish).
+
+Each student uses their own demo account, projects and bot (checking current provider terms and plans). See the [version and evidence register](seminario_3/ESTADO.md): current source EA in [`MT5/MT5_Telemetry_Exporter_Universal.mq5`](MT5/MT5_Telemetry_Exporter_Universal.mq5) is **v3.40**. Recorded compiler diagnostics (0 errors, 0 warnings) and telemetry reception belong to historical teacher tests; students must compile and verify in their own setup. Web editing and Telegram functions have local Node.js and SQL test validation. These additions are staged locally; the remote Git destination is pending review by the repository owner (no remote URL has been invented; see [handoff](seminario_3/ENTREGA.md)).
 
 Turn a market idea into an explicit hypothesis, a reviewable contract and source
 code that others can inspect. [Español](README.md) · [Start here](docs/quickstart.en.md) · [Catalog](docs/strategies.md) · [Contribute](CONTRIBUTING.md)
@@ -17,13 +30,13 @@ Requirements: Git, [uv](https://docs.astral.sh/uv/getting-started/installation/)
 CPython 3.12, which uv can install.
 
 ```sh
-git clone --config core.longpaths=true https://github.com/QRT-Solutions/seminario_2-public.git
-uv run --directory seminario_2-public --locked --no-dev seminario doctor
-uv run --directory seminario_2-public --locked --no-dev seminario quickstart
+# Run from the seminario_3-public repository root.
+uv run --locked --no-dev seminario doctor
+uv run --locked --no-dev seminario quickstart
 ```
 
 No market data, credentials or accounts are required for installation and catalog
-verification. Open `seminario_2-public/masterclass/index.html` to view the offline
+verification. Open `masterclass/index.html` to view the offline
 presentation. `seminario verify` checks schemas, IDs, paths, artifacts and copies.
 Use `seminario --project "PROJECT PATH" verify` outside the project tree.
 

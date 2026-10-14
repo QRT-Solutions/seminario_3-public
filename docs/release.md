@@ -2,6 +2,17 @@
 
 Autoría: QRT Solutions.
 
+## Preparación actual del seminario 3 — 8 de octubre de 2026
+
+Las integraciones y documentación actuales se describen en
+[Entrega al alumno](../seminario_3/ENTREGA.md) y
+[Estado de evidencia](../seminario_3/ESTADO.md). Están en el árbol local; el remoto
+continúa apuntando al seminario 2. Esta consolidación no ha hecho commit, push ni
+publicación Git. Los apartados siguientes son el historial de distribución del
+seminario 2; sus aprobaciones y CI no certifican los cambios actuales del seminario 3.
+
+## Historial del seminario 2
+
 **Destino de empresa, 2026-09-07:** la distribución completa se encuentra en
 [QRT-Solutions/seminario_2-public](https://github.com/QRT-Solutions/seminario_2-public),
 incluida la base de conocimientos. Se conserva el historial del repositorio público

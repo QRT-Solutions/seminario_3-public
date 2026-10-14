@@ -23,3 +23,15 @@ artifacts/
 *.log
 .local/
 
+# QRT Solutions: local MCP connections and credentials
+/.mcp.json
+/.codex/config.toml
+
+# QRT Solutions: private agent setup and non-portable local shortcuts
+/.agents/mcp_config.json
+*.private.json
+*.lnk
+
+# QRT Solutions: política de cero datos de transacciones (fixtures y precompilados)
+seminario_3/aplicaciones/kpi-laboratorio/fixture.json
+seminario_3/aplicaciones/kpi-laboratorio/preview.html

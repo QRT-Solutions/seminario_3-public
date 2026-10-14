@@ -1,0 +1,14 @@
+{
+  "name": "qrt-mt5-demo-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "author": "QRT Solutions",
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "build": "node --env-file-if-exists=.env.local scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {"chart.js": "4.4.1"}
+}

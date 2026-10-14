@@ -1,0 +1,11 @@
+{
+  "author": "QRT Solutions",
+  "task_id": "TASK-COMPILE-BREAKOUT3-M5-20261008-002",
+  "operation": "compile",
+  "source_path": "C:\\Program Files\\MetaTrader 5\\MQL5\\Experts\\STRAT-20261008-BREAKOUT3_LONG-M5-v1.0.mq5",
+  "output_path": "C:\\Program Files\\MetaTrader 5\\MQL5\\Experts\\STRAT-20261008-BREAKOUT3_LONG-M5-v1.0.ex5",
+  "source_sha256": "0e7a0353113a65aee0c9ff7c9a841e8f51cdd98ab9d798d121665a718d1a3457",
+  "gates": {
+    "mutation_approval": true
+  }
+}
